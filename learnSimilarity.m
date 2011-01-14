@@ -20,11 +20,14 @@ clear train;
 % My computer can handle matrices up to 768 x 65536.
 % Thus we generate 384 positive and negative samples.
 % 
-numPosSamples = 384;
-numNegSamples = 384;
-%[samples, correct] = samplePairsGeneralized(points, labels, numPosSamples, numNegSamples);
-%[samples, correct] = samplePairsMatched(points, labels, numPosSamples, numNegSamples);
-[samples, correct] = samplePairsMatched(points, labels);
+
+%[pairs, match] = samplePairs(labels, 384, 384);
+%samples = encodePairsGeneralized(points, pairs);
+
+[pairs, correct] = samplePairs(labels);
+samples = encodePairsMatched(points, pairs);
+
+clear pairs;
 
 %%
 % Solve for weights by linear regression.
@@ -66,8 +69,8 @@ testpoints = test(:,2:257);
 testn = size(testpoints,1);
 clear test;
 
-[testsamples, testcorrect] = samplePairsMatched(testpoints, testlabels);
-
+[testpairs, testcorrect] = samplePairs(testlabels);
+testsamples = encodePairsMatched(testpoints,testpairs);
 testsamplesH = [ones(rows(testsamples),1) testsamples];
 
 % check error

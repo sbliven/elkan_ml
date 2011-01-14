@@ -1,29 +1,34 @@
-function [samples, match] = samplePairsMatched(points, labels, numPosSamples, numNegSamples, withReplacement)
+function [pairs, match] = samplePairs(labels, numPosSamples, numNegSamples, withReplacement)
 % Randomly sample pairs of points for use with a similarity function.
 %
 % Parameters:
-% points A NxD matrix of D-dimensional points to sample from
-% labels A Dx1 vector giving the label for each row in points. 
+% labels A length-N vector giving the label for each row in points. 
 % numPosSamples Number of rows in samples will be from x,y with matching labels (positive examples). [Default=N]
 % numNegSamples Number of rows in samples will be from x,y with nonmatching labels (negative examples). [Default=N]
 % withReplacement indicates whether replacement is to be used when selecting the first point, x.
 %                 If it is false, x is chosen as a permutation of points. [Default=(numPosSamples==N && numNegSamples==N)]
 %
 % Returns:
-% samples A matrix with the requested positive and negative examples. Columns are [x1y1 x2y2 ... xDyD]
-% match assigns either +1 or -1 to each row of samples for positive and negative examples, respectively.
+% pairs A Mx2 matrix giving indices of the pairs sampled
+% match A Mx1 vector assigning either +1 or -1 to each row of samples for positive and negative examples, respectively.
+% 
+% Postcondition:
+% - sum(match == 1) == numPosSamples
+% - sum(match == -1) == numNegSamples
+% - all( label(pairs(match == 1, 1)) == label(pairs(match == 1, 2)) )
+% - all( label(pairs(match == -1, 1)) ~= label(pairs(match == -1, 2)) )
 %
 possibleLabels = unique(labels)'; %0:9 here
-[n,d] = size(points);
+n = rows(labels);
 
 % set argument defaults
-if nargin < 3
+if nargin < 2
     numPosSamples = n;
 end
-if nargin < 4
+if nargin < 3
     numNegSamples = n;
 end
-if nargin < 5
+if nargin < 4
     withReplacement = (numPosSamples==n && numNegSamples==n);
 end
 
@@ -59,8 +64,5 @@ for l = possibleLabels
     secondIndices([repmat(false,numPosSamples,1);relevantNegSamples]) = (1:n)(labels ~= l)( ceil( nIrrelPoints * rand( nRelNeg, 1)) );
 end    
 
-% encode point pairs as a d-dimensional vector
-% [x1*y1 x2*y2 ... xd*yd]
-samples = points(firstIndices,:) .* points(secondIndices,:);
-
 match = [ ones(numPosSamples,1); -ones(numNegSamples,1)];
+pairs = [firstIndices secondIndices];
