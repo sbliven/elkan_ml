@@ -26,6 +26,7 @@ clear train;
 
 [pairs, correct] = samplePairs(labels);
 samples = encodePairsMatched(points, pairs);
+samplesEuc = encodePairsEuclidean(points, pairs);
 
 clear pairs;
 
@@ -53,9 +54,19 @@ figure;imshow(reshape(weights2(2:end),16,16)',[-1,1]);
 % Solve for weights with additive penalty, except for intercept
 %
 
+lambdaSq = .5; % weighting factor squared
 weights3 = [ samplesH; diag([1 lambdaSq*ones(1,d)]) ] \ [ correct; zeros(d+1,1) ];
 figure;imshow(reshape(weights3(2:end),16,16)',[-1,1]);
 weights1(1), weights2(1), weights3(1)
+
+%%
+% Solve for weighted euclidean distance
+
+samplesEucH = [ones(rows(samplesEuc),1) samplesEuc];
+weightsEuc = samplesEucH \ correct;
+figure;imshow(reshape(weightsEuc(2:end),16,16)',[-1,1]);
+weightsEuc(1)
+
 
 %%
 %imshow(reshape(points(1,:),16,16)',[-1,1])
