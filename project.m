@@ -4,6 +4,25 @@ train = load ('zip.train');
 %7291 x 256 data matrix
 traindata = train(:,2:size(train,2));
 
+%%
+% Train weights
+labels = train(:,1);
+[n,d] = size(traindata);
+[pairs, correct] = samplePairs(labels, 1000, 1000, true);
+samples = encodePairsMatched(traindata, pairs);
+samplesEuc = encodePairsEuclidean(traindata, pairs);
+
+
+lambdaSq = .5; % weighting factor squared
+samplesH = [ones(rows(samples),1) samples]; %make homogeneous
+weightsSim = [ samplesH; diag([1 lambdaSq*ones(1,d)]) ] \ [ correct; zeros(d+1,1) ];
+%figure;imshow(reshape(weightsSim(2:end),16,16)',[-1,1]);
+
+samplesEucH = [ones(rows(samplesEuc),1) samplesEuc];
+weightsEuc = samplesEucH \ correct;
+%figure;imshow(reshape(weightsEuc(2:end),16,16)',[-1,1]);
+
+
 
 result = zeros(size(test,1),1);
 for n = 1 : size(test,1)
@@ -16,7 +35,7 @@ for n = 1 : size(test,1)
 
 
     %calculate distance vector from point1 to training data
-    distvector = calcdist(traindata,pointdata);
+    distvector = wcalcdist(traindata,pointdata,weightsEuc);
 
     %%get min distance
     %[C,I] = min(distvector);
@@ -73,11 +92,3 @@ solution = test(:,1);
 sum(eq(solution,result))/size(solution,1)
 
 %94,42%
-   end
-
-
-    [C,I] = max(voting);
-    %if label is majority
-    
-    %TODO:
-    %%1. most votes(here: majority)
