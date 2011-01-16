@@ -7,6 +7,7 @@ function predictions = kNearestNeighbor(test,traindata,trainlabels, distfn )
 % distfn (optional) A function pointer, distances = distfn(database,query).
 %        Database is an MxD matrix, query is a 1xD vector, and the return value is
 %        an Mx1 vector of the distance from the query to each row of the matrix.
+%        [Default=calcdist (euclidean distance)]
 
 if nargin < 4
     distfn = @calcdist
