@@ -37,7 +37,7 @@ clear pairs;
 %
 % l(y,w*x) = (y-w*x)'*(y-w*x)
 
-samplesH = [ones(rows(samples),1) samples]; %make homogeneous
+samplesH = [ones(size(samples,1),1) samples]; %make homogeneous
 weights1 = samplesH \ correct;
 figure;imshow(reshape(weights1(2:end),16,16)',[-1,1]);
 
@@ -62,7 +62,7 @@ weights1(1), weights2(1), weights3(1)
 %%
 % Solve for weighted euclidean distance
 
-samplesEucH = [ones(rows(samplesEuc),1) samplesEuc];
+samplesEucH = [ones(size(samplesEuc,1),1) samplesEuc];
 weightsEuc = samplesEucH \ correct;
 figure;imshow(reshape(weightsEuc(2:end),16,16)',[-1,1]);
 weightsEuc(1)
@@ -82,7 +82,7 @@ clear test;
 
 [testpairs, testcorrect] = samplePairs(testlabels);
 testsamples = encodePairsMatched(testpoints,testpairs);
-testsamplesH = [ones(rows(testsamples),1) testsamples];
+testsamplesH = [ones(size(testsamples,1),1) testsamples];
 
 % check error
 sse = norm(testcorrect - testsamplesH*weights1)^2

@@ -17,10 +17,10 @@ function [distfn, weights] = trainWeightedSimilarity(points, labels, lambda, var
 %        which calculates the weighted similarity from query to each row in database.
 % weights A D+1x1 vector giving the weights. weights(1) gives the intercept.
 
-d = columns(points);
+d = size(points,2);
 
 [pairs, posNeg] = samplePairs(labels, varargin{:});
-samplesH = [ones(rows(pairs),1) encodePairsMatched(points, pairs) ];
+samplesH = [ones(size(pairs,1),1) encodePairsMatched(points, pairs) ];
 lambdaSq = sqrt(lambda);
 weights = [ samplesH; diag([1 lambdaSq*ones(1,d)]) ] \ [ posNeg; zeros(d+1,1) ];
 

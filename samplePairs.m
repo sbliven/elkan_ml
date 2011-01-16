@@ -19,7 +19,7 @@ function [pairs, match] = samplePairs(labels, numPosSamples, numNegSamples, with
 % - all( label(pairs(match == -1, 1)) ~= label(pairs(match == -1, 2)) )
 %
 possibleLabels = unique(labels)'; %0:9 here
-n = rows(labels);
+n = size(labels,1);
 
 % set argument defaults
 if nargin < 2
@@ -41,8 +41,10 @@ if withReplacement
     % generate random numbers from {1,...,n}
     firstIndices = ceil( n*rand( numSamples, 1) );
 else
-    firstIndices = [repmat(1:n,1,floor(numPosSamples/n))'; randperm(n)(1:mod(numPosSamples,n))';
-                    repmat(1:n,1,floor(numNegSamples/n))'; randperm(n)(1:mod(numNegSamples,n))' ];
+    posPerm = randperm(n);
+    negPerm = randperm(n);
+    firstIndices = [repmat(1:n,1,floor(numPosSamples/n))'; posPerm(1:mod(numPosSamples,n))';
+                    repmat(1:n,1,floor(numNegSamples/n))'; negPerm(1:mod(numNegSamples,n))' ];
 end
 secondIndices = zeros(numSamples,1);
 
@@ -60,8 +62,12 @@ for l = possibleLabels
     nIrrelPoints = n - nRelPoints;
     
     % Generate second sample
-    secondIndices(relevantPosSamples) = (1:n)(labels == l)( ceil( nRelPoints*rand( nRelPos,1) ) );
-    secondIndices([repmat(false,numPosSamples,1);relevantNegSamples]) = (1:n)(labels ~= l)( ceil( nIrrelPoints * rand( nRelNeg, 1)) );
+    posSele = (1:n);
+    posSele = posSele(labels == l);
+    negSele = (1:n);
+    negSele = negSele(labels ~= l);
+    secondIndices(relevantPosSamples) = posSele( ceil( nRelPoints*rand( nRelPos,1) ) );
+    secondIndices([repmat(false,numPosSamples,1);relevantNegSamples]) = negSele( ceil( nIrrelPoints * rand( nRelNeg, 1)) );
 end    
 
 match = [ ones(numPosSamples,1); -ones(numNegSamples,1)];

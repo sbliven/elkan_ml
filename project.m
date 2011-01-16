@@ -10,41 +10,57 @@ testlabels = test(:,1);
 clear test;
 clear train;
 
-%%
-disp("Euclidean distance");
+%% Euclidean distance
 predictions1 = kNearestNeighbor(testdata,traindata,trainlabels, @calcdist);
-sum(eq(testlabels,predictions1))/rows(testlabels)
+accuracy1 = sum(eq(testlabels,predictions1))/size(testlabels,1);
+disp('Euclidean distance');
+disp(accuracy1);
 
-%% 
-disp("Weighted Euclidean distance");
+%% Weighted Euclidean distance
 distfn = trainWeightedEuclideanDistance(traindata,trainlabels);
 predictions2 = kNearestNeighbor(testdata,traindata,trainlabels, distfn);
-sum(eq(testlabels,predictions2))/rows(testlabels)
+accuracy2 = sum(eq(testlabels,predictions2))/size(testlabels,1);
+disp('Weighted Euclidean distance');
+disp(accuracy2);
 
-%% 
-disp("Similarity");
+%% Similarity
 distfn = @(database, query) database*query';
 predictions3 = kNearestNeighbor(testdata,traindata,trainlabels, distfn);
-sum(eq(testlabels,predictions3))/rows(testlabels)
+accuracy3 = sum(eq(testlabels,predictions3))/size(testlabels,1);
+disp('Similarity');
+disp(accuracy3);
 
-%% 
-lambda = .5;
-disp("Weighted Similarity");
-distfn = trainWeightedSimilarity(traindata,trainlabels, lambda);
-predictions4 = kNearestNeighbor(testdata,traindata,trainlabels, distfn);
-sum(eq(testlabels,predictions4))/rows(testlabels)
-
+%% Weighted Similarity
 
 % choose lambda
-lambdas = (0:.1:2)';
-accuracy = zeros(size(lambdas));
-for i = 1:length(lambdas)
-    lambda = lambdas(i);
-    distfn = trainWeightedSimilarity(traindata,trainlabels, lambda);
-    predictions = kNearestNeighbor(traindata,traindata,trainlabels, distfn);
-    accuracy(i) = sum(eq(trainlabels,predictions))/rows(trainlabels)
+selectLambda = false;
+bestLambda = 1.9;
+if selectLambda
+    lambdas = (0:.1:2)';
+    accuracy = zeros(size(lambdas));
+    for i = 1:length(lambdas)
+        lambda = lambdas(i);
+        distfn = trainWeightedSimilarity(traindata,trainlabels, lambda);
+        predictions = kNearestNeighbor(traindata,traindata,trainlabels, distfn);
+        accuracy(i) = sum(eq(trainlabels,predictions))/size(trainlabels,1);
+    end
+    bestLambda = lambdas( accuracy == max(accuracy) ); bestLambda = bestLambda(1)
 end
-bestLambda = lambdas( accuracy == max(accuracy) )(1)
+
 distfn = trainWeightedSimilarity(traindata,trainlabels, bestLambda);
 predictions4 = kNearestNeighbor(testdata,traindata,trainlabels, distfn);
-sum(eq(testlabels,predictions4))/rows(testlabels)
+accuracy4 = sum(eq(testlabels,predictions4))/size(testlabels,1);
+
+disp('Weighted Similarity');
+disp(accuracy4);
+
+
+%% Output
+disp('Euclidean distance');
+disp(accuracy1);
+disp('Weighted Euclidean distance');
+disp(accuracy2);
+disp('Similarity');
+disp(accuracy3);
+disp('Weighted Similarity');
+disp(accuracy4);
