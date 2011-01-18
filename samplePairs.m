@@ -29,7 +29,7 @@ if nargin < 3
     numNegSamples = n;
 end
 if nargin < 4
-    withReplacement = (numPosSamples==n && numNegSamples==n);
+    withReplacement = ~(numPosSamples==n && numNegSamples==n);
 end
 
 numSamples = numPosSamples + numNegSamples;
