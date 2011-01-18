@@ -4,3 +4,9 @@ weights.mat
 zip.info
 zip.test
 zip.train
+
+Syntax: Regex
+report/.*\.aux
+report/.*\.log
+report/.*\.pdf
+report/.*\.synctex\.gz
