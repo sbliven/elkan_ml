@@ -22,6 +22,6 @@ d = size(points,2);
 [pairs, posNeg] = samplePairs(labels, varargin{:});
 samplesH = [ones(size(pairs,1),1) encodePairsMatched(points, pairs) ];
 lambdaSq = sqrt(lambda);
-weights = [ samplesH; diag([1 lambdaSq*ones(1,d)]) ] \ [ posNeg; zeros(d+1,1) ];
+weights = [ samplesH; [zeros(d,1) lambdaSq*eye(d)] ] \ [ posNeg; zeros(d,1) ];
 
-distfn = @(database,query) wsimilarity(database,query,weights);
+distfn = @(database,query) 1-wsimilarity(database,query,weights);
