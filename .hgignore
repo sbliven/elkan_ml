@@ -1,15 +1,15 @@
 Syntax: glob
 .Rhistory
-weights.mat
-zip.info
-zip.test
-zip.train
+kNN/weights.mat
+kNN/zip.info
+kNN/zip.test
+kNN/zip.train
 .DS_Store
 
 Syntax: Regex
-report/.*\.aux
-report/.*\.log
-report/.*\.pdf
-report/.*\.synctex\.gz
-report/.*\.bbl
-report/.*\.blg
+kNN/report/.*\.aux
+kNN/report/.*\.log
+kNN/report/.*\.pdf
+kNN/report/.*\.synctex\.gz
+kNN/report/.*\.bbl
+kNN/report/.*\.blg
