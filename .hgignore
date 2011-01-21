@@ -4,6 +4,7 @@ weights.mat
 zip.info
 zip.test
 zip.train
+.DS_Store
 
 Syntax: Regex
 report/.*\.aux
