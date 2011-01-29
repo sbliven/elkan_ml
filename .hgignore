@@ -1,12 +1,14 @@
-Syntax: glob
+syntax: glob
 .Rhistory
 kNN/weights.mat
 kNN/zip.info
 kNN/zip.test
 kNN/zip.train
 .DS_Store
+*.swp
+*.bak
 
-Syntax: Regex
+syntax: regexp
 kNN/report/.*\.aux
 kNN/report/.*\.log
 kNN/report/.*\.pdf
