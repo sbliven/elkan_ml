@@ -1,7 +1,8 @@
 function [p, dp] = logRegGradient( beta, yx)
 % Calculates the logistic function given parameters beta
-%
 %   p is Pr[y=1|x;beta] = 1/(1+exp(-x*beta))
+% and gradient
+%   dpi/dbj = (yi-pi)*xij
 %
 % Args:
 %   beta: A Dx1 vector of parameters
@@ -21,7 +22,6 @@ x = [ones(size(x,1),1) x]; %Homogeneous coordinates
 p = (1+exp(-x*beta)).^-1;
 
 if nargout > 1
-    %y,p,y-p,x
-    dp = repmat(y-p,1,D) .* x;
+    dp = repmat(p.*(1-p),1,D) .* x;
 end
 
