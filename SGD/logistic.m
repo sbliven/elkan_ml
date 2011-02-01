@@ -1,4 +1,4 @@
-function [p, dp] = logRegGradient( beta, yx)
+function [p, dp] = logistic( beta, yx)
 % Calculates the logistic function given parameters beta
 %   p is Pr[y=1|x;beta] = 1/(1+exp(-x*beta))
 % and gradient
