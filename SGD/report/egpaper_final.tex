@@ -60,6 +60,20 @@ Abstract
 Introduction
 \subsection{Design of Experiments}
 
+\subsection{Encoding}
+
+29-dimensional $x$:
+\begin{itemize}
+\item recency (Real 1-12, months since last purchase)
+\item history segment (1-7) (0/1, 1 = made a purchase in category 1-7)
+\item history (Real positive, amount spent in past year)
+\item mens (0/1, 1= purchased mens merchandise in past year)
+\item womens (0/1, 1= purchased womens merchandise in past year)
+\item zip code (rural,suburban,urban) (0/1, 1 if purchased in a rural, suburban, or urban zipcode)
+\item newbie (0/1, 1= new customer)
+\item channel (phone,web,multi) (0/1, 1= purchased from phone, web, or multi channels)
+\end{itemize}
+
 \section{Complexity Analysis}
 
 \section{Implementation}
@@ -74,7 +88,7 @@ Introduction
 \section{Conclusions}
 
 
-\nocite{hillstrom, bishop,}
+%\nocite{hillstrom, bishop,}
 
 {\small
 \bibliographystyle{ieee}
