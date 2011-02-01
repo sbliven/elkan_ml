@@ -15,4 +15,4 @@ function beta = SGD(training, beta0, gradientFn, lambda)
 %   (minimization), and negative for gradient ascent (maximization).
 %
 
-
+beta = beta0
