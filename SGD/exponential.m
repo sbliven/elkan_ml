@@ -7,5 +7,5 @@ function [y,dy] = exponential(b,x)
 y = exp(-x*b);
 
 if nargout > 1
-    dy = repmat(y,1,size(x,2)) .* x;
+    dy = -repmat(y,1,size(x,2)) .* x;
 end
