@@ -19,18 +19,18 @@ function d = checkgrad(f, X, e, varargin);
 % Originally by Carl Edward Rasmussen, 2001-08-01.
 % Modified by Spencer Edward Bliven, 2011-01-31
 
-[N D] = size(X);
 
 [y dy] = f(X,varargin{:});                            % get the partial derivatives dy
+[N D] = size(dy);
 
-dh = zeros(size(X)) ;
+dh = zeros(size(dy)) ;
 for j = 1:D
-  dx = zeros(N,D);
-  dx(:,j) = dx(:,j) + e;                              % perturb a single dimension
+  dx = zeros(size(X));
+  dx(j) = dx(j) + e;                              % perturb a single dimension
   y2 = f(X.+dx,varargin{:});
   y1 = f(X.-dx,varargin{:}); %Symmetric perturbation
   dh(:,j) = (y2 - y1)/(2*e);
 end
 
 disp([dy dh]);                                        % print the two vectors
-d = norm(dh-dy,2,'cols')./norm(dh+dy,2,'cols');       % return norm of diff divided by norm of sum
+d = norm(dh-dy,2,'rows')./norm(dh+dy,2,'rows');       % return norm of diff divided by norm of sum
