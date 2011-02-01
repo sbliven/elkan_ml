@@ -14,5 +14,9 @@ function beta = SGD(training, beta0, gradientFn, lambda)
 %   lambda: the learning rate. Should be positive for gradient descent
 %   (minimization), and negative for gradient ascent (maximization).
 %
-
-beta = beta0
+[N,D] = size(training);
+beta = beta0;
+for i = 1:N
+    [y, dbeta] = gradientFn( beta, training(i,:));
+    beta = beta + lambda*dbeta';
+end
