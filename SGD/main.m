@@ -39,12 +39,23 @@ YXSpendNoemail = [noemail(:,28) noemail(:,1:25) noemail(:,27)];
 %% Checking accuracy of functions
 % The following should produce numbers near 0 for all beta
 
-y=zeros(10,1);
-y(6:end) = 1;
-x = randn(size(y));
-x = x + 10*y - 5;
+N = 1000;
+D = 2;
+y=zeros(N,1);
+y(1:N/2) = 1;
+x = randn(N,2);
+% X|Y=0 ~ MVN( [-1;0], [1;4])
+% X|Y=1 ~ MVN( [1;3],[1;4])
+x(:,1) = x(:,2) + 2*y -1;
+x(:,2) = 2*x(:,2) + 3*y;
+z = [y x];
+z = z(randperm(N),:);
 
-beta = [1;1];
+b = zeros(D+1,1);
 
 % Can also check logistic, exponential, or linear
-checkgrad(@logisticLCL, [0;0], 1e-6, [y x])
+checkgrad(@logisticLCL, b, 1e-6, z)
+
+%% Run gradient descent
+b = GD(z,b,@logisticLCL, -1);
+
