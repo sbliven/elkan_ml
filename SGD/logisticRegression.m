@@ -1,17 +1,34 @@
-function beta = logisticRegression(yx)
+function [b, bs, lcl] = logisticRegression(yx, numEpochs, lambda0, beta0 )
 % Runs logistic regression
 
-[n,d] = size(yx);
-beta = zeros(d,1);
+[N,D] = size(yx);
 
-lambda0=0.1;
-numEpochs = 1000;
+if nargin < 4
+    b = zeros(D,1);
+else
+    b = beta0;
+end
 
-bs = zeros(numEpochs,D);
-lcl = zeros(numEpochs,1);
+if nargin < 3
+    lambda0=0.1;
+end
+lambda = lambda0;
+
+if nargin < 2
+    numEpochs = 1000;
+end
+
+if nargout > 1
+    bs = zeros(numEpochs,D);
+    lcl = zeros(numEpochs,1);
+end
+
 for epoch = 1:numEpochs
-    b = SGD(z,b,@logisticLCL, lambda);
-    bs(epoch,:) = b';
-    lcl(epoch) = sum(logisticLCL(b,z));
+    b = SGD(yx,b,@logisticLCL, lambda);
+    
+    if nargout > 1
+        bs(epoch,:) = b';
+        lcl(epoch) = sum(logisticLCL(b,yx));
+    end
 end
 
