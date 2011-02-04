@@ -57,5 +57,14 @@ b = zeros(D+1,1);
 checkgrad(@logisticLCL, b, 1e-6, z)
 
 %% Run gradient descent
-b = GD(z,b,@logisticLCL, -1);
+lambda=0.0001;
+numEpochs = 1000;
+bs = zeros(numEpochs,D+1);
+lcl = zeros(numEpochs,1);
+for epoch = 1:numEpochs
+    b = GD(z,b,@logisticLCL, lambda);
+    bs(epoch,:) = b';
+    lcl(epoch) = sum(logisticLCL(b,z));
+end
+plot(lcl)
 
