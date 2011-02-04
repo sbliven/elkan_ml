@@ -2,7 +2,7 @@
 % Project 2
 % elkan, cse 250B
 %
-% Bliven, Hoelzler, Landstadt
+% Bliven, Hoelzler, Landstad
 
 
 %% Read in files from new created csv-files
