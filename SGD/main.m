@@ -40,3 +40,6 @@ YXSpendMens = [mens(:,29) mens(:,1:26) mens(:,28)];
 YXSpendNoemail = [noemail(:,29) noemail(:,1:26) noemail(:,28)];
 
 clear womens mens noemail;
+
+yx = balanceSamples(YXVisitWomens);
+[b, bs, lcl] = logisticRegression(yx, 1, 0.1,ones(27,1));
