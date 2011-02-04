@@ -60,34 +60,60 @@ Abstract
 Introduction
 \subsection{Design of Experiments}
 
-\subsection{Encoding}
+\subsection{Desription and encoding of the dataset}
+The learning algorithms are applied to the dataset of Hillstrom. The data is given as comma separeted file.
+For the learning algorithm, the rows of the dataset are encoded in 29-dimensional $x$-vectors.
+Hillstrom collected historical customer attributes of the customers.
+First, the receny entry shows the number of months since last ourchase from one to twelve months. In this project it is encoded as a bit-vector of eleven bits (bit 1 to 11), where the $i$th bit is $1$ for a receny of $i$ and $0$ otherwise. The $12$th bit is left out, since it only represents redundant information.
+The history segmmentation is a categorization of the customers in 7 categories, using how many dollars were spent in the last year.
+(TODO: Dollars in categories). It is encoded again as bit-vector 12 to 17, while one bit is again left out due to redundancy.
+Entry 18 shows the real value of actual dollars spent in the past year. Entry 19 and 20 are true, if the customer purchased Mens repsectively  Womens merchandise in the past year. Bit 21 and 22 categorize the customer in its zip code area. Bit 21 is $1$, if he is from a rural area, bit 22 is $1$, if he is from a urban area, the bit for the suburban area is again left out.
+Bit 23 is the indicator, if the customer is a new customer mentioned the last twelve months.
+The channel decribes the channel the customer purchased  from  in the past year. Bit 24 is $1$ for the phone, bit 25 is $1$ for the web. The bits are not mutually exclusive. 
 
-28-dimensional $x$:
+Segment
+Visit
+Conversion
+Spend
+
 \begin{itemize}
-\item 0-10 bits recency (Real 1-11, months since last purchase)  (Month 12 left out)
-\item 11-16 bits history segment (1-6) (0/1, 1 = made a purchase in category 1-7)   (Category 7 left out)
-\item  17 value history (Real positive, amount spent in past year)
-\item  18 bit mens (0/1, 1= purchased mens merchandise in past year)
-\item  19 bit womens (0/1, 1= purchased womens merchandise in past year)
-\item  20-21 bit zip code (rural,urban) (0/1, 1 if purchased in a rural, suburban, or urban zipcode)  (Suburban left out)
-\item  22 bit newbie (0/1, 1= new customer)
-\item  23-24 bit channel (phone,web,multi) (0/1, 1= purchased from phone, web, or both 1 if multi channels)
-\item 25 bit visit
-\item 26 bit conversion
-\item 27 value spend
-
+\item 1-11 bits recency (Real 1-11, months since last purchase)  (Month 12 left out)
+\item 12-17 bits history segment (1-6) (0/1, 1 = made a purchase in category 1-7)   (Category 7 left out)
+\item  18 value history (Real positive, amount spent in past year)
+\item  19 bit mens (0/1, 1= purchased mens merchandise in past year)
+\item  20 bit womens (0/1, 1= purchased womens merchandise in past year)
+\item  21-22 bit zip code (rural,urban) (0/1, 1 if purchased in a rural, suburban, or urban zipcode)  (Suburban left out)
+\item  23 bit newbie (0/1, 1= new customer)
+\item  24-25 bit channel (phone,web,multi) (0/1, 1= purchased from phone, web, or both 1 if multi channels)
+\item 26 bit visit
+\item 27 bit conversion
+\item 28 value spend
 \end{itemize}
+
+Moreover an intercept $x_0$ is added.
+Because the learning rate is the same for every parameter, it is useful to scale the features $x_j$ so that their magnitudes are similar for all $j$. Given that the intercept $x_0$ has constant value 1, the other features are normalized having mean zero and variance 1(\cite{}).
 
 \begin{figure*}[tb]
 	\centering
-\tiny
- 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+ 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
   	\hline
-  	 0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20&21&22&23&24&25&26&27\\ 
+  	 0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17\\ 
   	 \hline
-  	 \multicolumn{11}{|c|}{Recency}&\multicolumn{6}{|c|}{History segment}&History&Mens&Womens&\multicolumn{2}{|c|}{Zip-Code}&Newbie&\multicolumn{2}{|c|}{Channel}&Visit&Conversion&Spent\\
+  	 Intercept&\multicolumn{11}{|c|}{Recency}&\multicolumn{6}{|c|}{History segment}\\
   	 \hline
-		J&F&M&A&M&J&J&A&S&O&N&1&2&3&4&5&6&H&M&W&U&R&N&P&W&V&C&S\\ 
+		I&1&2&3&4&5&6&7&8&9&10&11&1&2&3&4&5&6\\ 
+  	\hline
+ 		\end{tabular}
+ 		
+
+
+ 		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+  	\hline
+  	 18&19&20&21&22&23&24&25&26&27&28\\ 
+  	 \hline
+  	 History&Mens&Womens&\multicolumn{2}{|c|}{Zip-Code}&Newbie&\multicolumn{2}{|c|}{Channel}&Visit&Conversion&Spent\\
+  	 \hline
+		H&M&W&U&R&N&P&W&V&C&S\\ 
   	\hline
  		\end{tabular}
 \caption{Encoding}
