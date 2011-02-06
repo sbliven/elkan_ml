@@ -8,7 +8,7 @@ betas(3,:)      = betas(3,:)/2; % all 0.5
 betas(4:13,:)   = randn(10,D); % random N(0,1)
 betas(9:13,:)   = betas(9:13,:)/2; % random N(0,.5)
 
-LCLs = [LCLs; zeros(13,1)];
+LCLs = [ zeros(13,1)];
 for i=1:size(betas,1)
     LCLs(i) = sum(logisticLCL( betas(i,:)', yx));
 end
@@ -30,7 +30,7 @@ for i=i+1:size(betas,1)
 end
 
 % Now run SGD on maximum beta
-[maxLCL, indexMaxLCL] = max(LCLs);
+[maxLCL, indexMaxLCL] = max(LCLs)
 bestBeta = betas(indexMaxLCL,:)';
 [b, mybs, mylcls] = logisticRegression(yx, 100, 0.1, bestBeta, 1 );
 betas = [betas; mybs];
