@@ -62,15 +62,15 @@ Introduction
 \subsection{Design of Experiments}
 
 \subsection{Desription and encoding of the dataset}
-The learning algorithms are applied to the dataset of Hillstrom. The data is given as comma separeted file.
+The learning algorithms are applied to the dataset of Hillstrom. The data is given as comma separated file.
 For the learning algorithm, the rows of the dataset are encoded in 29-dimensional $x$-vectors.
 Hillstrom collected historical customer attributes of the customers.
-First, the receny entry shows the number of months since last ourchase from one to twelve months. In this project it is encoded as a bit-vector of eleven bits (bit 1 to 11), where the $i$th bit is $1$ for a receny of $i$ and $0$ otherwise. The $12$th bit is left out, since it only represents redundant information.
-The history segmmentation is a categorization of the customers in 7 categories, using how many dollars were spent in the last year.
+First, the recency entry shows the number of months since last purchase from one to twelve months. In this project it is encoded as a bit-vector of eleven bits (bit 1 to 11), where the $i$th bit is $1$ for a recency of $i$ and $0$ otherwise. The $12$th bit is left out, since it only represents redundant information.
+The history segmentation is a categorization of the customers in 7 categories, using how many dollars were spent in the last year.
 (TODO: Dollars in categories). It is encoded again as bit-vector 12 to 17, while one bit is again left out due to redundancy.
-Entry 18 shows the real value of actual dollars spent in the past year. Entry 19 and 20 are true, if the customer purchased Mens repsectively  Womens merchandise in the past year. Bit 21 and 22 categorize the customer in its zip code area. Bit 21 is $1$, if he is from a rural area, bit 22 is $1$, if he is from a urban area, the bit for the suburban area is again left out.
+Entry 18 shows the real value of actual dollars spent in the past year. Entry 19 and 20 are true, if the customer purchased Mens respectively  Womens merchandise in the past year. Bit 21 and 22 categorize the customer in its zip code area. Bit 21 is $1$, if he is from a rural area, bit 22 is $1$, if he is from a urban area, the bit for the suburban area is again left out.
 Bit 23 is the indicator, if the customer is a new customer mentioned the last twelve months.
-The channel decribes the channel the customer purchased  from  in the past year. Bit 24 is $1$ for the phone, bit 25 is $1$ for the web. The bits are not mutually exclusive. 
+The channel describes the channel the customer purchased  from  in the past year. Bit 24 is $1$ for the phone, bit 25 is $1$ for the web. The bits are not mutually exclusive. 
 
 Segment
 Visit
