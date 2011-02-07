@@ -12,6 +12,7 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfigure} % make it possible to include more than one captioned figure/table in a single float
 \usepackage{graphicx}
+\newcommand{\E}{\mbox{I\negthinspace E}}
 % Include other packages here, before hyperref.
 
 % If you comment hyperref and then uncomment it, you should delete
@@ -52,17 +53,36 @@ University of California, San Diego\\
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-This project applies data mining methods to analyze a dataset describing two email campaigns and a control group. The datasets is analyzed using a logistic regression and real-valued regression training method with stochastic gradient descent as optimization method.
+This project applies data mining methods to a dataset describing two email campaigns and a control group. The datasets is analyzed using a logistic regression and real-valued regression training method with stochastic gradient descent as optimization method.
 The results show, that future mails should be sent to ???
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
-Introduction
-\subsection{Design of Experiments}
+Kevin Hillstrom, a well-known data mining consulatant has published a E-Mail analytics dataset with 64,000 records each describing a customer(\cite{hillstrom2008}). One third of these customers were randomly chosen to receive an email referred to as the Men’s email, a
+second random third received a different email (the Women’s email) and the remaining customers served as a control, receiving neither email.
+
 
 \subsection{Description and encoding of the dataset}
-The learning algorithms are applied to the dataset of Hillstrom. The data is given as comma separated file.
+Hillstrom’s dataset contains 64,000 records, almost perfectly equally divided
+between two mailings (“Men’s” and “Women’s”) and an untreated control group(\ref{dataoverview}).
+
+\begin{figure}[htb]
+	\centering
+
+ \begin{tabular}{|l|l|l|l|l|}
+  \hline
+   Mailing & Men    & Women  & None   & Total   \\ 
+   \%       & 33.29\% & 33.42\% & 33.29\% & 100.00\% \\
+  \hline
+ \end{tabular}
+
+\caption{Encoding}
+ \label{dataoverview}
+\end{figure}
+
+
+The learning algorithms are applied to the dataset of Hillstrom. The data is given as a comma separated file.
 For the learning algorithm, the rows of the dataset are encoded in 29-dimensional $x$-vectors.
 Hillstrom collected historical customer attributes of the customers.
 First, the recency entry shows the number of months since last purchase from one to twelve months. In this project it is encoded as a bit-vector of eleven bits (bit 1 to 11), where the $i$th bit is $1$ for a recency of $i$ and $0$ otherwise. The $12$th bit is left out, since it only represents redundant information.
@@ -72,10 +92,7 @@ Entry 18 shows the real value of actual dollars spent in the past year. Entry 19
 Bit 23 is the indicator, if the customer is a new customer mentioned the last twelve months.
 The channel describes the channel the customer purchased  from  in the past year. Bit 24 is $1$ for the phone, bit 25 is $1$ for the web. The bits are not mutually exclusive. 
 
-Segment
-Visit
-Conversion
-Spend
+
 
 \begin{itemize}
 \item 1-11 bits recency (Real 1-11, months since last purchase)  (Month 12 left out)
@@ -91,18 +108,26 @@ Spend
 \item 28 value spend
 \end{itemize}
 
-Moreover an intercept $x_0$ is added.
-Because the learning rate is the same for every parameter, it is useful to scale the features $x_j$ so that their magnitudes are similar for all $j$. Given that the intercept $x_0$ has constant value 1, the other features are normalized having mean zero and variance 1(\cite{elkan11}).
+Because the learning rate is the same for every parameter, it is useful to scale the features $x_j$ so that their magnitudes are similar for all $j$. The features are normalized having mean zero and variance 1(\cite{elkan11}).
+
+ 
+Hillstrom provides three outcome (dependent) variables indicating whether people visited the site during a two-week outcome period, whether they
+purchased at the site (“conversion”) during that period, and how much customers spent during the outcome period (zero, for those who
+didn’t).
+
+
+
+
 
 \begin{figure*}[tb]
 	\centering
  	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
   	\hline
-  	 0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17\\ 
+  	 1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17\\ 
   	 \hline
-  	 Intercept&\multicolumn{11}{|c|}{Recency}&\multicolumn{6}{|c|}{History segment}\\
+  	 \multicolumn{11}{|c|}{Recency}&\multicolumn{6}{|c|}{History segment}\\
   	 \hline
-		I&1&2&3&4&5&6&7&8&9&10&11&1&2&3&4&5&6\\ 
+		1&2&3&4&5&6&7&8&9&10&11&1&2&3&4&5&6\\ 
   	\hline
  		\end{tabular}
  		
@@ -120,6 +145,31 @@ Because the learning rate is the same for every parameter, it is useful to scale
 \caption{Encoding}
     \label{encoding}
 \end{figure*}
+
+
+\subsection{Model of Computation}
+As one can see in Table \ref{dataoverview}, the customers are seperated in three groups. For each of these groups the same computational model can be applied. These three submodels are part of the overall model
+
+\[\E[spend|x,treatment] = \E[spend]purchase,x,treatment] \]
+\[ * p(purchase|visit,x,treatment) * p(visit|x,treatment) \].
+
+. This eqauation is applied to all three groups, called $treatment$ in the equation with the possible values $women's clothing$, $men's clothing$ and $no email$. $x$ is the vector of attribute values described in the section above. $visit$ and $purchase$ are binary random variables that have a certain probability of being true of false for each customer. $spend$ is a real-value random variable for each customer.
+
+Goal of this equation is to find out, how much money the customer spent, given a particular treatment. The probability $p(visit|x,treatment)$ is the probability, that a customer visits. $p(purchase|visit,x,treatment)$ is the probablity that the customer purchases. $\E[spend]purchase,x,treatment]$ is the expected real-valued outcome for a customer. These three terms have to be multiplied, since a customer, who spends money has also to visit the store and to purchase anything.
+
+
+
+\section{Logistic and Linear Regression}
+The three terms of the equation above can be calculated by logistic regression and linear regression.
+
+Logistic Regression is a important special case of the Conditional Likelihood model.
+It is  is used for prediction of the occurence of an binary $y$ given an real-valued vector $x$ written as 
+
+\[p(y|x;\alpha,\beta)=\frac{1}{1+exp-[\alpha+\sum_{j=1}^{d}\beta_j*x_j]}\].
+
+This can be applied to the second and third term. The first term can be calculated using linear regression.
+
+
 
 \section{Complexity Analysis}
 
