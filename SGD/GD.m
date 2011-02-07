@@ -1,4 +1,4 @@
-function beta = GD(training, beta0, gradientFn, lambda)
+function beta = GD(training, beta0, gradientFn, lambda, varargin)
 % Batch gradient descent
 %
 % Runs one epoch of GD with the given initial parameters
@@ -16,5 +16,5 @@ function beta = GD(training, beta0, gradientFn, lambda)
 %
 [N,D] = size(training);
 
-[y, dbeta] = gradientFn( beta0, training);
-beta = beta0 + lambda*sum(dbeta,1)';
+[y, dbeta] = gradientFn( beta0, training, varargin{:});
+beta = beta0 + lambda*dbeta;

@@ -1,5 +1,7 @@
 function [betas, LCLs] = testLearningRates(yx)
 
+alpha = 1e-4;
+
 % Try some initial configurations
 [N,D] = size(yx);
 betas           = zeros(13,D); %all zeros
@@ -18,7 +20,7 @@ betas = repmat(betas,2,1);
 LCLs = [LCLs; zeros(13,1)];
 
 for i=i+1:size(betas,1)
-    [b, betas(i,:), LCLs(i)] = logisticRegression(yx, 1, 0.1, betas(i,:)' );
+    [b, betas(i,:), LCLs(i)] = logisticRegression(yx, 1, 0.1, betas(i,:)', [],[], alpha );
 end
 
 % Try one-epoch SGD, lambda = 0.01
@@ -26,7 +28,7 @@ betas = [betas; betas(1:13,:)];
 LCLs = [LCLs; zeros(13,1)];
 
 for i=i+1:size(betas,1)
-    [b, betas(i,:), LCLs(i)] = logisticRegression(yx, 1, 0.01, betas(i,:)' );
+    [b, betas(i,:), LCLs(i)] = logisticRegression(yx, 1, 0.01, betas(i,:)', [],[], alpha );
 end
 
 % Now run SGD on maximum beta

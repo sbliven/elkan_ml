@@ -47,25 +47,26 @@ YXSpendNoemail = [noemail( all(noemail(:,26:27)==1,2) ,28) noemail( all(noemail(
 
 %clear womens mens noemail;
 
+alpha = 1;
 beta0 = zeros(size(YXVisitWomens,2),1);
 
 YXVisitWomensBal = balanceSamples(YXVisitWomens);
-[b, VisitWomensBetas, VisitWomensLCLs] = logisticRegression(YXVisitWomensBal, 100, 0.1, beta0, 1 );
+[b, VisitWomensBetas, VisitWomensLCLs] = logisticRegression(YXVisitWomensBal, 100, 0.1, beta0, 1, [], alpha );
 
 YXVisitMensBal = balanceSamples(YXVisitMens);
-[b, VisitMensBetas, VisitMensLCLs] = logisticRegression(YXVisitMensBal, 100, 0.1, beta0, 1 );
+[b, VisitMensBetas, VisitMensLCLs] = logisticRegression(YXVisitMensBal, 100, 0.1, beta0, 1, [], alpha );
 
 YXVisitNoemailBal = balanceSamples(YXVisitNoemail);
-[b, VisitNoemailBetas, VisitNoemailLCLs] = logisticRegression(YXVisitNoemailBal, 100, 0.1, beta0, 1 );
+[b, VisitNoemailBetas, VisitNoemailLCLs] = logisticRegression(YXVisitNoemailBal, 100, 0.1, beta0, 1, [], alpha );
 
 YXPurchaseWomensBal = balanceSamples(YXPurchaseWomens);
-[b, PurchaseWomensBetas, PurchaseWomensLCLs] = logisticRegression(YXPurchaseWomensBal, 100, 0.1, beta0, 1 );
+[b, PurchaseWomensBetas, PurchaseWomensLCLs] = logisticRegression(YXPurchaseWomensBal, 100, 0.1, beta0, 1, [], alpha );
 
 YXPurchaseMensBal = balanceSamples(YXPurchaseMens);
-[b, PurchaseMensBetas, PurchaseMensLCLs] = logisticRegression(YXPurchaseMensBal, 100, 0.1, beta0, 1 );
+[b, PurchaseMensBetas, PurchaseMensLCLs] = logisticRegression(YXPurchaseMensBal, 100, 0.1, beta0, 1, [], alpha );
 
 YXPurchaseNoemailBal = balanceSamples(YXPurchaseNoemail);
-[b, PurchaseNoemailBetas, PurchaseNoemailLCLs] = logisticRegression(YXPurchaseNoemailBal, 100, 0.1, beta0, 1 );
+[b, PurchaseNoemailBetas, PurchaseNoemailLCLs] = logisticRegression(YXPurchaseNoemailBal, 100, 0.1, beta0, 1, [], alpha );
 
 figure (10); plot(VisitWomensLCLs,'-s'); title("VisitWomensLCLs"); xlabel("Epoch"); ylabel("LCL");
 figure (11); plot(VisitWomensBetas(:,1),'-x',VisitWomensBetas(:,2:end),'-s'); title("VisitWomensBetas"); xlabel("Epoch");

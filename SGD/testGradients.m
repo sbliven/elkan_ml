@@ -32,7 +32,7 @@ lcl = zeros(numEpochs,1);
 for epoch = 1:numEpochs
     b = GD(z,b,@logisticLCL, lambda);
     bs(epoch,:) = b';
-    lcl(epoch) = sum(logisticLCL(b,z));
+    lcl(epoch) = logisticLCL(b,z);
 end
 plot(lcl)
 

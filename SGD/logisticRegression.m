@@ -1,4 +1,4 @@
-function [b, bs, lcl] = logisticRegression(yx, numEpochs, lambda0, beta0, learnRate, gdAlg )
+function [b, bs, lcl] = logisticRegression(yx, numEpochs, lambda0, beta0, learnRate, gdAlg, varargin )
 % Runs logistic regression
 %
 % Args (1 required):
@@ -9,7 +9,8 @@ function [b, bs, lcl] = logisticRegression(yx, numEpochs, lambda0, beta0, learnR
 %   learnRate   Rate of change in lambda for each epoch. [default=0]
 %               lambda = 1/(1/lambda0 + learnRate*epoch) 
 %   gdAlg       Function handle for gradient algorithm. [default=@SGD]
-
+%               beta = gdAlg(beta0, yx, ...)
+%   varargin    Additional parameters passed to gdAlg
 [N,D] = size(yx);
 
 % Set default parameters
@@ -37,9 +38,6 @@ if nargin < 6 || isempty(gdAlg)
     gdAlg = @SGD;
 end
 
-
-
-
 % calculate epochs
 
 if nargout > 1
@@ -48,11 +46,11 @@ if nargout > 1
 end
 
 for epoch = 1:numEpochs
-    b = gdAlg(yx,b,@logisticLCL, lambda);
+    b = gdAlg(yx,b,@logisticLCLReg, lambda, varargin{:});
     
     if nargout > 1
         bs(epoch,:) = b';
-        lcl(epoch) = sum(logisticLCL(b,yx));
+        lcl(epoch) = sum(logisticLCLReg(b,yx,varargin{:}));
     end
     
     lambda = 1/(1/lambda0 + learnRate*epoch);

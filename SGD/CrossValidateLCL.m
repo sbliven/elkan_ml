@@ -26,6 +26,6 @@ for k=1:k0
     betas=SGD(trainingFold,betas0,@logisticLCL,lambda);
     
     %Calculate lcl for the
-    lcl(k)=sum(logisticLCL(betas,testFold));
+    lcl(k)=logisticLCL(betas,testFold);
 end
 end

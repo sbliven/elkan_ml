@@ -21,15 +21,18 @@ function d = checkgrad(f, X, e, varargin);
 
 
 [y dy] = f(X,varargin{:});                            % get the partial derivatives dy
-[N D] = size(dy);
+D = size(dy,1); %derivative is along cols
+%D = size(dy,2); %derivative is along rows
 
 dh = zeros(size(dy)) ;
 for j = 1:D
   dx = zeros(size(X));
   dx(j) = dx(j) + e;                              % perturb a single dimension
-  y2 = f(X.+dx,varargin{:});
-  y1 = f(X.-dx,varargin{:}); %Symmetric perturbation
-  dh(:,j) = (y2 - y1)/(2*e);
+  y2 = f(X+dx,varargin{:});
+  y1 = f(X-dx,varargin{:}); %Symmetric perturbation
+  
+  dh(j,:) = (y2 - y1)/(2*e); % cols
+  %dh(:,j) = (y2-y1)/(2*e); % rows
 end
 
 disp([dy dh]);                                        % print the two vectors
