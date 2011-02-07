@@ -110,4 +110,4 @@ PurchaseWomensBeta = PurchaseWomensBetas(end,:)';
 PurchaseMensBeta = PurchaseMensBetas(end,:)';
 PurchaseNoemailBeta = PurchaseNoemailBetas(end,:)';
 
-save 'Dataset/betas.mat' VisitWomensBeta VisitMensBeta VisitNoemailBeta PurchaseWomensBeta PurchaseMensBeta PurchaseNoemailBeta
+save 'Dataset/betas.mat' VisitWomensBeta VisitMensBeta VisitNoemailBeta PurchaseWomensBeta PurchaseMensBeta PurchaseNoemailBeta alpha lambda epochs
