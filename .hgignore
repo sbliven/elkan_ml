@@ -7,11 +7,12 @@ kNN/zip.train
 .DS_Store
 *.swp
 *.bak
+octave-core
 
 syntax: regexp
-kNN/report/.*\.aux
-kNN/report/.*\.log
-kNN/report/.*\.pdf
-kNN/report/.*\.synctex\.gz
-kNN/report/.*\.bbl
-kNN/report/.*\.blg
+.*/report/.*\.aux
+.*/report/.*\.log
+.*/report/.*\.pdf
+.*/report/.*\.synctex\.gz
+.*/report/.*\.bbl
+.*/report/.*\.blg
