@@ -85,3 +85,12 @@ figure (19); plot(PurchaseMensBetas(:,1),'-x',PurchaseMensBetas(:,2:end),'-s'); 
 
 figure (20); plot(PurchaseNoemailLCLs,'-s'); title("PurchaseNoemailLCLs"); xlabel("Epoch"); ylabel("LCL");
 figure (21); plot(PurchaseNoemailBetas(:,1),'-x',PurchaseNoemailBetas(:,2:end),'-s'); title("PurchaseNoemailBetas"); xlabel("Epoch");
+
+VisitWomensBeta = VisitWomensBetas(end,:)';
+VisitMensBeta = VisitMensBetas(end,:)';
+VisitNoemailBeta = VisitNoemailBetas(end,:)';
+PurchaseWomensBeta = PurchaseWomensBetas(end,:)';
+PurchaseMensBeta = PurchaseMensBetas(end,:)';
+PurchaseNoemailBeta = PurchaseNoemailBetas(end,:)';
+
+save 'Dataset/betas.mat' VisitWomensBeta VisitMensBeta VisitNoemailBeta PurchaseWomensBeta PurchaseMensBeta PurchaseNoemailBeta
