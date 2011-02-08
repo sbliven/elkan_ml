@@ -12,7 +12,7 @@ end
 if nargin < 3
     lambda0=0.1;
 end
-lambda = lambda0;
+lambda = 1/lambda0;
 
 if nargin < 2
     numEpochs = 1000;
@@ -30,5 +30,7 @@ for epoch = 1:numEpochs
         bs(epoch,:) = b';
         lcl(epoch) = sum(logisticLCL(b,yx));
     end
+    
+    lambda = 1/(lambda0+epoch);
 end
 
