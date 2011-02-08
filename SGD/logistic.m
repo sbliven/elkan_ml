@@ -14,8 +14,8 @@ function [p, dp] = logistic( beta, yx)
 %   p: The probability of y=1
 %   dp: A NxD matrix, giving the gradient of p w.r.t. beta at each point
 
-[N,D] = size(yx);
-y = yx(:,1);
+D = size(yx,2);
+%y = yx(:,1);
 x = yx(:,2:end);
 
 x = [ones(size(x,1),1) x]; %Homogeneous coordinates

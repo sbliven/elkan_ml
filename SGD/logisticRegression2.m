@@ -5,7 +5,6 @@ b = beta0;
 Y = yx(:,1);
 %add intercept
 X = [ones(size(yx,1),1)  yx(:,2:26)];
-alpha = 1;
 
 sigmoid = @(x) 1./(1+exp(-x));
 
