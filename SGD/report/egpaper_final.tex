@@ -77,26 +77,26 @@ The dataset is almost perfectly equally divided between the two mailings (“Men's
   \hline
  \end{tabular}
 
-\caption{Encoding}
+\caption{Partitioning of the email analytics dataset}
  \label{dataoverview}
 \end{figure}
 
-\section{Preprocessing of the Dataset}
-The data is given as a comma separated file. To apply the logistic and linear regressions, the data has to be preprocessed. For the learning algorithm, the rows of the dataset are encoded in 29-dimensional $x$-vectors.
+\section{Preprocessing: Feature Selection for Regression}
+The data is given as a comma separated file. To apply the logistic and linear regressions, the data has to be preprocessed. For the learning algorithm, customomer information is encoded as $x\in\mathbb{R}^{28}$. The encoding \ref{encoding} is described at the following.
 
-First, the recency entry shows the number of months since the last purchase from one to twelve months. In this project it is encoded as a bit-vector of eleven bits (bit 1 to 11), where the $i$th bit is $1$ for a recency of $i$ months and $0$ otherwise. The $12$th bit is left out, since it only represents redundant information.
-The history segmentation is a categorization of the customers in 7 categories, using how many dollars were spent in the last year.
+First, the recency entry shows the number of months since the last purchase from one to twelve months. In this project it is encoded as a bit-vector of eleven bits (bit 1 to 11), where the $i$th bit is $'1'$ for a recency of $i$ months and $'0'$ otherwise. The $12$th bit is left out, since it only represents redundant information. 
+The history segmentation is a categorization of the customers into seven categories, using how many dollars were spent in the last year.
 It is encoded again as bit-vector 12 to 17, while one bit is again left out due to redundancy.
 Entry 18 shows the real value of actual dollars spent in the past year. Entry 19 and 20 are true, if the customer purchased men's respectively women's merchandise in the past year. Bit 21 and 22 categorize the customer in its zip code area. Bit 21 is $1$, if he is from a rural area, bit 22 is $1$, if he is from a urban area. The bit for the suburban area is again left out.
 Bit 23 is the indicator, if the customer is a new customer mentioned the last twelve months.
-The channel describes the channel the customer purchased  from  in the past year. Bit 24 is $1$ for the phone, bit 25 is $1$ for the web. The bits are not mutually exclusive. 
+The channel describes the channel the customer purchased  from  in the past year. Bit 24 is $'1'$ for the phone, bit 25 is $'1'$ for the web. The bits are not mutually exclusive. 
 
-Because the learning rate is the same for every parameter, it is useful to scale the features $x_j$ so that their magnitudes are similar for all $j$. The features are normalized having mean zero and variance $1$ \cite{elkan11}.
+Because the learning rate is the same for every parameter, it is useful to scale the features $x_j$ so that their magnitudes are similar for all $j$. The features are normalized having mean zero and variance $1$, according to \cite{elkan11}.
 
  
 Hillstrom provides three outcome (dependent) variables indicating whether people visited the site during a two-week outcome period, whether they
 purchased at the site (“conversion”) during that period, and how much customers spent during the outcome period (zero, for those who
-didn't).
+didn't). These outcomes serves a labels in this model, where  $visit,\ purchase \in\{0,1\}$ and $spend \in\mathbb{R}$.
 
 
 
@@ -131,19 +131,35 @@ didn't).
 
 
 \subsection{Model of Computation}
-As one can see in Table \ref{dataoverview}, the customers are divided into three groups. For each of these groups the same computational model can be applied. These three submodels are part of the overall model
+As one can see in Table \ref{dataoverview}, three different $treatments$ are applied to the customers:  $women's\ clothing$, $men's\ clothing$ and $no\ email$. For each of these $treatments$ the same computational model can be applied. These three submodels are part of the overall model
 
-\[E[spend|x,treatment] = E[spend|purchase,x,treatment] \]
-\[ *\ p(purchase|visit,x,treatment)\ *\ p(visit|x,treatment) \]
-This eqauation is applied to all three groups, called $treatment$ in the equation with the possible values $women's\ clothing$, $men's\ clothing$ and $no\ email$. $x$ is the vector of attribute values described in the section above. $visit$ and $purchase$ are binary random variables that have a certain probability of being true of false for each customer. $spend$ is a real-value random variable for each customer.
+\begin{equation}
+\begin{split}
+ E[spend|x,treatment] = \\
+ E[spend|purchase,x,treatment] \cdot  \\
+ \cdot\ p(purchase|visit,x,treatment) \cdot  \\
+ \cdot\ p(visit|x,treatment)
+ \end{split}
+\end{equation}
 
-Goal of this equation is to find out, how much money the customer spent, given a particular treatment. The probability $p(visit|x,\ treatment)$ is the probability, that a customer visits. $p(purchase|visit,\ x,\ treatment)$ is the probablity that the customer purchases. $E[spend|purchase,\ x,\ treatment]$ is the expected real-valued outcome for a customer. These three terms have to be multiplied, since a customer, who spends money has also to visit the store and to purchase anything.
+
+$x$ is the vector of attribute values described in the section above. $visit$ and $purchase$ are binary random variables that have a certain probability of being true of false for each customer. $spend$ is a real-value random variable for each customer.
+
+Goal of this equation is to find out the expected value of money spent, given a customers with a particular treatment. 
+
+The probability $p(visit|x,\ treatment)$ is the probability, that a customer with a particular tratment visits the online store.
+
+$p(purchase|visit,\ x,\ treatment)$ is the probablity that the customer with the particualr treatment purchases. $visit$ must be given in this term, since a customer must have visited the store to purchase.
+
+$E[spend|purchase,\ x,\ treatment]$ is the expected real-valued outcome for a customer with a treatment. Trivially, he has to make a purchase to be able to spend money. 
+
+These three terms have to be multiplied, since a customer, who spends money has also to visit the store and to purchase anything.
 
 
 
 \section{Logistic and Linear Regression}
-The three terms of the equation above can be calculated by logistic regression and linear regression.
-This can be applied to the second and third term. The first term can be calculated using linear regression.
+The three terms of the equation above can be calculated by Logistic Regression and Linear Regression.
+Logisitc Regression can be applied to the second and third term. The first term can be calculated using Linear Regression.
 
 \subsection{Logistic Regression}
 
@@ -168,8 +184,21 @@ The optimal $\b^*$ is found numerically using stochastic gradient descent (SGD).
 &= \b_{t} + \lambda \,\left( \left(y_i-p_i\right)\, \mathbf{x}-2\alpha \b \right)
 \end{align*}
 
-\subsection{Linear Regression}
+\subsubsection*{Choosing learning rate $\lambda$}
+The learning rate is chosen by trial and error. It is gradually decreasing depending on the epochs by
+\begin{align}
+\lambda = \frac{1}{t_0+t}
+\end{align}
+where $t$ is the current epoch. $t_0 = 1/0.1$ seemed appropiate.
 
+\subsubsection*{Choosing $\alpha$ for Tikhonov Regularization}
+A common approach to avoid overfitting, is to add the penalty $\alpha \, \parallel \b \parallel^2$. This idea is called Tikhonov Regularization. $\alpha$s in $0.1$-steps between $0$ and $1$ were tested using cross-validation. (see Table \ref{alphatable}).
+Best results were found for $\alpha=0$ i.e. no penalty is applied.
+
+
+
+
+\subsection{Linear Regression}
 By using Linear Regression one can model a relationship between two variables to fit observed data. The linear model is
 \[ y = \beta_0 + \beta_1 x_1 + \cdots + \beta_d x_d = \b \mathbf{x} ,\]
 where $\mathbf{x}$ is an instance in $\mathbb{R}^{d}$ and $y$ is a scalar. The intercept, $\beta_0$, is the predicted value of $y$ when the other coefficients are all 0. Training is done on the coefficients $\b$ by an algorithm solving the following equation:
@@ -182,7 +211,32 @@ We used this to model the real valued expected spending of a customer given one 
  \[\hat{\b} = \operatorname*{arg\,max}_{\b} \sum^n_{i=1} \left(y_i - \hat{y}_i \right)^2 + \alpha \parallel \b \parallel ^2 .\]
   This is often helpful for reducing randomness in the training caused by linearly related coefficients. Alpha is the strength of the penalty, or regularization, and we used Cross Validation to find out that the alpha giving the lowest SSE on held out training data was $\alpha=0$.
 
+\subsubsection*{Choosing $\alpha$ for Tikhonov Regularization}
+The same crossvalidation for choosing the $\alpha$ was applied to the linear regression (see results in Table \ref{alphatable2}).
 
+\begin{figure*}[tb]
+	\centering
+ \begin{tabular}{|l|l|}
+  \hline
+     $\alpha$   & Value  \\
+     \hline
+   0.0 & $2.28\cdot10^{-6}$ \\ 
+   0.1 & $3.59\cdot10^{-6}$ \\ 
+   0.2 & $4.19\cdot10^{-6}$ \\ 
+   0.3 & $4.72\cdot10^{-6}$ \\ 
+   0.4 & $4.20\cdot10^{-6}$ \\ 
+   0.5 & $5.32\cdot10^{-6}$ \\ 
+   0.6 & $4.35\cdot10^{-6}$ \\ 
+   0.7 & $3.96\cdot10^{-6}$ \\ 
+   0.8 & $3.93\cdot10^{-6}$ \\ 
+   0.9 & $4.34\cdot10^{-6}$ \\ 
+   1.0 & $4.33\cdot10^{-6}$ \\ 
+
+  \hline
+ \end{tabular}
+\caption{$\alpha$\'s for linear regression with treatment women's email}
+    \label{alphatable2}
+\end{figure*}
 
 \section{Complexity Analysis}
 
@@ -190,30 +244,31 @@ Each update step of SGD requires computing the gradient with respect to $\b$ of 
 
 \section{Implementation}
 
-
 \section{Evaluation}
 
+\subsection{Training results}
 
 \begin{figure*}[htbp]
   \centering
-  \begin{minipage}{5.5 cm}
-    \includegraphics[width=5.5cm]{PurchaseWomensBetas}  
+  \begin{minipage}{5.7 cm}
+    \includegraphics[width=5.7cm]{PurchaseWomensBetas}  
   \end{minipage}
-  \begin{minipage}{5.5 cm}
-    \includegraphics[width=5.5cm]{PurchaseMensBetas}  
+  \begin{minipage}{5.7 cm}
+    \includegraphics[width=5.7cm]{PurchaseMensBetas}  
   \end{minipage}
-  \begin{minipage}{5.5 cm}
-    \includegraphics[width=5.5cm]{PurchaseNoEmailBetas}  
+  \begin{minipage}{5.7 cm}
+    \includegraphics[width=5.7cm]{PurchaseNoEmailBetas}  
   \end{minipage}
   \caption{Purhase Betas Conversion}
   \label{Labelname}
 \end{figure*}
 
-
+\subsection{Testing resuls}
+Cross-validation was used to validate the training results. The 64,000 training samples were ...
 
 %------------------------------------------------------------------------
 
-\section{Conclusions}
+\section{Conclusion}
 
 Using 5-fold validation (also in report):
 
