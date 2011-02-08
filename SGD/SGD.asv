@@ -1,7 +1,7 @@
-function beta = GD(training, beta0, gradientFn, lambda, varargin)
-% Batch gradient descent
+function beta = SGD(training, beta0, gradientFn, lambda)
+% Stoichastic gradient descent
 %
-% Runs one epoch of GD with the given initial parameters
+% Runs one epoch of SGD with the given initial parameters
 % Returns the optimal parameters
 %
 % Args:
@@ -14,7 +14,6 @@ function beta = GD(training, beta0, gradientFn, lambda, varargin)
 %   lambda: the learning rate. Should be positive for gradient descent
 %   (minimization), and negative for gradient ascent (maximization).
 %
-[N,D] = size(training);
 
-[y, dbeta] = gradientFn( beta0, training, varargin{:});
-beta = beta0 + lambda*dbeta;
+beta = beta0;
+end

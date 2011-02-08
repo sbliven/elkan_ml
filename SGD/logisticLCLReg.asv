@@ -1,0 +1,34 @@
+function [l, dl] = logisticLCLReg(beta, yx, alpha)
+% Calculates the regularized log conditional likelihood of the logistic function given parameters beta
+%   LCL(x|y;beta) = sum_i log Pr(yi|xi;beta) - alpha*beta'*beta
+% and gradient
+%   dLCLi/dbj = (yi-pi)*xij - 2*alpha*bj
+%
+% Args:
+%   beta: A Dx1 vector of parameters
+%   yx: A NxD matrix of training data, as follows
+%       column 1      label (0 or 1)
+%       columns 2:D   D-1 dimensional training points
+%   alpha: Tradeoff between LCL and penalty function. This is scaled by the length of yx automatically.
+%
+% Output:
+%   l: The log conditional likelihood of y=1
+%   dl: A NxD matrix, giving the gradient of l w.r.t. beta at each point
+
+if nargin < 3 || isempty(alpha)
+    alpha = 0;
+end
+
+[N,D] = size(yx);
+y = yx(:,1);
+x = yx(:,2:end);
+
+p = logistic( beta, yx );
+l=p;
+l(y == 0) = 1 - p(y == 0);
+l = log( l );
+l = sum(l) - alpha * beta(2:end)'*beta(2:end);
+if nargout > 1
+    dl = sum(repmat(y-p,1,D) .* [ones(N,1) x] , 1)' - 2*alpha*[0;beta(2:end)];
+end
+

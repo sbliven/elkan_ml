@@ -1,4 +1,4 @@
-function beta = SGD(training, beta0, gradientFn, lambda)
+function beta = SGD(training, beta0, gradientFn, lambda, varargin)
 % Stoichastic gradient descent
 %
 % Runs one epoch of SGD with the given initial parameters
@@ -17,6 +17,6 @@ function beta = SGD(training, beta0, gradientFn, lambda)
 [N,D] = size(training);
 beta = beta0;
 for i = 1:N
-    [y, dbeta] = gradientFn( beta, training(i,:));
-    beta = beta + lambda*dbeta';
+    [y, dbeta] = gradientFn( beta, training(i,:), varargin{:});
+    beta = beta + lambda*dbeta;
 end

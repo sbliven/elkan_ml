@@ -23,7 +23,8 @@ p = logistic( beta, yx );
 l=p;
 l(y == 0) = 1 - p(y == 0);
 l = log( l );
+l = sum(l);
 if nargout > 1
-    dl = repmat(y-p,1,D) .* [ones(N,1) x];
+    dl = sum( repmat(y-p,1,D) .* [ones(N,1) x], 1 )';
 end
 
