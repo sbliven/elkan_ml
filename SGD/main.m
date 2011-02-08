@@ -121,7 +121,7 @@ save -mat 'Dataset/fullbetas.mat' VisitWomensBetas VisitMensBetas VisitNoemailBe
 
 %%
 %Testing EstimatedSpendGivenXTreatmentPurchase 
-alpha=0.5;
-betas=EstimatedSpendGivenXTreatmentPurchase(YXSpendWomens,alpha);
-x=1:2500;
-plot(x*betas)
+%alpha=0.5;
+%betas=EstimatedSpendGivenXTreatmentPurchase(YXSpendWomens,alpha);
+%x=1:length(betas);
+[summedSSE]=CrossValidate(YXSpendWomens,@EstimatedSpendGivenXTreatmentPurchase,ones(26,1),0)
