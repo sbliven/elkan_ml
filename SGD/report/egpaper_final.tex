@@ -169,7 +169,19 @@ The optimal $\b^*$ is found numerically using stochastic gradient descent (SGD).
 \end{align*}
 
 \subsection{Linear Regression}
-Missing
+
+By using Linear Regression one can model a relationship between two variables to fit observed data. The linear model is
+\[ y = \beta_0 + \beta_1 x_1 + \cdots + \beta_d x_d = \b \mathbf{x} ,\]
+where $\mathbf{x}$ is an instance in $\mathbb{R}^{d}$ and $y$ is a scalar. The intercept, $\beta_0$, is the predicted value of $y$ when the other coefficients are all 0. Training is done on the coefficients $\b$ by an algorithm solving the following equation:
+\[\hat{\b} = \operatorname*{arg\,max}_{\b} \sum^n_{i=1} \left(y_i - \b\mathbf{x} \right)^2 .\]
+Here pairs $<\mathbf{x}_i,y_i>$ are pairs from the training set. After having trained the model, we could predict a value for an $x_i$ by 
+\[ \hat{y}_i = \b \mathbf{x} \]
+We used this to model the real valued expected spending of a customer given one of the three possible treatments (men's email, women's email or no email) and that the customer had done a purchase.
+ ($E(\mbox{spend}\,|\,\mbox{purchase},x,\mbox{treatments})$).
+ A possible extension of the training of this model would have been to add a penalty function: 
+ \[\hat{\b} = \operatorname*{arg\,max}_{\b} \sum^n_{i=1} \left(y_i - \hat{y}_i \right)^2 + \alpha \parallel \b \parallel ^2 .\]
+  This is often helpful for reducing randomness in the training caused by linearly related coefficients. Alpha is the strength of the penalty, or regularization, and we used Cross Validation to find out that the alpha giving the lowest SSE on held out training data was $\alpha=0$.
+
 
 
 \section{Complexity Analysis}
