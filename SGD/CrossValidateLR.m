@@ -22,12 +22,12 @@ avgSpending = zeros(k0,1);
 rsse = zeros(k0,1);
 for k=1:k0
     %separate into training and test set
-    spendTest = spendData(indices==k,:);
-    spendTrain = spendData(indices~=k,:);
-    visitTest = visitData(indices==k,:);
-    visitTrain = visitData(indices~=k,:);
-    purchaseTest = purchaseData(indices==k,:);
-    purchaseTrain = purchaseData(indices~=k,:);
+    spendTest = spendData(spendBins==k,:);
+    spendTrain = spendData(spendBins~=k,:);
+    visitTest = visitData(visitBins==k,:);
+    visitTrain = visitData(visitBins~=k,:);
+    purchaseTest = purchaseData(purchaseBins==k,:);
+    purchaseTrain = purchaseData(purchaseBins~=k,:);
     test = [ spendTest; visitTest; purchaseTest];
     
     %TODO 1: train model
