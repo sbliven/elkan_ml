@@ -12,6 +12,7 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfigure} % make it possible to include more than one captioned figure/table in a single float
 \usepackage{graphicx}
+\usepackage{multirow}
 % Include other packages here, before hyperref.
 
 % If you comment hyperref and then uncomment it, you should delete
@@ -201,6 +202,30 @@ Each update step of SGD requires computing the gradient with respect to $\b$ of 
 %------------------------------------------------------------------------
 
 \section{Conclusions}
+
+Using 5-fold validation (also in report):
+
+[SEE TABLE]
+
+\begin{figure*}[htbp]
+\begin{tabular}{|l|cc|cc|}
+\hline
+\multirow{2}{*}{Treatment}
+ & \multicolumn{2}{|c|}{$E[\mbox{Spend}|\mbox{Trt}]$}
+  & \multicolumn{2}{|c|}{RSSE} \\
+\cline{2-5}
+&           mean &   std &     mean &   std \\
+\hline
+Men   &     1.4632 &0.0196 & 0.2275 &0.0115\\
+Women &     1.0887& 0.0449 & 0.1991& 0.0096\\
+None     &  0.6905& 0.0698 & 0.1578& 0.0275\\
+\hline
+\end{tabular}
+\end{figure*}
+
+    *  E[Spend|Trt] means the expected amount that the test examples are predicted to spend per person. This is calculated 5 times, yielding a mean and standard deviation.  E[Spend|Trt]= 1/N * sum E[Spend|xi,Trt]
+    
+    * RSSE means the RSSE per example of the predicted-actual spend. $RSSE = 1/N * sqrt( sum (yi - E[Spend|xi,Trt])^2$
 
 
 \nocite{hillstrom08, bishop06,bottou11,elkan11}
