@@ -40,19 +40,18 @@ end
 
 % calculate epochs
 
-if nargout > 1
-    bs = zeros(numEpochs,D);
-    lcl = zeros(numEpochs,1);
-end
+bs = zeros(numEpochs,D);
+lcl = zeros(numEpochs,1);
+
 
 for epoch = 1:numEpochs
     b = gdAlg(yx,b,@logisticLCLReg, lambda, varargin{:});
-    
-    if nargout > 1
-        bs(epoch,:) = b';
-        lcl(epoch) = sum(logisticLCLReg(b,yx,varargin{:}));
-    end
+
+    bs(epoch,:) = b';
+    lcl(epoch) = sum(logisticLCLReg(b,yx,varargin{:}));
     
     lambda = 1/(1/lambda0 + learnRate*epoch);
 end
 
+[l, i] = max(lcl);
+b = bs(i);

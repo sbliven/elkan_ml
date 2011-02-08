@@ -1,0 +1,52 @@
+function [avgSpending, rsse]=CrossValidateLR(spendData, visitData, purchaseData,lambda,alpha)
+%args:
+%outputs:
+%lcl, a 2 by k matrix with the lcl's and gradients for each of the k
+%testFolds
+%
+%input
+%trainingData - NxD matrix where each of the N lines is a row and every 
+%first column of the rows represent a label and each of the D-1 remaining
+%columns are dimensions.
+
+%k is number of folds
+k0=5;
+%Obtaining indices for training and test-fold
+spendBins = crossvalind('Kfold', length(spendData),k0);
+visitBins = crossvalind('Kfold', length(visitData),k0);
+purchaseBins = crossvalind('Kfold', length(purchaseData),k0);
+
+%For each of the k folds, use this as test set and train the model on
+%the remaining k-1 sets
+avgSpending = zeros(k0,1);
+rsse = zeros(k0,1);
+for k=1:k0
+    %separate into training and test set
+    spendTest = spendData(indices==k,:);
+    spendTrain = spendData(indices~=k,:);
+    visitTest = visitData(indices==k,:);
+    visitTrain = visitData(indices~=k,:);
+    purchaseTest = purchaseData(indices==k,:);
+    purchaseTrain = purchaseData(indices~=k,:);
+    test = [ spendTest; visitTest; purchaseTest];
+    
+    %TODO 1: train model
+    visitBeta = logisticRegression2(visitTrain,10,lambda,betas0);
+    purchaseBeta = logisticRegression2(purchaseTrain,10,lambda,betas0);
+    spendBeta = EstimatedSpendGivenXTreatmentPurchase(spendTrain,0);
+    
+    %betas=logisticRegression( trainingFold,250,lambda,betas0, 1, [], 0);
+
+    %Calculate expected spending for train
+    prVisit = logistic(visitBeta, test(:,2:end) );
+    prPurchase = logistic(purchaseBeta, test(:,2:end) );
+    eSpend = linearRegularized(spendBeta, test(:,2:end) , 0);
+
+    eTotal = eSpend .* prPurchase .* prVisit;
+    
+    avgSpending(k) = mean(eTotal);
+    rsse(k) = norm(test(:,1) - eTotal);
+end
+
+
+end

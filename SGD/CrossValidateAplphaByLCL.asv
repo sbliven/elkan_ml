@@ -28,6 +28,8 @@ for k=1:k0
         bestAlpha=alpha;
         maxLCL=lcl;
     end
+    sumLCL=sumLCL+lcl;
 end
 alpha=bestAlpha;
+end
 end

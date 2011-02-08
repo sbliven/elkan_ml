@@ -6,14 +6,15 @@ k0=5;
 %Obtaining indices for training and test-fold
 indices = crossvalind('Kfold', length(trainingData),k);
 
-maxLCL=-Inf;
+bestLCL=Inf;
 bestAlpha=-Inf;
+
 
 for i=1:length(alphaVector);
 alpha=alphaVector(i);
 %For each of the k folds, use this as test set and train the model on
 %the remaining k-1 sets
-
+sumLCL=0;
 for k=1:k0
     %separate into training and test set
     testFold = trainingData(indices==k,:);
@@ -24,10 +25,11 @@ for k=1:k0
     
     %Calculate lcl
     [lcl,unused]=logisticLCLReg(betas,testFold,alpha);
-    if(lcl>maxLCL)
-        bestAlpha=alpha;
-        maxLCL=lcl;
-    end
+
+   sumLCL=sumLCL+lcl; 
+end
+if (sumLCL<bestLCL)
+    bestAlpha=alpha;
 end
 alpha=bestAlpha;
 end

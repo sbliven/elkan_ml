@@ -1,0 +1,12 @@
+function [Betas]=EstimatedSpendGivenXTreatmentPurchase(data,alpha)
+
+x=data;
+x(:,1)=1;
+y=data(:,1);
+w=ones(size(data,2),1);
+
+a=
+
+Betas=nlinfit(x,y,@(w,x)(x*w-alpha*w'*w),ones(size(data(1,2:end))));
+
+end
