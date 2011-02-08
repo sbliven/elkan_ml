@@ -12,6 +12,7 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfigure} % make it possible to include more than one captioned figure/table in a single float
 \usepackage{graphicx}
+\usepackage{multirow}
 % Include other packages here, before hyperref.
 
 % If you comment hyperref and then uncomment it, you should delete
@@ -58,7 +59,7 @@ The results show, that future mails should be sent to ???
 
 %%%%%%%%% BODY TEXT
 \section{Description of the Dataset}
-Kevin Hillstrom, a well-known data mining consulatant has published an email analytics dataset with 64,000 records each describing a customer \cite{hillstrom08}. One third of these customers were randomly chosen to receive an email referred to as the Men's email, a
+Kevin Hillstrom, a well-known data mining consulatant has published an email analytics dataset with 64,000 records each describing a customer \cite{hillstrom08, radcliffe08}. One third of these customers were randomly chosen to receive an email referred to as the Men's email, a
 second random third received a different email (the Women's email) and the remaining customers served as a control, receiving neither email.
 The dataset is almost perfectly equally divided between the two mailings (“Men's” and “Women's”) and an untreated control group (see Table \ref{dataoverview}).
 
@@ -164,22 +165,24 @@ Logisitc Regression can be applied to the second and third term. The first term 
 
 \renewcommand{\b}{\boldsymbol{\beta}}
 
-Logistic regression is a special case of conditional likelihood and a common model for binary classification \cite{bishop06}. Given an example $x\in\mathbb{R}^d$, the probability of a label $y\in\{0,1\}$ is given by the logistic sigmoid function
+Logistic regression is
+ %a special case of conditional likelihood and
+ a common model for binary classification \cite{bishop06}. Given an example $\mathbf{x} \in\mathbb{R}^d$, the probability of a label $y\in\{0,1\}$ is given by the logistic sigmoid function
 \[p(Y=1\ |\ X=\mathbf{x};\ \b) = \frac{1}{1+\exp(-\b\cdot \mathbf{x})} \]
 where $\b$ is a $d$-dimensional vector. We assume $x_0=1$ such that $\b_0$ acts as an intercept.
 Given a set of parameters $\b$, the logistic function can be used for classification:
 \[ \hat{y} = \operatorname*{arg\,max}_y\,p(Y=y\ |\ X=\mathbf{x};\ \b) \]
 
 To learn useful parameters $\b$ we utilize a training set $(X,Y) = \left\{ (\mathbf{x}_i,y_i)\ |\ i=1\dots N \right\}$. The optimal $\b^*$ is chosen such that it maximizes the regularized log conditional likelihood over the training set
-\begin{align}
+\begin{align*}
 \b^* &= \operatorname*{arg\,max}_{\b}\,LCL(\b;\ Y|X) - \alpha \, \parallel \b \parallel^2 \\
 &= \operatorname*{arg\,max}_{\b}\,\sum_{i=1}^{N} \log p(y_i\ |\ \mathbf{x}_i;\ \b) - \alpha \, \parallel \b \parallel^2 .
-\end{align}
+\end{align*}
 The optimal $\b^*$ is found numerically using stochastic gradient descent (SGD). An initial $\b_0 = \mathbf{0}$ is chosen. For each example in the training set, $\b$ is updated according to the rule
-\begin{align}
-\b_{t+1} &= \b_{t} + \lambda \, \nabla  \left( LCL(\b;\ Y|X) - \alpha \, \parallel  \b \parallel^2 \right) \\
-&= \b_{t} + \lambda \,\left( (y_i-p_i)\, \mathbf{x}-2\alpha \b \right)
-\end{align}
+\begin{align*}
+\b_{t+1} &= \b_{t} + \lambda \, \nabla  \left( LCL_i(\b;\ Y|X) - \alpha \, \parallel  \b \parallel^2 \right) \\
+&= \b_{t} + \lambda \,\left( \left(y_i-p_i\right)\, \mathbf{x}-2\alpha \b \right)
+\end{align*}
 
 \subsubsection*{Choosing learning rate $\lambda$}
 The learning rate is chosen by trial and error. It is gradually decreasing depending on the epochs by
@@ -196,7 +199,18 @@ Best results were found for $\alpha=0$ i.e. no penalty is applied.
 
 
 \subsection{Linear Regression}
-Missing
+By using Linear Regression one can model a relationship between two variables to fit observed data. The linear model is
+\[ y = \beta_0 + \beta_1 x_1 + \cdots + \beta_d x_d = \b \mathbf{x} ,\]
+where $\mathbf{x}$ is an instance in $\mathbb{R}^{d}$ and $y$ is a scalar. The intercept, $\beta_0$, is the predicted value of $y$ when the other coefficients are all 0. Training is done on the coefficients $\b$ by an algorithm solving the following equation:
+\[\hat{\b} = \operatorname*{arg\,max}_{\b} \sum^n_{i=1} \left(y_i - \b\mathbf{x} \right)^2 .\]
+Here pairs $<\mathbf{x}_i,y_i>$ are pairs from the training set. After having trained the model, we could predict a value for an $x_i$ by 
+\[ \hat{y}_i = \b \mathbf{x} \]
+We used this to model the real valued expected spending of a customer given one of the three possible treatments (men's email, women's email or no email) and that the customer had done a purchase.
+ ($E(\mbox{spend}\,|\,\mbox{purchase},x,\mbox{treatments})$).
+ A possible extension of the training of this model would have been to add a penalty function: 
+ \[\hat{\b} = \operatorname*{arg\,max}_{\b} \sum^n_{i=1} \left(y_i - \hat{y}_i \right)^2 + \alpha \parallel \b \parallel ^2 .\]
+  This is often helpful for reducing randomness in the training caused by linearly related coefficients. Alpha is the strength of the penalty, or regularization, and we used Cross Validation to find out that the alpha giving the lowest SSE on held out training data was $\alpha=0$.
+
 \subsubsection*{Choosing $\alpha$ for Tikhonov Regularization}
 The same crossvalidation for choosing the $\alpha$ was applied to the linear regression (see results in Table \ref{alphatable2}).
 
@@ -226,7 +240,9 @@ The same crossvalidation for choosing the $\alpha$ was applied to the linear reg
 
 \section{Complexity Analysis}
 
+Each update step of SGD requires computing the gradient with respect to $\b$ of regularized LCL for the current example. For $d$ dimensions this takes time $O(d)$. Thus each epoch of SGD 
 
+\section{Implementation}
 
 \section{Evaluation}
 
@@ -260,7 +276,8 @@ The results show, that e-mail  advertisement makes a difference. The men's email
  \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
   \hline
    Number of
-Customers & 500   & 1,000 & 2,500   & 5,000   & 10,000  & 20,000   & 50,000   & 100,000 \\ 
+Customers & 500   & 1,000 & 2,500   & 5,000   & 10,000  & 20,000   & 50,000   & 100,000 \\
+\hline 
    USD for Men's mail  & 386,- & 773,- & 1,932,- & 3,864,- & 7,727,- & 15,454,- & 38,635,- & 77,270  \\
        USD for Women's mail  & 199,- & 398,- & 996,- & 1,991,- & 3,982,- & 7,964,- & 19,991,- & 39,820,- \\ 
   \hline
@@ -269,6 +286,30 @@ Customers & 500   & 1,000 & 2,500   & 5,000   & 10,000  & 20,000   & 50,000   & 
     \label{alphatable2}
 \end{figure*}
 
+
+Using 5-fold validation (also in report):
+
+[SEE TABLE]
+
+\begin{figure*}[htbp]
+\begin{tabular}{|l|cc|cc|}
+\hline
+\multirow{2}{*}{Treatment}
+ & \multicolumn{2}{|c|}{$E[\mbox{Spend}|\mbox{Trt}]$}
+  & \multicolumn{2}{|c|}{RSSE} \\
+\cline{2-5}
+&           mean &   std &     mean &   std \\
+\hline
+Men   &     1.4632 &0.0196 & 0.2275 &0.0115\\
+Women &     1.0887& 0.0449 & 0.1991& 0.0096\\
+None     &  0.6905& 0.0698 & 0.1578& 0.0275\\
+\hline
+\end{tabular}
+\end{figure*}
+
+    *  E[Spend|Trt] means the expected amount that the test examples are predicted to spend per person. This is calculated 5 times, yielding a mean and standard deviation.  E[Spend|Trt]= 1/N * sum E[Spend|xi,Trt]
+    
+    * RSSE means the RSSE per example of the predicted-actual spend. $RSSE = 1/N * sqrt( sum (yi - E[Spend|xi,Trt])^2$
 
 
 \nocite{hillstrom08, bishop06,bottou11,elkan11}
