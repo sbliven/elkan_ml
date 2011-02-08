@@ -59,6 +59,27 @@ The results show, that future mails should be sent to ???
 %%%%%%%%% BODY TEXT
 \section{Introduction}
 Introduction
+\subsection{Logistic Regression}
+
+\renewcommand{\b}{\boldsymbol{\beta}}
+
+Logistic regression is a common model for binary classification \cite{bishop06}. Given an example $x\in\mathbb{R}^d$, the probability of a label $y\in\{0,1\}$ is given by the logistic sigmoid function
+\[p(Y=1\ |\ X=\mathbf{x};\ \b) = \frac{1}{1+\exp(-\b\cdot \mathbf{x})} \]
+where $\b$ is a $d$-dimensional vector. We assume $x_0=1$ such that $\b_0$ acts as an intercept.
+Given a set of parameters $\b$, the logistic function can be used for classification:
+\[ \hat{y} = \operatorname*{arg\,max}_y\,p(Y=y\ |\ X=\mathbf{x};\ \b) \]
+
+To learn useful parameters $\b$ we utilize a training set $(X,Y) = \left\{ (\mathbf{x}_i,y_i)\ |\ i=1\dots N \right\}$. The optimal $\b^*$ is chosen such that it maximizes the regularized log conditional likelihood over the training set
+\begin{align*}
+\b^* &= \operatorname*{arg\,max}_{\b}\,LCL(\b;\ Y|X) - \alpha \, \parallel \b \parallel^2 \\
+&= \operatorname*{arg\,max}_{\b}\,\sum_{i=1}^{N} \log p(y_i\ |\ \mathbf{x}_i;\ \b) - \alpha \, \parallel \b \parallel^2 .
+\end{align*}
+The optimal $\b^*$ is found numerically using stochastic gradient descent (SGD). An initial $\b_0 = \mathbf{0}$ is chosen. For each example in the training set, $\b$ is updated according to the rule
+\begin{align*}
+\b_{t+1} &= \b_{t} + \lambda \, \nabla  \left( LCL(\b;\ Y|X) - \alpha \, \parallel  \b \parallel^2 \right) \\
+&= \b_{t} + \lambda \,\left( (y_i-p_i)\, \mathbf{x}-2\alpha \b \right)
+\end{align*}
+
 \subsection{Design of Experiments}
 
 \subsection{Description and encoding of the dataset}
@@ -135,7 +156,7 @@ Because the learning rate is the same for every parameter, it is useful to scale
 \section{Conclusions}
 
 
-\nocite{hillstrom08, bishop06,bottou11,elkan11}
+\nocite{hillstrom08,bottou11,elkan11}
 
 {\small
 \bibliographystyle{ieee}
