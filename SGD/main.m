@@ -46,6 +46,20 @@ YXSpendWomens = [womens( all(womens(:,26:27)==1,2) ,28) womens( all(womens(:,26:
 YXSpendMens = [mens( all(mens(:,26:27)==1,2) ,28) mens( all(mens(:,26:27)==1,2) ,1:25) ];
 YXSpendNoemail = [noemail( all(noemail(:,26:27)==1,2) ,28) noemail( all(noemail(:,26:27)==1,2) ,1:25) ];
 
+%% Calculate the expected spendings
+
+[avgMens,rsseMens] = CrossValidateLR(YXSpendMens,YXVisitMens,YXPurchaseMens,1,0);
+[avgWomens,rsseWomens] = CrossValidateLR(YXSpendWomens,YXVisitWomens,YXPurchaseWomens,1,0);
+[avgNoemail,rsseNoemail] = CrossValidateLR(YXSpendNoemail,YXVisitNoemail,YXPurchaseNoemail,1,0);
+
+display([mean(avgMens), std(avgMens)]);
+display([mean(avgWomens) std(avgWomens)]);
+display([mean(avgNoemail) std(avgNoemail)]);
+display([mean(rsseMens), std(rsseMens)]);
+display([mean(rsseWomens) std(rsseWomens)]);
+display([mean(rsseNoemail) std(rsseNoemail)]);
+
+
 %%
 %clear womens mens noemail;
 

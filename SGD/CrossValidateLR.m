@@ -49,7 +49,7 @@ for k=1:k0
     eTotal = eSpend .* prPurchase .* prVisit;
     
     avgSpending(k) = mean(eTotal);
-    rsse(k) = norm(test(:,1) - eTotal);
+    rsse(k) = norm(test(:,1) - eTotal)/length(test);
 end
 
 
