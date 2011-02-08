@@ -24,6 +24,11 @@ betas0 = zeros(size(spendData,2),1);
 %the remaining k-1 sets
 avgSpending = zeros(k0,1);
 rsse = zeros(k0,1);
+
+visitBetaOut=zeros(k0,26);
+purchaseBetaOut=zeros(k0,26);
+spendBetaOut=zeros(k0,26);
+
 for k=1:k0
     %separate into training and test set
     spendTest = spendData(spendBins==k,:);
@@ -39,8 +44,10 @@ for k=1:k0
     purchaseBeta = logisticRegression2(purchaseTrain,10,lambda,betas0);
     spendBeta = EstimatedSpendGivenXTreatmentPurchase(spendTrain,alpha);
     
-    %betas=logisticRegression( trainingFold,250,lambda,betas0, 1, [], alpha);
-
+    visitBetaOut(k)=visitBeta;
+    purchaseBetaOut(k)=purchaseBeta;
+    spendBetaOut(k)=spendData;
+    
     %Calculate expected spending for train
     prVisit = logistic(visitBeta, test );
     prPurchase = logistic(purchaseBeta, test );
@@ -52,5 +59,12 @@ for k=1:k0
     rsse(k) = norm(test(:,1) - eTotal)/length(test);
 end
 
+a=visitBetaOut;
+b=purchaseBetaOut;
+c=spendBetaOut;
+
+d=sum(visitBetaOut(1:k0));
+e=sum(purchaseBetaOut(1:k0));
+f=sum(spendBetaOut(1:k0));
 
 end
