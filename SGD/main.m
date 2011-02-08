@@ -116,4 +116,4 @@ PurchaseMensBeta = PurchaseMensBetas(i,:)';
 [m, i] = max(PurchaseNoemailLCLs);
 PurchaseNoemailBeta = PurchaseNoemailBetas(i,:)';
 
-save 'Dataset/betas.mat' VisitWomensBeta VisitMensBeta VisitNoemailBeta PurchaseWomensBeta PurchaseMensBeta PurchaseNoemailBeta alpha lambda epochs
+save -mat 'Dataset/betas.mat' VisitWomensBeta VisitMensBeta VisitNoemailBeta PurchaseWomensBeta PurchaseMensBeta PurchaseNoemailBeta alpha lambda epochs
