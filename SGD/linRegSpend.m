@@ -1,0 +1,9 @@
+function [B]=linRegSpend(data,spendColumnIndex)
+%data - training data
+%spendColumnIndex - index of spend's column
+
+[n,xout]=hist(data(:),length(data(:)));
+
+B=[ones(length(xout),1) xout(:)] \ data(:,spendColumnIndex);
+
+end

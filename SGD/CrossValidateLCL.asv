@@ -1,4 +1,4 @@
-function [lcl]=CrossValidateLCL(trainingData,betas0,lambda,alpha)
+function [lcl,alpha]=CrossValidateLCL(trainingData,betas0,lambda,alpha)
 %args:
 %outputs:
 %lcl, a 2 by k matrix with the lcl's and gradients for each of the k
