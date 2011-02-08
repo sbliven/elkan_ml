@@ -46,6 +46,7 @@ YXSpendWomens = [womens( all(womens(:,26:27)==1,2) ,28) womens( all(womens(:,26:
 YXSpendMens = [mens( all(mens(:,26:27)==1,2) ,28) mens( all(mens(:,26:27)==1,2) ,1:25) ];
 YXSpendNoemail = [noemail( all(noemail(:,26:27)==1,2) ,28) noemail( all(noemail(:,26:27)==1,2) ,1:25) ];
 
+%%
 %clear womens mens noemail;
 
 alpha = 1;
@@ -115,11 +116,11 @@ PurchaseWomensBeta = PurchaseWomensBetas(i,:)';
 PurchaseMensBeta = PurchaseMensBetas(i,:)';
 [m, i] = max(PurchaseNoemailLCLs);
 PurchaseNoemailBeta = PurchaseNoemailBetas(i,:)';
-
 save -mat 'Dataset/betas.mat' VisitWomensBeta VisitMensBeta VisitNoemailBeta PurchaseWomensBeta PurchaseMensBeta PurchaseNoemailBeta alpha lambda epochs
 save -mat 'Dataset/fullbetas.mat' VisitWomensBetas VisitMensBetas VisitNoemailBetas PurchaseWomensBetas PurchaseMensBetas PurchaseNoemailBetas VisitWomensLCLs VisitMensLCLs VisitNoemailLCLs PurchaseWomensLCLs PurchaseMensLCLs PurchaseNoemailLCLs alpha lambda epochs
 
 %%
+%Testing EstimatedSpendGivenXTreatmentPurchase 
 alpha=0.5;
 betas=EstimatedSpendGivenXTreatmentPurchase(YXSpendWomens,alpha);
 x=1:2500;
