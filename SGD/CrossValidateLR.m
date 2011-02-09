@@ -1,4 +1,4 @@
-function [avgSpending, rsse]=CrossValidateLR(spendData, visitData, purchaseData,lambda,alpha)
+function [avgSpending, rsse, visitBetaOut, purchaseBetaOut, spendBetaOut]=CrossValidateLR(spendData, visitData, purchaseData,lambda,alpha)
 %args:
 %outputs:
 %lcl, a 2 by k matrix with the lcl's and gradients for each of the k
@@ -44,9 +44,9 @@ for k=1:k0
     purchaseBeta = logisticRegression2(purchaseTrain,10,lambda,betas0);
     spendBeta = EstimatedSpendGivenXTreatmentPurchase(spendTrain,alpha);
     
-    visitBetaOut(k)=visitBeta;
-    purchaseBetaOut(k)=purchaseBeta;
-    spendBetaOut(k)=spendData;
+    visitBetaOut(k,:)=visitBeta';
+    purchaseBetaOut(k,:)=purchaseBeta';
+    spendBetaOut(k,:)=spendBeta';
     
     %Calculate expected spending for train
     prVisit = logistic(visitBeta, test );
@@ -58,13 +58,5 @@ for k=1:k0
     avgSpending(k) = mean(eTotal);
     rsse(k) = norm(test(:,1) - eTotal)/length(test);
 end
-
-a=visitBetaOut;
-b=purchaseBetaOut;
-c=spendBetaOut;
-
-d=sum(visitBetaOut(1:k0));
-e=sum(purchaseBetaOut(1:k0));
-f=sum(spendBetaOut(1:k0));
 
 end
