@@ -48,9 +48,9 @@ YXSpendNoemail = [noemail( all(noemail(:,26:27)==1,2) ,28) noemail( all(noemail(
 
 %% Calculate the expected spendings
 
-[avgMens,rsseMens] = CrossValidateLR(YXSpendMens,YXVisitMens,YXPurchaseMens,1,0);
-[avgWomens,rsseWomens] = CrossValidateLR(YXSpendWomens,YXVisitWomens,YXPurchaseWomens,1,0);
-[avgNoemail,rsseNoemail] = CrossValidateLR(YXSpendNoemail,YXVisitNoemail,YXPurchaseNoemail,1,0);
+[avgMens,rsseMens, spendBetasMens, visitBetasMens, PurchaseBetasMens] = CrossValidateLR(YXSpendMens,YXVisitMens,YXPurchaseMens,1,0);
+[avgWomens,rsseWomens, spendBetasWomens, visitBetasWomens, PurchaseBetasWomens] = CrossValidateLR(YXSpendWomens,YXVisitWomens,YXPurchaseWomens,1,0);
+[avgNoemail,rsseNoemail, spendBetasNoemail, visitBetasNoemail, PurchaseBetasNoemail] = CrossValidateLR(YXSpendNoemail,YXVisitNoemail,YXPurchaseNoemail,1,0);
 
 display([mean(avgMens), std(avgMens)]);
 display([mean(avgWomens) std(avgWomens)]);
