@@ -68,7 +68,7 @@ beta0 = zeros(size(YXVisitWomens,2),1);
 lambda = 0.1;
 epochs = 250;
 
-set (gcf, 'paperposition', [0.5 0.5 4 3]); % eps size
+set (gcf, 'paperposition', [0.5 0.5 1 .75]); % eps size
 
 YXVisitWomensBal = balanceSamples(YXVisitWomens);
 [b, VisitWomensBetas, VisitWomensLCLs] = logisticRegression(YXVisitWomensBal, epochs, lambda, beta0, 1, [], alpha );
