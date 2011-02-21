@@ -26,10 +26,10 @@ public class Main {
 		features.add(new ThreeFeature());
 		features.add(new FourFeature());
 		features.add(new FiveFeature());
-		//features.add(new SixFeature());
-		//features.add(new SevenFeature());
-		//features.add(new EightFeature());
-		//features.add(new NineFeature());
+		features.add(new SixFeature());
+		features.add(new SevenFeature());
+		features.add(new EightFeature());
+		features.add(new NineFeature());
 		
 		FeatureGenerator[] generatorArray=features.toArray(new FeatureGenerator[features.size()]);
 		Zulu zulu=new Zulu(file,generatorArray);
@@ -39,11 +39,11 @@ public class Main {
 		HashMap<String,ArrayList<String>> wordsAndFeatures=(HashMap<String, ArrayList<String>>) zulu.getFeaturesAndWords();
 		//write features to file;
 
+		int[][] featureValues;
 		int i=0;
 		int j=0;
 		String[] words=zulu.getWords();
-		//int[][] featureValues =featureValues=new int[words.length][wordsAndFeatures.keySet().size()];
-		HashMap<int[],Integer> featureValues=new HashMap<int[],Integer>();
+		featureValues=new int[words.length][wordsAndFeatures.keySet().size()];
 		
 		for(String word : words){
 			Iterator<String> iterator=wordsAndFeatures.keySet().iterator();
@@ -51,10 +51,7 @@ public class Main {
 			while(iterator.hasNext()){
 				String featureWord=iterator.next();
 				while(wordsAndFeatures.get(featureWord).remove(word)){
-					int[] tempints={i,j};
-					int value=featureValues.containsKey(tempints)?((Integer)featureValues.get(tempints)):0;
-					value++;
-					featureValues.put(tempints, value);
+					featureValues[i][j]++;
 				}
 				j=j+(iterator.hasNext()?1:0);
 			}
@@ -66,17 +63,16 @@ public class Main {
 			FileWriter writer = new FileWriter("c:\\temp\\AllFeatureValues.csv");
 			Iterator<String> iterator=wordsAndFeatures.keySet().iterator();
 
-			writer.append("0,0,words\\features,\n");
-			int count=1;
+			writer.append("words\\features,");
 			while(iterator.hasNext()){
-				writer.append("0,"+ ++count+","+iterator.next()+"\n");
+				writer.append(iterator.next()+",");
 			}
-			
-			for(int i1=0;i1<words.length;i1++){
-				writer.append(i1+" "+i1+1+"\t"+words[i1]+"\n");
-			}
-			for(int[] ints : featureValues.keySet()){
-				writer.append(ints[0]+","+ints[1]+","+featureValues.get(ints)+".0000000000000000e+00");
+			writer.append('\n');
+			for(int i1=0;i1<featureValues.length;i1++){
+				writer.append(words[i1]+",");
+				for(int j1=0;j1<featureValues[0].length;j1++){
+					writer.append(featureValues[i1][j1]+((j1==featureValues[0].length-1)?"":","));
+				}
 				writer.append('\n');
 			}
 			writer.close();
