@@ -27,6 +27,14 @@
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 \ifcvprfinal\pagestyle{empty}\fi
+
+%use \x, \y, and \w for bold vector forms
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\w}{\mathbf{w}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+
 \begin{document}
 
 %%%%%%%%% TITLE
@@ -57,6 +65,34 @@ University of California, San Diego\\
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
+Conditional random fields provide a generic model for performing supervised learning. Generic feature functions are used to transform complicated input data and labels into real numbers. This abstraction allows machine learning and statistical analysis on very complicated datasets.
+
+One such complicated problem is the automatic detection of syllable boundaries within words. Possible inputs include all words in a given language, plus the possibility of additional  neologisms which may be coined after the training period. Developing a classifier to determine syllable boundaries is an important task for automatic hyphenation, speech synthesis, and linguistic analysis.
+
+\subsection{Conditional Random Field model}
+
+
+
+The goal of supervised classification is to predict a label, $\y$, from some input data, $\x$. Conditional random fields do not place any restrictions on the type of data and labels being learned. To allow this abstraction, conditional random fields introduces the concept of \begin{em}feature functions\end{em} of the form $F(\x,\y)$ which attempt to measure the compatibility of $\x$ with the label $\y$. A number of such feature functions are calculated for each $(\x,\y)$ pair, and the weighted sum of $J$ feature functions is used to determine the probability that $\y$ is the correct label for $\x$, according the the equation
+\[ p(\y\,|\,\x;\w) = \frac{\exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right)}{z(\x;\w)} \]
+where $z(\x;\w)$ normalizes the total mass over all possible labels $\y'$ to one and is equal to
+\[ z(\x;\w) = \sum_{\y'} \exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right). \]
+
+To use this model for inference, one simply assigns the most probable label for a given $\x$,
+\begin{align}
+\hat{\y} & =\argmax_{\y} \, p(\y\,|\,\x;\w) \\
+&= \argmax_{\y} \sum_{j=1}^J w_j F_j(\x,\y).
+\end{align}
+
+Linear Chain CRFs & connection to Viterbi algorithm
+\subsection{Collin's Perceptron Algorithm}
+\subsection{--Other Method--}
+
+\section{Methods}
+Details about dataset, cross-validation, features
+
+
+
 \section{Results}
 \section{Discussion}
 \section{Conclusion}
