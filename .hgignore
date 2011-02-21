@@ -8,6 +8,8 @@ kNN/zip.train
 *.swp
 *.bak
 octave-core
+.metadata
+*.class
 
 syntax: regexp
 .*/report/.*\.aux
