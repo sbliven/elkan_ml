@@ -74,22 +74,57 @@ One such complicated problem is the automatic detection of syllable boundaries w
 
 
 The goal of supervised classification is to predict a label, $\y$, from some input data, $\x$. Conditional random fields do not place any restrictions on the type of data and labels being learned. To allow this abstraction, conditional random fields introduces the concept of \begin{em}feature functions\end{em} of the form $F(\x,\y)$ which attempt to measure the compatibility of $\x$ with the label $\y$. A number of such feature functions are calculated for each $(\x,\y)$ pair, and the weighted sum of $J$ feature functions is used to determine the probability that $\y$ is the correct label for $\x$, according the the equation
-\[ p(\y\,|\,\x;\w) = \frac{\exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right)}{z(\x;\w)} \]
+\begin{equation}
+	p(\y\,|\,\x;\w) = \frac{\exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right)}{z(\x;\w)}
+\end{equation}
 where $z(\x;\w)$ normalizes the total mass over all possible labels $\y'$ to one and is equal to
-\[ z(\x;\w) = \sum_{\y'} \exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right). \]
+\begin{equation}
+	z(\x;\w) = \sum_{\y'} \exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right).
+\end{equation}
 
 To use this model for inference, one simply assigns the most probable label for a given $\x$,
 \begin{align}
-\hat{\y} & =\argmax_{\y} \, p(\y\,|\,\x;\w) \\
-&= \argmax_{\y} \sum_{j=1}^J w_j F_j(\x,\y).
+	\hat{\y} & =\argmax_{\y} \, p(\y\,|\,\x;\w) \\
+		&= \argmax_{\y} \sum_{j=1}^J w_j F_j(\x,\y).
 \end{align}
 
-Linear Chain CRFs & connection to Viterbi algorithm
+The weights vector $\w$ is learned according to the principle of maximum likelihood. Thus, for some set of training pairs $(\x_i,\y_i)$ for $i=\left\{1,2,\dots,N\right\}$, the objective function is to maximize the total log likelihood w.~r.~t. $\w$ over all points of
+\begin{align}
+	LCL(\w) &= \sum_{i=1}^N \log\,p(\y_i\,|\,\x_i ;\,\w) \\
+		&= \sum_{i=1}^N \left( \sum_{j=1}^J w_j F_j (\x_i,\y_i) - \log z(\x_i;\w) \right).
+\end{align}
+During training, $L_2$ regularization is used such that most weights are near zero. This is important to prevent overfitting, since the number of features is often greater than the number of training pairs, resulting in an underspecified system. The regularized objective is
+\begin{align}
+	LCL^*(\w) &= \sum_{i=1}^N \log\,p(\y_i\,|\,\x_i ;\,\w) - \lambda N\parallel \w \parallel^2 \\
+		&= \sum_{i=1}^N \left( \sum_{j=1}^J w_j F_j (\x_i,\y_i)  - \log z(\x_i;\w) \right) \notag \\
+		&\hspace{1 em}  - \lambda N\parallel \w \parallel^2
+\end{align}
+where $\lambda$ is the strength of regularization.
+
+CRF Gradient
+
+\subsection{Linear Chain CRFs}
+Jonas: Linear Chain CRFs \& connection to Viterbi algorithm
 \subsection{Collin's Perceptron Algorithm}
+Jonas
 \subsection{--Other Method--}
+Spencer
 
 \section{Methods}
-Details about dataset, cross-validation, features
+\subsection{Zulu Dataset}
+Details about dataset
+
+\subsection{Feature Selection}
+Andreas
+
+
+Two encodings: 001 vs. 123
+
+Features used for each encoding
+
+\subsection{Evaluation}
+%Remember to put in real numbers here
+Five-fold cross validation was used to evaluate the performance of our algorithm.  In each case, ~8000 words were used to optimize parameter settings and train the feature weights. 
 
 
 
