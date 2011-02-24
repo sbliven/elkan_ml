@@ -1,0 +1,46 @@
+TRAINING DATA:
+feedback	00010000
+
+
+FEATURES:
+
+#interior 3-windows
+1. x(i-2:i) == "fee", y(i-1:i) == "00"
+2. x(i-2:i) == "eed", y(i-1:i) == "01"
+3. x(i-2:i) == "edb", y(i-1:i) == "10"
+4. x(i-2:i) == "dba", y(i-1:i) == "00"
+5. x(i-2:i) == "bac", y(i-1:i) == "00"
+6. x(i-2:i) == "ack", y(i-1:i) == "00"
+
+#beginning and end
+7. x(1:2) == "fe",  i == 1, y(i-1:i) == "B0"
+8. x(n-1:n) == "ck", i==n+1, y(i-1:i) == "0E"
+9. i==n+1, y(i-1:i) == "0E"
+
+
+OUTPUT:
+
+file "wordIndices.txt" or whatever:
+1	feedback
+
+file "featureValues.txt" or whatever:
+x	i	j	k	y-1	y	f
+1	3	1	1	0	0	1
+1	4	2	2	0	1	1
+1	5	3	3	1	0	1
+1	6	4	4	0	0	1
+1	7	5	5	0	0	1
+1	8	6	6	0	0	1
+1	1	7	7	B	0	1
+1	9	8	8	0	E	1
+1	9	9	9	0	E	1
+
+Column headings:
+x = word index (which we look up in wordIndices.txt)
+i = position within x
+j = low-level feature number
+k = high-level feature number (still thinking about this, they may be wrong or unnecessary)
+y-1 = row index for gi
+y = column index for gi
+f = value of f_j(y-1, y, i, x)
+
