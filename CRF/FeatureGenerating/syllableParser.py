@@ -6,7 +6,7 @@
 import sys
 import optparse
 
-def parseSyllableFile(filename, useLineNum=False):
+def parseSyllableFile(filename, useLineNum=False, includeAmbiguous=True):
     """Parse a syllable file, such as the Zulu syllable training set
 
     Generates tuples of (word, label, index),
@@ -24,38 +24,46 @@ def parseSyllableFile(filename, useLineNum=False):
         for line in file:
             lineNum += 1
 
-            #check for alternate syllabification
-            if line.find(",") >= 0:
-                ambiguous += 1
-                continue
-
-            fields = line.split()
+            fields = line.split("\t")
             #ignore blank lines
             if len(fields) < 1:
                 continue
+            if len(fields) != 2:
+                sys.stderr.write("Error parsing %s:%d. Expected a single tab character.\n" % \
+                        (filename, lineNum ))
 
             word = fields[0]
-            sylLen = [len(syl) for syl in fields[1:] ]
 
-            if len(sylLen) < 1:
-                sys.stderr.write("Error parsing %s:%d. No syllables detected\n" % \
-                        (filename, lineNum ))
-                continue
-            #syllables should sum to word length
-            if sum(sylLen) != len(word):
-                sys.stderr.write("Error parsing %s:%d. %s doesn't match syllables [%s]\n" % \
-                        (filename, lineNum, word, ", ".join(fields[1:]) ) )
-                continue
+            syllabifications = fields[1].split(",")
+            #check for alternate syllabification
+            if len(syllabifications) > 1:
+                ambiguous += 1
+                if not includeAmbiguous:
+                    continue
+            for syllab in syllabifications:
+                syllables = syllab.split()
+                sylLen = [len(syl) for syl in syllables ]
 
-            #generate label
-            label = "1".join([ "0"*(l-1) for l in sylLen ]) + "0"
+                if len(sylLen) < 1:
+                    sys.stderr.write("Error parsing %s:%d. No syllables detected\n" % \
+                            (filename, lineNum ))
+                    continue
+                #syllables should sum to word length
+                if sum(sylLen) != len(word):
+                    sys.stderr.write("Error parsing %s:%d. %s doesn't match syllables [%s]\n" % \
+                            (filename, lineNum, word, ", ".join(fields[1:]) ) )
+                    continue
 
-            yield (word, label, lineNum if useLineNum else index)
+                #generate label
+                label = "1".join([ "0"*(l-1) for l in sylLen ]) + "0"
 
-            index += 1
+                yield (word, label, lineNum if useLineNum else index)
+
+                index += 1
 
         if ambiguous > 0:
-            sys.stderr.write("Ignored %d lines with alternative syllabifications\n" % ambiguous)
+            sys.stderr.write("%s %d lines with alternative syllabifications\n" % \
+                    ("Included" if includeAmbiguous else "Ignored",ambiguous))
 
 
 if __name__ == "__main__":
@@ -70,6 +78,6 @@ if __name__ == "__main__":
     inputFilename = args[0]
 
     for word, label, index in parseSyllableFile(inputFilename):
-        print("%s\t%s\t%d\n"%(word,label,index))
+        print("%s\t%s\t%d"%(word,label,index))
 
  
