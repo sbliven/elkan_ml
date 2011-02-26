@@ -1,6 +1,8 @@
 package tryNoTwo;
 
+import java.io.Console;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,6 +13,7 @@ public class Zulu {
 	private HashMap<String,String> xys;
 	private String[] words;
 	private HashMap<Integer,ArrayList<String>> windowFeatures;
+	private final int numberOfFeatures=7;
 
 	public Zulu(File file) {
 
@@ -54,13 +57,6 @@ public class Zulu {
 		scanner.close();
 	}
 
-	public String[] getWords() {
-		return words;
-	}
-	public void setWords(String[] words) {
-		this.words = words;
-	}
-
 	public void generateWindowFeatures() {
 		String featureWord;
 		String featureY;
@@ -70,13 +66,12 @@ public class Zulu {
 
 		ArrayList<String> tempList;
 
-		for (int i=3;i<20;i++){
+		for (int i=3;i<numberOfFeatures+1;i++){
 			windowFeatures.put(i,new ArrayList<String>());
 		}
 
 		for(String word : xys.keySet()){
-
-			for(int i=3;i<20;i++){
+			for(int i=3;i<numberOfFeatures+1;i++){
 				tempWord=word;
 				tempY=xys.get(word);
 				while(tempWord.length()>=i){
@@ -86,51 +81,73 @@ public class Zulu {
 					if(!tempList.contains(featureWord+" "+featureY))
 						tempList.add(featureWord+" "+featureY);
 					windowFeatures.put(i,tempList);
-					tempWord=tempWord.substring(i);
+					tempWord=tempWord.substring(1);
+					tempY=tempY.substring(1);
 				}
 			}
 		}
 	}
 
-	public static boolean evaluate(String featureXspaceY,String xbar,int pos,String labelIminus1, String labelI){
+	public static boolean evaluate(String featureXspaceY,String xbar,String labelIminus1, String labelI){
 		String[] XY=featureXspaceY.split(" ");
 		String featureX=XY[0];
 		String featureY=XY[1];
-
-		xbar=xbar.substring(0,featureX.length());
-		if(!xbar.equals(featureX))
+		if(!featureX.equals(xbar)){
 			return false;
-
-		if(pos==0){
-			if(labelI.equals(featureY.substring(0,1)))
-				return true;
-			else 
-				return false;
 		}
-
-		return(featureY.charAt(pos)==labelI.charAt(0)&&featureY.charAt(pos-1)==labelIminus1.charAt(0));
+		
+		char featureLabel=featureY.charAt(featureY.length()-1);
+		char featureMinusOneLabel=featureY.charAt(featureY.length()-2);
+		
+		return(featureLabel==labelI.charAt(0)&&featureMinusOneLabel==labelIminus1.charAt(0));
 	}
 
 	public void evaluateWordsAndWriteToFile() {
-		for(String word : words){
-			String labels=xys.get(word);
-			for(int i:windowFeatures.keySet()){
-				for(String featureXspaceY:windowFeatures.get(i)){
-					int pos=0;
-					int sum=0;
-					while(pos<=i){
-						if(evaluate(
-								featureXspaceY,
-								word.substring(0,i),
-								pos,
-								labels.substring(pos-1,pos)
-								,labels.substring(pos,pos+1)
+		int wordCount=0;
+		int featureCount=0;
+		try
+		{
+			FileWriter writer = new FileWriter("c:\\temp\\zulu250lines.csv");
+
+			for(String word : words){
+				String labels=xys.get(word);
+				for(int lengthOfFeature:windowFeatures.keySet()){
+					for(String featureXspaceY:windowFeatures.get(lengthOfFeature)){
+						for (int wordpos=0;wordpos+lengthOfFeature<word.length()+1;wordpos++){
+							String xbar=word.substring(wordpos,wordpos+lengthOfFeature);
+							if(featureXspaceY.split(" ")[0].equals("lwa")&&xbar.equals("lwa")){
+								int a=0;
+								a++;
+							}
+							String labelMinus1=labels.substring(lengthOfFeature+wordpos-2,lengthOfFeature+wordpos-1);
+							String label=labels.substring(lengthOfFeature+wordpos-1,lengthOfFeature+wordpos);
+								if(evaluate(
+										featureXspaceY,
+										xbar,
+										labelMinus1,
+										label
 								))
-							sum++;
+									writer.append(wordCount +" "+" "+featureCount+" "+wordpos+" "+labelMinus1+" "+label+"\n");
+
+							}
+						}
+					featureCount++;
 					}
-					//print wordindex,pos,feature,fvalue(==sum)
+				wordCount++;
+				}
+			FileWriter writer2=new FileWriter("c:\\temp\\features.txt");
+			System.out.println("laise");
+			for(int lengthOfFeature:windowFeatures.keySet()){
+				for(String featureXspaceY:windowFeatures.get(lengthOfFeature)){
+					writer2.append(featureXspaceY.split(" ")[0]+"\n");
 				}
 			}
+			writer.close();
+			writer2.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 }

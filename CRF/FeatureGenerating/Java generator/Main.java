@@ -9,7 +9,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		File file = new File("src/data/ten.txt");
+		File file = new File("src/data/zulu250.txt");
 		
 		//constructor reads in words and syllables and
 		//maps them together as "ababalabala,10010010"
