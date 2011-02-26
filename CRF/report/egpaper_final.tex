@@ -115,7 +115,12 @@ Spencer
 Details about dataset
 
 \subsection{Feature Selection}
-Andreas
+Window-features:
+We made generic features that included all different windows of three, four, five, six or seven letters that existed in the words of the dataset together with two _labels_ indicating whether or not there was a syllable-split between the second last (_label y-1_) and last (_label y_) letter of the window. The labels for each of the letters in the word are indicating whether or not there will be a syllable split between this letter and the next one. One three window feature generated from word j: "abcdefg" splitted as follows: "ab-cde-fg" would look as follows:
+
+fj(xbar,i,y-1,y)=I(xi-2=a)*I(xi-1=b),I(xi=a)I(y-1=1)*I(y=0)
+
+Here xi is the letter at position i in the I(statement) is the indicator function which yields '1' if the statement between the paranthesis is true.
 
 
 Two encodings: 001 vs. 123
