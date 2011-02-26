@@ -15,6 +15,8 @@ if __name__ == "__main__":
         dest="minK",default=3,type="int")
     parser.add_option("-l","--max-k", help="maximum window length",
         dest="maxK",default=7,type="int")
+    parser.add_option("--use-line-numbers", help="Use line numbers as word indices, rather than a sequential index", dest="useLineNums", default=False, action="store_true")
+    parser.add_option("-a","--ambiguous", help="Include ambiguous words (2 possible syllable patterns)", dest="includeAmbiguous",default=False, action="store_true")
     (options, args) = parser.parse_args()
 
     if len(args) != 4:
@@ -27,7 +29,7 @@ if __name__ == "__main__":
     nameFilename = args[2]
     wordFilename = args[3]
 
-    trainData = list(parseSyllableFile(inputFilename))
+    trainData = list(parseSyllableFile(inputFilename,options.useLineNums, options.includeAmbiguous))
     with open(wordFilename,"w") as wordFile:
         for word, label, index in trainData:
             wordFile.write("%d\t%s\n" % (index,word))

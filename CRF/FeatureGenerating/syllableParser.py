@@ -6,7 +6,7 @@
 import sys
 import optparse
 
-def parseSyllableFile(filename, useLineNum=False, includeAmbiguous=True):
+def parseSyllableFile(filename, useLineNum=False, includeAmbiguous=False):
     """Parse a syllable file, such as the Zulu syllable training set
 
     Generates tuples of (word, label, index),
