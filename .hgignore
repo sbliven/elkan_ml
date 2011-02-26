@@ -10,6 +10,8 @@ kNN/zip.train
 octave-core
 .metadata
 *.class
+*.pyo
+*.pyc
 
 syntax: regexp
 .*/report/.*\.aux
