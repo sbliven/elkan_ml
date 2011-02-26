@@ -17,7 +17,7 @@ class WindowFeature:
         #j is the feature number
         self._features = dict()
 
-    def learnFeatures(self, trainData, totalJ, featureValueFile, featureNameFile):
+    def learnFeatures(self, trainData, totalJ=0, featureValueFile=None, featureNameFile=None):
         """
         learns k-window features from the trainingData
 

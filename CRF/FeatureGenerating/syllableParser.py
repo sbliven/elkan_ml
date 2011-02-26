@@ -6,15 +6,21 @@
 import sys
 import optparse
 
-def parseSyllableFile(filename):
-    """Parse a syllable file, such as the Zulu syllable trainingset
+def parseSyllableFile(filename, useLineNum=False):
+    """Parse a syllable file, such as the Zulu syllable training set
 
-    Generates tuples of (word, label, index)
-    where word is read from the file, label is a string of "01" indicating syllable state, and index is the line number within the file at which word occurs
+    Generates tuples of (word, label, index),
+    where word is read from the file,
+    label is a string of "01" indicating syllable state,
+    and index is the line number within the file at which word occurs
+    (if useLineNum), or else the 1-based index of the word
+    These may differ if there are blank lines or words with multiple
+    syllabifications
     """
     with open(filename) as file:
         lineNum = 0
         ambiguous = 0
+        index = 1
         for line in file:
             lineNum += 1
 
@@ -44,7 +50,9 @@ def parseSyllableFile(filename):
             #generate label
             label = "1".join([ "0"*(l-1) for l in sylLen ]) + "0"
 
-            yield (word, label, lineNum)
+            yield (word, label, lineNum if useLineNum else index)
+
+            index += 1
 
         if ambiguous > 0:
             sys.stderr.write("Ignored %d lines with alternative syllabifications\n" % ambiguous)
