@@ -10,28 +10,33 @@ import optparse
 class PrefixSuffixFeature:
     """Generates features of the form 
 
-    fj(y-1,y,x,i) = I(i==1)I(y==tag)I(x1==letter)
-    fj(y-1,y,x,i) = I(i==n+1)I(y-1==tag)I(x(n-1)==letter),
+    for positive k (prefix),
+    fj(y-1,y,x,i) = I(i==k)I(y(k-1:k)==tags)I(x(1:k)==letters)
+    for negative k (suffix),
+    fj(y-1,y,x,i) = I(i==n+k+2)I(y(n+k+1:n+k+2)==tags)I(x(n+k+1:n+1)==letters),
         where n is the length of the word
     """
 
-    def __init__(self, isPrefix, tags):
+    def __init__(self, k, tags=["0","1"], beginTag="3", endTag="4"):
         """
-        pos gives the position to be considered. Use 0 for prefix, -1 for suffix
+        k gives the length of the prefix/suffix to be considered.
+            For instance, k=2 yields a feature matching the first two letters and tags.
+            k=-1 yields a feature matching the last character and tag
         """
+        if k == 0: raise Exception("Illegal window length")
         #dictionary mapping (xwin,ywin) to j
         #xwin is a substring of the words of length k
         #ywin is a substring of the label of length 2
         #j is the feature number
         self._features = dict()
-        if isPrefix:
-            self._pos = 0
-        else:
-            self._pos  = -1
+        self._k = k
         self._tags = tags
 
-        self._beginTag = "100" #indicates beginning of the label
-        self._endTag = "101" #indicates end of the label
+        self._beginTag = beginTag #indicates beginning of the label
+        self._endTag = endTag #indicates end of the label
+
+    def __str__(self):
+        return "pos(%d)" % self._k
 
     def learnFeatures(self, trainData, totalJ=0, featureNameFile=None):
         """
@@ -43,7 +48,7 @@ class PrefixSuffixFeature:
                                 Note that word and label should be interable.
             totalJ              Total number of pre-existing features. New
                                 features are indexed j=totalJ+1, totalJ+2, ...
-            featurNameFile      If not None, a file handle to which feature numbers
+            featureNameFile     If not None, a file handle to which feature numbers
                                 will be appended along with a text description
                                 of the feature.
 
@@ -55,16 +60,29 @@ class PrefixSuffixFeature:
             label = example[1]
             index = example[2] if len(example)>2 else None
 
-            #prefix
-            j = self._features.get( (word[self._pos], label[self._pos]) )
+            k = self._k
+            # Drop short words
+            if k > len(word):
+                continue
+
+            fulllabel = [self._beginTag]
+            fulllabel.extend(label)
+            fulllabel.append(self._endTag)
+
+            if k>0: #prefix
+                xwin = word[:k]
+                ywin = tuple(fulllabel[k-1:k+1])
+            elif k<0: #suffix
+                xwin = word[k:]
+                ywin = tuple(fulllabel[k-1:][:2])
+            j = self._features.get( (xwin,ywin) )
             if j is None:
                 totalJ += 1
                 j = totalJ
-                self._features[ (word[self._pos], label[self._pos]) ] = j
+                self._features[ (xwin,ywin) ] = j
                 if featureNameFile:
-                    featureNameFile.write("%d\tpos(%d) %s %s\n" % \
-                            (j, self._pos, word[self._pos], label[self._pos]) )
-
+                    featureNameFile.write("%d\t%s %s %s%s\n" % \
+                            (j, str(self), xwin, ywin[0], ywin[1]) )
         return totalJ
 
 
@@ -86,17 +104,32 @@ class PrefixSuffixFeature:
         """
         for example in data:
             word = example[0]
-            label = example[1]
+            label = example[1] #ignored in eval
             index = example[2]
 
-            for y2 in self._tags:
-                j = self._features.get( (word[self._pos], y2) )
-                if j is not None:
-                    if self._pos == 0:
+            # Drop short words
+            k = self._k
+            if k > len(word):
+                continue
+
+            firstTags = self._tags
+            secondTags = self._tags
+            if k==1: #first tag
+                firstTags = [self._beginTag]
+                secondTags = self._tags
+            elif k==-1: #last tag
+                firstTags = self._tags
+                secondTags = [self._endTag]
+            for y1 in firstTags:
+                for y2 in secondTags:
+                    if k>0: #prefix
+                        xwin = word[:k]
+                    elif k<0: #suffix
+                        xwin = word[k:]
+                    ywin = (y1, y2)
+
+                    j = self._features.get( (xwin,ywin) )
+                    if j is not None:
                         featureValueFile.write("%d\t%d\t%d\t%s\t%s\t1\n" % \
-                            (index, j, self._pos, self._beginTag, y2) )
-                    elif self._pos == -1:
-                        featureValueFile.write("%d\t%d\t%d\t%s\t%s\t1\n" % \
-                            (index, j, self._pos, y2, self._endTag) )
-                    else: raise Exception("Illegal position!")
+                                (index, j, k, y1, y2) )
 

@@ -52,11 +52,13 @@ class WindowFeature:
                     j = totalJ
                     self._features[ (xwin, ywin)] = j
                     if featureNameFile:
-                        featureNameFile.write("%d\t%dwin %s %s\n" % \
-                                (j, self._k, xwin, ywin) )
+                        featureNameFile.write("%d\t%s %s %s\n" % \
+                                (j, str(self), xwin, ywin) )
 
         return totalJ
 
+    def __str__(self):
+        return "%dwin" % self._k
 
     def evaluate(self, data, featureValueFile):
         """

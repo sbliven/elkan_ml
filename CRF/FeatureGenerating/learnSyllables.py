@@ -47,8 +47,10 @@ if __name__ == "__main__":
         J = 0 #number of features
         featureGenerators = [WindowFeature(k,"01")
                 for k in range(options.minK,options.maxK+1) ]
-        featureGenerators.append( PrefixSuffixFeature(True,"01") ) #prefix
-        featureGenerators.append( PrefixSuffixFeature(False,"01") ) #suffix
+        featureGenerators.extend( [ PrefixSuffixFeature(k,"01") 
+                for k in xrange(1,3) ]) #prefix
+        featureGenerators.extend( [ PrefixSuffixFeature(-k,"01") 
+                for k in xrange(1,3) ]) #suffix
 
         for fg in featureGenerators:
             J = fg.learnFeatures(trainData, J, nameFile)
