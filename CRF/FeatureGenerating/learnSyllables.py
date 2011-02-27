@@ -32,15 +32,17 @@ if __name__ == "__main__":
     trainData = list(parseSyllableFile(inputFilename,options.useLineNums, options.includeAmbiguous))
     with open(wordFilename,"w") as wordFile:
         for word, label, index in trainData:
-            wordFile.write("%d\t%s\n" % (index,word))
+            wordFile.write("%d\t%s\t%s\n" % (index,word,label))
+
+    with open(nameFilename,"w") as nameFile:
+
+        J = 0 #number of features
+        featureGenerators = [WindowFeature(k,"01")
+                for k in range(options.minK,options.maxK+1) ]
+        for fg in featureGenerators:
+            J = fg.learnFeatures(trainData, J, nameFile)
 
     with open(valueFilename,"w") as valueFile:
-        with open(nameFilename,"w") as nameFile:
-
-            J = 0 #number of features
-            featureGenerators = [WindowFeature(k)
-                    for k in range(options.minK,options.maxK+1) ]
-            for fg in featureGenerators:
-                J = fg.learnFeatures(trainData, J, valueFile, nameFile)
-
+        for fg in featureGenerators:
+            fg.evaluate(trainData, valueFile)
 
