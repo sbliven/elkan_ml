@@ -17,7 +17,8 @@ function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlen
        %w = rand(j,1);
        
        %set up w as zeros
-        w = zeros(numF,1);
+       w = zeros(numF,1);
+   
 
        % run e epochs
        for e=1:epochs
@@ -35,18 +36,23 @@ function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlen
                %w = w - alpha * F(x,y);
                w = w + alpha * F(features{t},y, wordlengths(t), numF);
                
+               
                %w = w - alpha * F(x,yhat);
                w = w + alpha * F(features{t},yhat, wordlengths(t), numF);
                
                
-               if(y == yhat)
+               
+
+               if(y(t,1:wordlengths(t))' == yhat)
+                   
+                   warning('y = yhat, break;)');
                    break;
                end
            end
            
        end
     
-       
+
 
 end
 

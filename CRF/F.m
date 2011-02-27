@@ -5,7 +5,7 @@ function [ result ] = F( word, y, wordlength, sizew )
 
 
 
-    result = zeros(sizew);
+    result = zeros(sizew,1);
     
 %TODO: basic case y=1?
     for i=2:wordlength
