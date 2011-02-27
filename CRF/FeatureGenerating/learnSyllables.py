@@ -8,6 +8,7 @@ import os
 import optparse
 from syllableParser import parseSyllableFile
 from WindowFeature import WindowFeature
+from PrefixSuffixFeature import PrefixSuffixFeature
 
 if __name__ == "__main__":
     parser = optparse.OptionParser( usage="usage: python %prog [options] inputFile valueFile featureFile wordFile labelFile" )
@@ -37,7 +38,7 @@ if __name__ == "__main__":
     with open(labelFilename,"w") as labelFile:
         maxI = max( [len(l) for w,l,i in trainData] )
         for word, label, index in trainData:
-            labelFile.write( " ".join( [tag for tag in label] + ["-1"]*(maxI-len(label)+1) ))
+            labelFile.write( "\t".join( [tag for tag in label] + ["-1"]*(maxI-len(label)+1) ))
             labelFile.write("\n")
 
 
@@ -46,6 +47,9 @@ if __name__ == "__main__":
         J = 0 #number of features
         featureGenerators = [WindowFeature(k,"01")
                 for k in range(options.minK,options.maxK+1) ]
+        featureGenerators.append( PrefixSuffixFeature(True,"01") ) #prefix
+        featureGenerators.append( PrefixSuffixFeature(False,"01") ) #suffix
+
         for fg in featureGenerators:
             J = fg.learnFeatures(trainData, J, nameFile)
 
