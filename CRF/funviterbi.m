@@ -1,38 +1,50 @@
-function [ result ] = funviterbi(g, labels, wordlength)
+function [ result ] = funviterbi(w, word, wordlength)
+% w is w-vector
+%word is f{wordindex}
+%wordindex is position
 
-%% f_j(x,y_i,y_i-1,i) = I(x_i-2,i-1,i,i+1 = "eedb")I(y_i,i+1="10")
 
-     
-    %wordlength = 6;
-
-    %labels is vector of feature vales with size = 1xwordlength
-    x = labels;
-    %x = rand(1,wordlength);
-    %x = [0 0 0 0 1 0];
-
-    %set initial values with size 4 x 1
-    initial = [1;0;0;0];
-
-    %a are the g_i matrices and have size 4, 4, wordlength
-    a = g;
-    %a = rand(4, 4, wordlength);
+%% multiply w' with f{wordindex}{y_i-1=1,y_i=1, and position = 4}
+ %rand(83975,1)'*f{1}{1,2}(:,4)
 
     
-    %b is the y_i-1, y matrix
-    b = [0 0; 0 1; 1 0; 1 1];
+    %wordlength = 6;
 
+    %set initial values with size 4 x 1
+    initial = [0.5;0.5];
+
+    %a are the g_i matrices and have size 2, 2
+    g = zeros(2,2);
+    g(1,1) = w' * word{1,1}(:,1);
+    g(1,2) = w' * word{1,2}(:,1);
+    g(2,1) = w' * word{2,1}(:,1);
+    g(2,2) = w' * word{2,2}(:,1);
+    
+    
     %Viterbi
-    score = initial+sum(a(:,:,1))';
+    score = initial + max(g,[],2);
 
     %Itrace = [];
-    Itrace  = zeros(length(b),length(x)-1);
+    Itrace  = zeros(2,wordlength-1);
 
 
-    for i = 2:length(x)
-        [maxScore I] = max(a(:,:,i)+repmat(score', [4 1]), [], 2);
-        score = maxScore + max(a(:,:,2))';
+    for i = 2:wordlength
+        %calculate g
+        g(1,1) = w' * word{1,1}(:,i);
+        g(1,2) = w' * word{1,2}(:,i);
+        g(2,1) = w' * word{2,1}(:,i);
+        g(2,2) = w' * word{2,2}(:,i);
+        
+        if(sum(sum(g))==0)
+            warning('All g_i values are 0');
+        end
+        
+        %end claculate g
+                
+        [maxScore I] = max(g+repmat(score', [2 1]), [], 2);
+        score = maxScore + max(g)';
        % Itrace = [I Itrace];
-       Itrace(:,length(x)-i+1) = I;
+       Itrace(:,wordlength-i+1) = I;
 
     end
 
@@ -40,15 +52,15 @@ function [ result ] = funviterbi(g, labels, wordlength)
     % Backtracking
     [Lopt Sopt] = max(score);
 
-    result = zeros(length(x),1);
-    result(length(x)) = Sopt;
+    result = zeros(wordlength,1);
+    result(wordlength) = Sopt;
 
     for i = 1:size(Itrace,2)
         Sopt = Itrace(Sopt, i);
         %result = [Sopt result];
-        result(length(x)-i) = Sopt;
+        result(wordlength-i) = Sopt;
     end
 
-
+    result = result -1;
 end
 
