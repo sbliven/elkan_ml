@@ -29,7 +29,3 @@ spy(s);
 % Note change in variable order
 
 g = precalcG(f, numWords, numTags, J, maxI);
-
-
-
-

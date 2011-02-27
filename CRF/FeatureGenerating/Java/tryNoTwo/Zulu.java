@@ -10,14 +10,13 @@ import java.util.Scanner;
 
 public class Zulu {
 
-	private HashMap<String,String> xys;
-	private String[] words;
+	private ArrayList<String[]> xys;
 	private HashMap<Integer,ArrayList<String>> windowFeatures;
 	private final int numberOfFeatures=7;
 
 	public Zulu(File file) {
 
-		xys=new HashMap<String,String>();
+		xys=new ArrayList<String[]>();
 		windowFeatures=new HashMap<Integer,ArrayList<String>>();
 
 
@@ -33,7 +32,10 @@ public class Zulu {
 		String[] tempArray;
 
 		while(scanner.hasNext()){
-			tempAllArray.addAll(Arrays.asList(scanner.nextLine().split("\u0009")));
+			String word=scanner.nextLine();
+			if (word.contains(","))
+				continue;
+			tempAllArray.addAll(Arrays.asList(word.split("\u0009")));
 			tempString=tempAllArray.remove(0);
 			tempArray=tempAllArray.remove(0).split(" ");
 			int syllableCount=0;
@@ -51,9 +53,8 @@ public class Zulu {
 				}
 			}
 			tempInteger+="0";
-			xys.put(tempString,tempInteger);
+			xys.add(new String[]{tempString,tempInteger});
 		}
-		words=xys.keySet().toArray(new String[xys.size()]);
 		scanner.close();
 	}
 
@@ -70,13 +71,13 @@ public class Zulu {
 			windowFeatures.put(i,new ArrayList<String>());
 		}
 
-		for(String word : xys.keySet()){
+		for(int i1=0;i1<xys.size();i1++){
 			for(int i=3;i<numberOfFeatures+1;i++){
-				tempWord=word;
-				tempY=xys.get(word);
+				tempWord=xys.get(i1)[0];
+				tempY=xys.get(i1)[1];
 				while(tempWord.length()>=i){
 					featureWord=tempWord.substring(0,i);
-					featureY=tempY.substring(0,i);
+					featureY=tempY.substring(i-2,i);
 					tempList=windowFeatures.get(i);
 					if(!tempList.contains(featureWord+" "+featureY))
 						tempList.add(featureWord+" "+featureY);
@@ -95,51 +96,53 @@ public class Zulu {
 		if(!featureX.equals(xbar)){
 			return false;
 		}
-		
-		char featureLabel=featureY.charAt(featureY.length()-1);
-		char featureMinusOneLabel=featureY.charAt(featureY.length()-2);
-		
+
+		char featureLabel=featureY.charAt(1);
+		char featureMinusOneLabel=featureY.charAt(0);
+
 		return(featureLabel==labelI.charAt(0)&&featureMinusOneLabel==labelIminus1.charAt(0));
 	}
 
 	public void evaluateWordsAndWriteToFile() {
 		int wordCount=0;
-		int featureCount=0;
+
 		try
 		{
-			FileWriter writer = new FileWriter("c:\\temp\\zulu250lines.csv");
-
-			for(String word : words){
-				String labels=xys.get(word);
+			FileWriter writer = new FileWriter("c:\\temp\\zulu250.csv");
+			for(int i=0;i<xys.size();i++){
+				int featureCount=0;
+				String word=xys.get(i)[0];
+				String labels=xys.get(i)[1];
 				for(int lengthOfFeature:windowFeatures.keySet()){
 					for(String featureXspaceY:windowFeatures.get(lengthOfFeature)){
 						for (int wordpos=0;wordpos+lengthOfFeature<word.length()+1;wordpos++){
 							String xbar=word.substring(wordpos,wordpos+lengthOfFeature);
-							if(featureXspaceY.split(" ")[0].equals("lwa")&&xbar.equals("lwa")){
-								int a=0;
-								a++;
-							}
+
 							String labelMinus1=labels.substring(lengthOfFeature+wordpos-2,lengthOfFeature+wordpos-1);
 							String label=labels.substring(lengthOfFeature+wordpos-1,lengthOfFeature+wordpos);
-								if(evaluate(
-										featureXspaceY,
-										xbar,
-										labelMinus1,
-										label
-								))
-									writer.append(wordCount +" "+" "+featureCount+" "+wordpos+" "+labelMinus1+" "+label+"\n");
+							if(evaluate(
+									featureXspaceY,
+									xbar,
+									labelMinus1,
+									label
+							))
+								writer.append(wordCount+1 +" "+(featureCount+1)+" "+(wordpos+lengthOfFeature)+" "+labelMinus1+" "+label+" 1\n");
 
-							}
 						}
-					featureCount++;
+						featureCount++;
 					}
-				wordCount++;
 				}
-			FileWriter writer2=new FileWriter("c:\\temp\\features.txt");
+				wordCount++;
+				System.out.println(wordCount);
+			}
+			
+			FileWriter writer2=new FileWriter("c:\\temp\\full features.txt");
 			System.out.println("laise");
 			for(int lengthOfFeature:windowFeatures.keySet()){
 				for(String featureXspaceY:windowFeatures.get(lengthOfFeature)){
-					writer2.append(featureXspaceY.split(" ")[0]+"\n");
+					writer2.append("win"+lengthOfFeature+" "+featureXspaceY+"\n");
+					if(featureXspaceY.substring(featureXspaceY.indexOf(" ")).equals("aba"))
+						System.out.println(featureXspaceY);
 				}
 			}
 			writer.close();
