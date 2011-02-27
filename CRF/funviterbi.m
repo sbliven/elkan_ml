@@ -35,9 +35,9 @@ function [ result ] = funviterbi(w, word, wordlength)
         g(2,1) = w' * word{2,1}(:,i);
         g(2,2) = w' * word{2,2}(:,i);
         
-        if(sum(sum(g))==0)
-            warning('All g_i values are 0');
-        end
+        %if(sum(sum(g))==0)
+        %    warning('All g_i values are 0');
+        %end
         
         %end claculate g
                 

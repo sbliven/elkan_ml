@@ -8,7 +8,7 @@
 %  1. j
 %  2. i
 
-[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/Zulu.win3-7.values.txt');
+[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/Zulu.win3-7.values.txt',1000);
 
 %% usefull operations:
 
@@ -28,7 +28,14 @@ spy(s);
 %% Precalculate g(n,i,y1,y2) functions
 % Note change in variable order
 
-g = precalcG(f, numWords, numTags, J, maxI);
+%g = precalcG(f, numWords, numTags, J, maxI);
+
+%collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlengths)
+
+y = load('FeatureValues/Zulu.win3-7.labels.txt');
+%wordlength
+tmp=load('data/wordlength;wordindex,length.txt');
+w = collinsPerceptron( 1, numWords, 0.1, J,  f, y, tmp(:,2));
 
 
 
