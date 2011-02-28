@@ -38,6 +38,7 @@ if __name__ == "__main__":
     with open(labelFilename,"w") as labelFile:
         maxI = max( [len(l) for w,l,i in trainData] )
         for word, label, index in trainData:
+            labelFile.write( "%d\t" % len(word) )
             labelFile.write( "\t".join( [tag for tag in label] + ["-1"]*(maxI-len(label)+1) ))
             labelFile.write("\n")
 
