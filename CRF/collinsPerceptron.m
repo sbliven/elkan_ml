@@ -1,4 +1,4 @@
-function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlengths)
+function [ w ] = collinsPerceptron( epochs, T, numTags, alpha,numF,  features, y, wordlengths)
 %collinsPerceptron runs Collins Perceptron
 
 
@@ -30,7 +30,7 @@ function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlen
                %i.e. call viterbi
                % yhat = argmax_y(p(y|x;w))
 
-               yhat = funviterbi(w, features{t}, wordlengths(t));
+               yhat = funviterbi(w, features{t}, wordlengths(t), numTags);
                
                
                %w = w - alpha * F(x,y);
