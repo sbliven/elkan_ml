@@ -1,6 +1,8 @@
 function [ forwards, backwards, M ] = forwardsBackwards( fx, w, wordLen, numTags, beginTag, endTag )
 %FORWARDSBACKWARDS
 %
+% numTags is the number of normal tags (not begin or end)
+%
 % INDEXING
 % i refers to the 1:N position within labels (not including begin and end)
 % forwards and backwards are length N and should be indexed by (i).
