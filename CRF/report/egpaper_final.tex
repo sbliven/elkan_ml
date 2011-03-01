@@ -109,6 +109,7 @@ The weights vector $\w$ is learned according to the principle of maximum likelih
 	LCL(\w) &= \sum_{n=1}^N \log\,p(\y_n\,|\,\x_n ;\,\w) \\
 		&= \sum_{n=1}^N \left( \sum_{j=1}^J w_j F_j (\x_n,\y_n) - \log z(\x_n;\w) \right).
 \end{align}
+
 During training, $L_2$ regularization is used such that most weights are near zero. This is important to prevent overfitting, since the number of features is often greater than the number of training pairs, resulting in an underspecified system. The regularized objective is
 \begin{align}
 	LCL^*(\w) &= \sum_{n=1}^N \log\,p(\y_n\,|\,\x_n ;\,\w) - \lambda N\parallel \w \parallel^2 \\
@@ -122,7 +123,7 @@ where $\lambda$ is the strength of regularization.
 Training a CRF means finding the weight vector w that gives the best possible prediction for equation (\ref{equation}) for each training example $\x$. The argmax computation is done efficiently by the Viterbi algorithm. 
 
 The $g_i$ values are assumed to be given by the preprocessing as a $m$ by $m$ Matrix:
-\begin{
+\begin{align}
 g_i(y_{i-1},y_i) = \sum_{j=1}^{J} w_j*f_j(y_{i-1},y_{i},x,i))  
 \end{align}
 
@@ -130,13 +131,21 @@ Let $v$ range over the range of tags. Define $U(k, v)$ to be the score of the be
 sequence of tags from position $1$ to position $k$, where tag number $k$ is required to
 equal $v$. This is a maximization over $k - 1$ tags because tag number k is fixed to
 have value v. Formally, 
-
+\begin{align}
 U(k,v)=max_{y_1 .. y_k} \sum_{i=1}^{k-1} g_i(y_{i-1},y_i) + g_i(y_{i-1},v)
+\end{align}
 
+which can be implemented efficiently recursive as
+\begin{align}
+U(k, v) = max_u [U(k-1, u) + g_k(u, v)]
+\label{recu}
+\end{align}
+
+Now, one can backtrack the path, which gives the highest probability.
 
 
 \subsection{Training via Stochastic Gradient Ascent}
-The weight vector $\w$ that maximizes equation \ref{Eq:rLCL} can be found using gradient ascent methods. The gradient of the $LCL$ with respect to the $j$th component of $\w$ is
+The weight vector $\w$ that maximizes Equation \ref{Eq:rLCL} can be found using gradient ascent methods. The gradient of the $LCL$ with respect to the $j$th component of $\w$ is
 \begin{align}
 	\frac{\partial LCL^*}{\partial \w_j } &= 
 		\sum_{n=1}^N \frac{\partial}{\partial \w_j }  \log\,p(\y_n\,|\,\x_n ;\,\w)  \notag \\
@@ -199,13 +208,24 @@ Together, the forwards and backwards algorithm can be used to calculate the part
 \end{align}
 
 \subsection{Collin's Perceptron Algorithm}
-Jonas
+By placing all the probability mass on the most likely y value i.e. 
+by using the approximation $p(y|x;w) = I(y = \hat{y})$ where $\hat{y}=argmax_y p(y|x;w)$,
+the stochastic gradient update rule simplifies to 
+
+\begin{align}
+	w_j := w_j + F_j(x, y)
+	w_j := w_j . F_j(x, \hat{y})
+\end{align}.
+This rule is applied for every weight $w_j$, for a given training example $\langle x, yi\rangle$. Given
+a training example $\x$, the label $\hat{y}$ can be thought of as an impostor compared to
+the genuine label y \ref{elkan}.
+
 \subsection{--Other Method--}
 Spencer
 
 \section{Methods}
 \subsection{Zulu Dataset}
-Details about dataset
+The Zulu dataset consists of 10,040 Zulu words with correct segmentations indicated. There are 107 words in the corpus that have more than one correct segmentation and are ignored i.e. it was worked with 9933 words. The longest word had 24 letters, the longest syllabus consists of 16 letters. 
 
 \subsection{Feature Selection}
 \begin{em}Window-features.\end{em} We made generic features that included all different windows of three, four, five, six or seven letters that existed in the words of the dataset. These features captured the letters of this part of the word together with two \begin{em}labels\end{em} indicating whether or not there was a syllable-split between the second last (label $\y_{i-1}$) and last (label $\y_i$) letter of the window in this word. One of the three-window feature functions generated from the word $\_j$: "abcdefg" hyphenated: "ab-cde-fg", would look as follows:
@@ -218,6 +238,14 @@ Here $\x_i$ is the letter at position i in the I(statement) is the indicator fun
 Two encodings: 001 vs. 123
 
 Features used for each encoding
+
+\subsection{Implementation}
+
+The Viterbi algorithm was implemented by first creating a table of score values $U(k,v)$. The table was created recursively by using Equation \ref{recu}. The score for the begin tags were added to $U(0,v)$. Before starting the backtracking, the score for the end tag were added to U(0,k).
+
+
+ followed by a backtracking phase.
+
 
 \subsection{Evaluation}
 %Remember to put in real numbers here
