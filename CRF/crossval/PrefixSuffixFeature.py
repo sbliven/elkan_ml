@@ -131,5 +131,5 @@ class PrefixSuffixFeature:
                     j = self._features.get( (xwin,ywin) )
                     if j is not None:
                         featureValueFile.write("%d\t%d\t%d\t%s\t%s\t1\n" % \
-                                (index, j, k, y1, y2) )
+                                (index, j, k if k>0 else len(word)+k+2, y1, y2) )
 

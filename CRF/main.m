@@ -8,9 +8,11 @@
 %  1. j
 %  2. i
 
-
+tags = [0 1 3 4];beginTag=3;endTag=4;
+disp('Reading input'),tic
 [f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/Zulu.win3-7.values.txt');
-%[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/fbTest/ab.values.txt');
+toc
+%[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/tinyTest/ab.values.txt');
 
 %% usefull operations:
 
@@ -42,6 +44,10 @@ wordlen = y(:,1);
 y = y(:,2:end);
 
 w = collinsPerceptron( 1, numWords, numTags, 0.1, J,  f, y, wordlen);
+
+%% Check SDS gradient
+w0 = rand(J,1);
+checkgrad(@(w) CRFrLCL(y,wordlen,f,w,lambda,tags,beginTag,endTag),w0,1e-4)
 
 
 
