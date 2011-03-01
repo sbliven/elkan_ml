@@ -188,8 +188,7 @@ the stochastic gradient update rule simplifies to
         w_j := w_j . F_j(x, \hat{y}).
 \end{align}
 This rule is applied for every weight $w_j$, for a given training example $\langle x, yi\rangle$. Given
-a training example $\x$, the label $\hat{y}$ can be thought of as an impostor compared to
-the genuine label y \ref{elkan}.
+a training example $\x$, the label $\hat{y}$ can be thought of as an impostor compared to the true label y \ref{elkan}.
 
 
 \section{Methods}
@@ -197,15 +196,33 @@ the genuine label y \ref{elkan}.
 \subsection{Zulu Dataset}
 The Zulu dataset consists of 10,040 Zulu words with correct segmentations indicated. There are 107 words in the corpus that have more than one correct segmentation and are ignored, leaving 9933 words. The longest word had 24 letters, the longest syllabus consists of 16 letters. 
 
+\subsection{Label encoding}
+To encode the syllable segmentation, two tags were used. For each letter in $word$, a tag 1 was assigned if the letter occurred on the end of a syllable, or tag 0 otherwise. The last letter of each word was assigned label 0 to allow differentiation of syllable boundaries from word termini. For instance, the word \begin{tt}akabezwa\end{tt} (\begin{em}``disobey''\end{em}) is segmented as \begin{tt}a`ka`bez`w`a\end{tt} and has label \begin{tt}10100110\end{tt}.
+
+An additional encoding method was considered but not implemented due to time constraints. Letters could be tagged with their position within a syllable. This would lead to label \begin{tt}12123112\end{tt} for \begin{tt}akabezwa\end{tt}. However, this method was expected to have poorer performance than the \begin{tt}01\end{tt} encoding due to the skewed distribution of labels (since short syllables are significantly more likely than long syllables).
+
+
 \subsection{Feature Selection}
-\begin{em}Window-features.\end{em} We made generic features that included all different windows of three, four, five, six or seven letters that existed in the words of the dataset. These features captured the letters of this part of the word together with two \begin{em}labels\end{em} indicating whether or not there was a syllable-split between the second last (label $\y_{i-1}$) and last (label $\y_i$) letter of the window in this word. One of the three-window feature functions generated from the word $\_j$: "abcdefg" hyphenated: "ab-cde-fg", would look as follows:
+Three models were used for generating features: window features, prefix/suffix features, and consonant/vowel features. Together these models produced around 73000 specific features, which vary slightly depending on the training set used.
+
+
+\begin{em}Window-features.\end{em} We made generic features that included all different windows of three, four, five, six or seven letters that existed in the words of the dataset. These features captured the letters of this part of the word together with the last two tags for each window. Formally, for all $k$-letter substrings $x_{i-k+1}x_{w-k+2}\dots x_{i}$ of $\x$ ending at position $i$ within all training words, and corresponding to label $uv$ at position $i-1,i$, we generate a feature of the form
 \begin{align}
-f_j(\bar{x},i,\y_{i-1},\y_i) =&I(\x_{i-2}=a)I(\x_{i-1}=b)I(\x_i=a)\notag\\
-&I(\y_{i-1}=1)I(\y_i=0)
+f_j(\y_{i-1},\y_i,\x,i) =& \prod_{w=1}^k I(\x_{i-w}= x_{i-w}) \notag\\
+&\cdot I(\y_{i-1}=u)I(\y_i=v)
 \end{align}
-Here $\x_i$ is the letter at position i in the I(statement) is the indicator function which yields '1' if the statement is true.
-\begin{em}Suffix- and prefix-features.\end{em}
-In order to capture beginnings and endings we also made similar features for prefixes and suffixes. These features are windows of length one to three in the beginning and end of the word and consider the words $\bar{x}$s) and labels($\y$s)
+Thus for a word \begin{tt}abcd\end{tt} with label \begin{tt}0010\end{tt} two 3-window features would be generated; one testing $I(x{i-2}x{i-1}x{i} = \mbox{``abc''})I(y{i-1}y{i} = ``01'')$, and one testing $I(x{i-2}x{i-1}x{i} = \mbox{``bcd''})I(y{i-1}y{i} = ``10'')$. Features were generated for windows from 3 to 7.
+
+\begin{em}Prefix and suffix features.\end{em}
+In order to capture beginnings and endings we also made similar features for prefixes and suffixes. These features are windows of length one or two which must occur at either the beginning or end of the word. For instance, the 1-prefix for letter \begin{tt}a\end{tt} and label \begin{tt}0\end{tt} would be
+\begin{align}
+f_j(\y_{i-1},\y_i,\x,i) =& I(i=1) I(x_i = a) I(y_{i-1}y_i = B0)
+\end{align}
+where the special label \begin{tt}B\end{tt} marks the beginning of the label. A 2-suffix for the letters \begin{tt}ka\end{tt} and label \begin{tt}00\end{tt} would be
+\begin{align}
+f_j(\y_{i-1},\y_i,\x,i) =& I(i=n) I(x_{i-1}x_i = ka) I(y_{i-1}y_i = 00)
+\end{align}
+
 \begin{em}Vowel- and consonant-features.\end{em}
 In addition we looked at vowel- and consonant-patterns. As Linda Van Huyssteen \cite{huyssteen03} showed there is a consonant-vowel-pattern, that is, syllables tend to end with a vowel. In order to capture this we made features with consonants/vowels(cv) in two and two letters together with their labels. We thus has 16 features of the form:
 \begin{align}
@@ -214,19 +231,40 @@ f_j(\bar{x},i,\y_{i-1},\y_i)=&I(\y_{i-1}=0)I(\y_i=1)I(\x_{i-1} is a consonant)I(
 
 Example above is the feature capturing the consonant-vowel-hyphenation-pattern. Other patterns that were common were vowel, consonant with hyphenation between the two and patterns with consonant, vowel and no hyphenation between the two.
 
-
 \subsection{Design of the Viterbi algorithm}
 The Viterbi algorithm was implemented by first creating a table of score values $U(k,v)$. The table was created recursively by using Equation \ref{recu}. The score for the begin tags were added to $U(0,v)$. Before starting the backtracking, the score for the end tag were added to U(0,k).
 followed by a backtracking phase.
 
+\subsection{Design of Stochastic Gradient Ascent}
+
+The parameter $\lambda$ was optimized based on a grid search with $\lambda = \left\{10^0, 10^1, 10^2\right\} $ on the first training fold. Subsequent folds used the same parameter settings for computational efficiency.
+
+As with the Viterbi algorithm, the forwards-backwards algorithm iteratively calculates tables of values for $\alpha(\cdot,\cdot)$. Features occuring at the beginning and end of labels were used to initialize the forwards and backwards tables.
+
 \subsection{Design of Collins Perceptron}
 
-
+The learning rate $\alpha$ was set to $0.02/T$. This is a widely used learning rate for gradient descent. Since Collins Perceptron is similar to gradient descent, this learning rate seemed appropriate.
 
 \subsection{Evaluation}
 %Remember to put in real numbers here
 Five-fold cross validation was used to evaluate the performance of our algorithm.  In each case, ~8000 words were used to optimize parameter settings and train the feature weights. 
 \section{Results}
+
+\begin{table}
+	\begin{tabular}{|l|l|l|}
+    	\hline
+    	~   	& Word Level Accuracy & Letter Level Accuracy \\
+    	Test 1  & 0.7074     &               0.9561	\\
+    	Test 2  & ~               	& ~                 	\\
+    	Test 3  & ~               	& ~                 	\\
+    	Test 4  & ~               	& ~                 	\\
+    	Test 5  & ~               	& ~                 	\\
+    	Overall & ~               	& ~                 	\\
+    	\hline
+	\end{tabular}
+	\caption{Results using Collins Perceptron with the Viterbi algorithm}
+\end{table}
+
 \section{Discussion}
 \section{Conclusion}
 %\nocite{}
