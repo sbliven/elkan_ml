@@ -1,4 +1,4 @@
-function [ w, j ] = collinsPerceptron( epochs, T, numTags, alpha,numF,  features, y, wordlengths)
+function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wordlengths)
 %collinsPerceptron runs Collins Perceptron
         
 
@@ -11,7 +11,7 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags, alpha,numF,  features
         %wordlengths = wordlengths of vectors
         
         
-
+        alpha = 0.02/T;
 
        % set up w randomly
        %w = rand(j,1);
