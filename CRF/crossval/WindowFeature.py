@@ -90,4 +90,3 @@ class WindowFeature:
                         if j is not None:
                             featureValueFile.write("%d\t%d\t%d\t%s\t%s\t1\n" % \
                                 (index, j, i, y1, y2) )
-                        
