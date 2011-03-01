@@ -1,4 +1,4 @@
-function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wordlengths,tempw)
+function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wordlengths)
 %collinsPerceptron runs Collins Perceptron
         
 
@@ -11,13 +11,14 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
         %wordlengths = wordlengths of vectors
         
         
-        alpha = 10;
+        alpha = 0.00000000000002;
 
        % set up w randomly
        
        
        %set up w as zeros
-       w = zeros(numF,1);
+        w = zeros(numF,1);
+
        
        % run e epochs
        for e=1:epochs
@@ -30,7 +31,7 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
                %i.e. call viterbi
                % yhat = argmax_y(p(y|x;w))
 
-               yhat = funviterbi(w, features{t}, wordlengths(t), numTags);
+               yhat = funviterbi(w, features{t}, wordlengths(t), numTags,3,4);
                
                
                %w = w - alpha * F(x,y);
@@ -38,9 +39,13 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
                
                
                %w = w - alpha * F(x,yhat);
-               w = w + alpha * F(features{t},yhat, wordlengths(t), numF);
+               w = w - alpha * F(features{t},yhat, wordlengths(t), numF);
                
-              
+              if(t==2)
+                  y(t,1:wordlengths(t))
+                  yhat
+              end
+               
               if(y(t,1:wordlengths(t)) == yhat)
                    
                   % warning('y = yhat, break;)');
