@@ -1,4 +1,4 @@
-function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wordlengths)
+function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wordlengths,tempw)
 %collinsPerceptron runs Collins Perceptron
         
 
@@ -11,17 +11,18 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
         %wordlengths = wordlengths of vectors
         
         
-        alpha = 0.02/T;
+        alpha = 10;
 
        % set up w randomly
-       %w = rand(j,1);
+       
        
        %set up w as zeros
        w = zeros(numF,1);
-        
+       
        % run e epochs
        for e=1:epochs
-         j=0;  
+         j=0; 
+         k=0;
            %for every training example do
            %for t=1:T
            for t=1:T  
@@ -40,14 +41,16 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
                w = w + alpha * F(features{t},yhat, wordlengths(t), numF);
                
               
-               if(y(t,1:wordlengths(t))' == yhat)
+              if(y(t,1:wordlengths(t)) == yhat)
                    
                   % warning('y = yhat, break;)');
-                   j=j+1;
+                   k=k+1;
                    %break;
                end
+               j = j + sum(y(t,1:wordlengths(t)) == yhat);
            end
            j
+           k
            
        end
     

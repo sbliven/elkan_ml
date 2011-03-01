@@ -2,12 +2,16 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
 % w is w-vector
 %word is f{wordindex}
 
+    if nargin < 5
+        beginTag=3;
+        endTag=4;
+    end
 
     initial=zeros(1,numTags);
     %set initial values with size 4 x 1
     i=beginTag;
      for j=1:numTags
-                    initial(1,j) = w' * word{i,j}(:,1);
+           initial(1,j) = w' * word{i,j}(:,1);
      end
 
    
@@ -15,9 +19,10 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
     score = initial';
 
     %Itrace = [];
-    Itrace  = zeros(numTags,wordlength);
+    Itrace  = zeros(numTags,wordlength-1);
 
-    for i = 2:wordlength+1
+    g=zeros(numTags,numTags);
+    for i = 2:wordlength
         %calculate g
         for k=1:numTags
             for l=1:numTags
@@ -27,11 +32,11 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
                        
         [maxScore I] = max(g+repmat(score', [numTags 1]), [], 2);
         score = maxScore + max(g)';
-       % Itrace = [I Itrace];
-       Itrace(:,wordlength-i+2) = I;
+       %Itrace = [I Itrace];
+       Itrace(:,wordlength-i+1) = I;
     
     end
-    ending = zeros(1,numTags);
+    ending = zeros(numTags,1);
       for i=1:numTags
      j=endTag;
             ending(i,1) = w' * word{i,j}(:,wordlength+1);
@@ -39,17 +44,17 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
     
     %end
     
-    
+    result = zeros(1,wordlength);
     % Backtracking
-    [~, Sopt] = max(score+ending);
+    [~, Sopt] = max(score);
 
-    result = zeros(wordlength,1);
+    %result = zeros(wordlength,1);
     result(wordlength) = Sopt;
-
-    for i = 2:size(Itrace,2)
+    %result = [Sopt];
+    for i = 1:size(Itrace,2)
         Sopt = Itrace(Sopt, i);
-        %result = [Sopt result];
-        result(wordlength-i+1) = Sopt;
+       % result = [Sopt result];
+        result(wordlength-i) = Sopt;
     end
 
     result = result -1;
