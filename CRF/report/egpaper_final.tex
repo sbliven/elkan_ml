@@ -235,9 +235,15 @@ f_j(\bar{x},i,\y_{i-1},\y_i) =&I(\x_{i-2}=a)I(\x_{i-1}=b)I(\x_i=a)\notag\\
 \end{align}
 Here $\x_i$ is the letter at position i in the I(statement) is the indicator function which yields '1' if the statement is true.
 
-Two encodings: 001 vs. 123
+\begin{em}Suffix- and prefix-features.\end{em}
+In order to capture beginnings and endings we also made similar features for prefixes and suffixes. These features are windows of length one to three in the beginning and end of the word and consider the words $\bar{x}$s) and labels($\y$s)
 
-Features used for each encoding
+\begin{em}Vowel- and consonant-features.\end{em}
+In addition we looked at vowel- and consonant-patterns. As Linda Van Huyssteen \cite{huyssteen03} showed there is a consonant-vowel-pattern, that is, syllables tend to end with a vowel. In order to capture this we made features with consonants/vowels(cv) in two and two letters together with their labels. We thus has 16 features of the form:
+
+f_j(\bar{x},i,\y_{i-1},\y_i)=&I(\y_{i-1}=0)I(\y_i=1)I(\x_{i-1} is a consonant)I(\x_{i} is a vowel)
+
+Example above is the feature capturing the consonant-vowel-hyphenation-pattern. Other patterns that were common were vowel, consonant with hyphenation between the two and patterns with consonant, vowel and no hyphenation between the two.
 
 \subsection{Implementation}
 
