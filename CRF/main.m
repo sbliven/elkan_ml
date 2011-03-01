@@ -102,5 +102,10 @@ w0 = rand(J,1);
 checkgrad(@(w) CRFrLCL(y,wordlen,f,w,lambda,tags,beginTag,endTag),w0,1e-4)
 
 
+%% SGD
+
+
+
+
 
 
