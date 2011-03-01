@@ -22,8 +22,8 @@
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 \ifcvprfinal\pagestyle{empty}\fi
 %use \x, \y, and \w for bold vector forms
-\newcommand{\x}{\mathbf{x}}
-\newcommand{\y}{\mathbf{y}}
+\newcommand{\x}{\bar{x}}
+\newcommand{\y}{\bar{y}}
 \newcommand{\w}{\mathbf{w}}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \begin{document}
@@ -62,9 +62,15 @@ University of California, San Diego\\
 % \hat{y} is the predicted label
 % tags are u or v
 % problem: y_1 is ambiguous: i=1 or n=1?
+
+
 \section{Introduction}
+
 Conditional random fields provide a generic model for performing supervised learning. Generic feature functions are used to transform complicated input data and labels into real numbers. This abstraction allows machine learning and statistical analysis on very complicated datasets.
+
 One such complicated problem is the automatic detection of syllable boundaries within words. Possible inputs include all words in a given language, plus the possibility of additional  neologisms which may be coined after the training period. Developing a classifier to determine syllable boundaries is an important task for automatic hyphenation, speech synthesis, and linguistic analysis.
+
+
 \subsection{Conditional Random Field model}
 The goal of supervised classification is to predict a label, $\y$, from some input data, $\x$. Conditional random fields do not place any restrictions on the type of data and labels being learned. To allow this abstraction, conditional random fields introduces the concept of \begin{em}feature functions\end{em} of the form $F(\x,\y)$ which attempt to measure the compatibility of $\x$ with the label $\y$. A number of such feature functions are calculated for each $(\x,\y)$ pair, and the weighted sum of $J$ feature functions is used to determine the probability that $\y$ is the correct label for $\x$, according the the equation
 \begin{equation}
@@ -74,17 +80,20 @@ where $z(\x;\w)$ normalizes the total mass over all possible labels $\y'$ to one
 \begin{equation}
         z(\x;\w) = \sum_{\y'} \exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right). \label{Eq:partition}
 \end{equation}
+
 To use this model for inference, one simply assigns the most probable label for a given $\x$,
 \begin{align}
         \hat{\y} & =\argmax_{\y} \, p(\y\,|\,\x;\w) \\
                 &= \argmax_{\y} \sum_{j=1}^J w_j F_j(\x,\y).
                 \label{equation}
 \end{align}
-The weights vector $\w$ is learned according to the principle of maximum likelihood. Thus, for some set of training pairs $(\x_n,\y_n)$ for $n=\left\{1,2,\dots,N\right\}$, the objective function is to maximize the total log likelihood w.~r.~t. $\w$ over all points of
+
+The weights vector $\w$ is learned according to the principle of maximum likelihood. Thus, for some set of training pairs $(\x_n,\y_n)$ for $n=\left\{1,2,\dots,N\right\}$, the objective function is to maximize the total log likelihood with respect to $\w$ over all points of
 \begin{align}
         LCL(\w) &= \sum_{n=1}^N \log\,p(\y_n\,|\,\x_n ;\,\w) \\
                 &= \sum_{n=1}^N \left( \sum_{j=1}^J w_j F_j (\x_n,\y_n) - \log z(\x_n;\w) \right).
 \end{align}
+
 During training, $L_2$ regularization is used such that most weights are near zero. This is important to prevent overfitting, since the number of features is often greater than the number of training pairs, resulting in an underspecified system. The regularized objective is
 \begin{align}
         LCL^*(\w) &= \sum_{n=1}^N \log\,p(\y_n\,|\,\x_n ;\,\w) - \lambda N\parallel \w \parallel^2 \\
@@ -93,9 +102,19 @@ During training, $L_2$ regularization is used such that most weights are near ze
                 \label{Eq:rLCL}
 \end{align}
 where $\lambda$ is the strength of regularization.
+
+
 \subsection{Linear Chain CRFs}
-Training a CRF means finding the weight vector w that gives the best possible prediction for equation (\ref{equation}) for each training example $\x$. The argmax computation is done efficiently by the Viterbi algorithm. 
-The $g_i$ values are assumed to be given by the preprocessing as a $m$ by $m$ Matrix:
+
+Training a CRF means finding the weight vector w that gives the best possible prediction for equation (\ref{equation}) for each training example $\x$. For the general case, computing Eq. \ref{equation} takes exponential time to iterate over all possible values.
+
+This problem can be circumvented by restricting the model to linear chain CRFs. This refers to CRFs with features which depend only on two consutive tags. This allows all features $F_j(\x,\y)$ to be decomposed into low-level feature functions
+\begin{align}
+F_j(\x,\y) &= \sum_{i=1}^{M_n} f_j(y_{i-1},y_{i},\x,i).
+\end{align}
+
+For linear chain CRFs, Eq \ref{equation} can be computated efficiently by the Viterbi algorithm. 
+The $g_i$ values are assumed to be given by preprocessing as a $m$ by $m$ Matrix:
 \begin{align}
 g_i(y_{i-1},y_i) = \sum_{j=1}^{J} w_j*f_j(y_{i-1},y_{i},x,i))  
 \end{align}
@@ -206,12 +225,12 @@ An additional encoding method was considered but not implemented due to time con
 Three models were used for generating features: window features, prefix/suffix features, and consonant/vowel features. Together these models produced around 73000 specific features, which vary slightly depending on the training set used.
 
 
-\begin{em}Window-features.\end{em} We made generic features that included all different windows of three, four, five, six or seven letters that existed in the words of the dataset. These features captured the letters of this part of the word together with the last two tags for each window. Formally, for all $k$-letter substrings $x_{i-k+1}x_{w-k+2}\dots x_{i}$ of $\x$ ending at position $i$ within all training words, and corresponding to label $uv$ at position $i-1,i$, we generate a feature of the form
+\begin{em}Window-features.\end{em} We made generic features that included all different windows of three, four, five, six or seven letters that existed in the words of the dataset. These features captured the letters of this part of the word together with the last two tags for each window. Formally, for all $k$-letter substrings $x_{i-k+1}x_{w-k+2}\dots x_{i}$ of $\x$ ending at position $i$ within all training words, and corresponding to label $u,v$ at position $i-1,i$, we generate a feature of the form
 \begin{align}
-f_j(\y_{i-1},\y_i,\x,i) =& \prod_{w=1}^k I(\x_{i-w}= x_{i-w}) \notag\\
+f_j(\x,\y_{i-1},\y_i,i) =& \prod_{w=1}^k I(\x_{i-w}= x_{i-w}) \notag\\
 &\cdot I(\y_{i-1}=u)I(\y_i=v)
 \end{align}
-Thus for a word \begin{tt}abcd\end{tt} with label \begin{tt}0010\end{tt} two 3-window features would be generated; one testing $I(x{i-2}x{i-1}x{i} = \mbox{``abc''})I(y{i-1}y{i} = ``01'')$, and one testing $I(x{i-2}x{i-1}x{i} = \mbox{``bcd''})I(y{i-1}y{i} = ``10'')$. Features were generated for windows from 3 to 7.
+Thus for a word \begin{tt}abcd\end{tt} with label \begin{tt}0010\end{tt} two 3-window features would be generated; one testing $I(x_{i-2}x_{i-1}x_{i} = \mbox{``abc''})I(y_{i-1}y_{i} = ``01'')$, and one testing $I(x{i-2}x{i-1}x{i} = \mbox{``bcd''})I(y{i-1}y{i} = ``10'')$. Features were generated for windows from 3 to 7.
 
 \begin{em}Prefix and suffix features.\end{em}
 In order to capture beginnings and endings we also made similar features for prefixes and suffixes. These features are windows of length one or two which must occur at either the beginning or end of the word. For instance, the 1-prefix for letter \begin{tt}a\end{tt} and label \begin{tt}0\end{tt} would be
@@ -223,17 +242,18 @@ where the special label \begin{tt}B\end{tt} marks the beginning of the label. A 
 f_j(\y_{i-1},\y_i,\x,i) =& I(i=n) I(x_{i-1}x_i = ka) I(y_{i-1}y_i = 00)
 \end{align}
 
-\begin{em}Vowel- and consonant-features.\end{em}
-In addition we looked at vowel- and consonant-patterns. As Linda Van Huyssteen \cite{huyssteen03} showed there is a consonant-vowel-pattern, that is, syllables tend to end with a vowel. In order to capture this we made features with consonants/vowels(cv) in two and two letters together with their labels. We thus has 16 features of the form:
+\begin{em}Vowel and consonant features.\end{em}
+In addition we looked at vowel- and consonant-patterns. South African Linguist Linda Van Huyssteen \cite{huyssteen03} notes that Zulu syllables are often `open' syllables, meaning they tend to end with vowels. In order to capture this we made features with consonants/vowels(cv) in two and two letters together with their labels. We thus has 16 features of the form:
 \begin{align}
-f_j(\bar{x},i,\y_{i-1},\y_i)=&I(\y_{i-1}=0)I(\y_i=1)I(\x_{i-1} is a consonant)I(\x_{i} is a vowel)
+f_j(\y_{i-1},\y_i,\x,i)=&I(\y_{i-1}=0)I(\y_i=1) \notag \\
+& I(\x_{i-1} \in \mathcal{C})I(\x_{i} \in \mathcal{V})
 \end{align}
+for all combinations of tags $0,1$ and letters in sets $\mathcal{C},\mathcal{V}$ representing consonants and vowels.
 
-Example above is the feature capturing the consonant-vowel-hyphenation-pattern. Other patterns that were common were vowel, consonant with hyphenation between the two and patterns with consonant, vowel and no hyphenation between the two.
+The example above is the feature capturing the consonant-vowel hyphenation pattern. Other patterns that were common were vowel, consonant with hyphenation between the two and patterns with consonant, vowel and no hyphenation between the two.
 
 \subsection{Design of the Viterbi algorithm}
-The Viterbi algorithm was implemented by first creating a table of score values $U(k,v)$. The table was created recursively by using Equation \ref{recu}. The score for the begin tags were added to $U(0,v)$. Before starting the backtracking, the score for the end tag were added to U(0,k).
-followed by a backtracking phase.
+The Viterbi algorithm was implemented by first creating a table of score values $U(k,v)$. The table was created recursively by using Equation \ref{recu}. The score for the begin tags were added to $U(0,v)$. Before starting the backtracking, the score for the end tag were added to U(0,k). The Viterbi algorithm has complexity $O(n^2)$.
 
 \subsection{Design of Stochastic Gradient Ascent}
 
@@ -244,6 +264,7 @@ As with the Viterbi algorithm, the forwards-backwards algorithm iteratively calc
 \subsection{Design of Collins Perceptron}
 
 The learning rate $\alpha$ was set to $0.02/T$. This is a widely used learning rate for gradient descent. Since Collins Perceptron is similar to gradient descent, this learning rate seemed appropriate.
+The algorithm needs only 3 epochs until convergence in our case.
 
 \subsection{Evaluation}
 %Remember to put in real numbers here
@@ -267,7 +288,12 @@ Five-fold cross validation was used to evaluate the performance of our algorithm
 
 \section{Discussion}
 \section{Conclusion}
-%\nocite{}
+
+Conditional Random Fields form a very general method for supervised learning. Their main strength comes from the huge variety of feature functions that can be used for analysis, and the fact that these features can be applied to non-numerical data such as natural languages.
+
+In this study we were able to predict syllable boundaries with high accuracy. This can be attributed to our wide range of features, including both naive but comprehensive window features and more sophisticated consonant-vowel features based on prior linguistic knowledge. 
+
+\nocite{bishop06,bottou11,elkan11}
 {\small
 \bibliographystyle{ieee}
 \bibliography{egbib}
