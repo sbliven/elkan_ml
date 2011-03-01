@@ -9,9 +9,41 @@
 %  2. i
 
 tags = [0 1 3 4];beginTag=3;endTag=4;
-disp('Reading input'),tic
-[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/Zulu.win3-7.values.txt');
-toc
+
+%% Training
+
+for k = 1:5
+    %disp(sprintf('Reading input %d',k),tic
+    
+    prefix = 'crossval/CV on 200/zulu';
+    trainvaluefile = sprintf('%s.%d.train.value.txt', prefix, k-1);
+    trainlabelfile = sprintf('%s.%d.train.label.txt', prefix, k-1);
+    weightsfile = sprintf('%s.%d.weights.mat', prefix, k-1);
+    
+    [trainF, numWords, numTags, J, maxI] = loadFeatures(trainvaluefile);
+    
+    y = load(trainlabelfile);
+    wordlen = y(:,1);
+    y = y(:,2:end);
+
+    %w = collinsPerceptron( 1, numWords, numTags, 0.1, J,  f, y, wordlen);
+    
+    lambda = .1;
+    epochs = 5;
+    w = zeros(J,1);
+    CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
+    for epoch = 1
+        w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);
+        CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
+    end
+    
+    save(weightsfile,w);
+end
+
+%% Testing
+
+    testvaluefile = sprintf('%s.%d.test.value.txt', prefix, k-1);
+    testlabelfile = sprintf('%s.%d.test.label.txt', prefix, k-1);
 %[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/tinyTest/ab.values.txt');
 
 %% usefull operations:
