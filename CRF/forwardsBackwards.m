@@ -10,7 +10,7 @@ function [ forwards, backwards, M ] = forwardsBackwards( fx, w, wordLen, numTags
 N = wordLen;
 V = numTags;
 
-tic
+display('Calculating M'),tic
 % Calculate Mi
 M = cell(N+1,1);
 for i = 2:N %normal M
@@ -34,7 +34,7 @@ for u = 1:V
     M{N+1}(1,u) = exp(w'*fx{u,endTag}(:,N+1));
 end
 
-toc,tic
+toc,display('Calculating forwards backwards'), tic
 
 % positions should be numbered 1:N
 forwards = zeros(V, N);

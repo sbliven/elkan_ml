@@ -21,6 +21,6 @@ end
 
 %Z = generateLabel(1, zeros(wordLen,1), @numerator);
 
-Z = generateLabel(1, zeros(wordLen,1), @(y) CRF(y, fx,w,tags,beginTag,endTag));
+Z = generateLabel(1, zeros(wordLen,1), @(y) exp(logCRF(y, fx,w,tags,beginTag,endTag)));
 
 end
