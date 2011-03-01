@@ -100,6 +100,7 @@ To use this model for inference, one simply assigns the most probable label for 
 \begin{align}
 	\hat{\y} & =\argmax_{\y} \, p(\y\,|\,\x;\w) \\
 		&= \argmax_{\y} \sum_{j=1}^J w_j F_j(\x,\y).
+		\label{equation}
 \end{align}
 
 
@@ -118,7 +119,20 @@ During training, $L_2$ regularization is used such that most weights are near ze
 where $\lambda$ is the strength of regularization.
 
 \subsection{Linear Chain CRFs}
-Jonas: Linear Chain CRFs \& connection to Viterbi algorithm
+Training a CRF means finding the weight vector w that gives the best possible prediction for equation (\ref{equation}) for each training example $\x$. The argmax computation is done efficiently by the Viterbi algorithm. 
+
+The $g_i$ values are assumed to be given by the preprocessing as a $m$ by $m$ Matrix:
+\begin{
+g_i(y_{i-1},y_i) = \sum_{j=1}^{J} w_j*f_j(y_{i-1},y_{i},x,i))  
+\end{align}
+
+Let $v$ range over the range of tags. Define $U(k, v)$ to be the score of the best
+sequence of tags from position $1$ to position $k$, where tag number $k$ is required to
+equal $v$. This is a maximization over $k - 1$ tags because tag number k is fixed to
+have value v. Formally, 
+
+U(k,v)=max_{y_1 .. y_k} \sum_{i=1}^{k-1} g_i(y_{i-1},y_i) + g_i(y_{i-1},v)
+
 
 
 \subsection{Training via Stochastic Gradient Ascent}

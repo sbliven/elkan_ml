@@ -1,6 +1,6 @@
-function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlengths)
+function [ w, j ] = collinsPerceptron( epochs, T, numTags, alpha,numF,  features, y, wordlengths)
 %collinsPerceptron runs Collins Perceptron
-
+        
 
         %  epochs = # epochs
         % T = # training examples
@@ -18,19 +18,18 @@ function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlen
        
        %set up w as zeros
        w = zeros(numF,1);
-   
-
+        
        % run e epochs
        for e=1:epochs
-           
+         j=0;  
            %for every training example do
-           for t=1:T
-               
+           %for t=1:T
+           for t=1:T  
                %find the best output under the current weights
                %i.e. call viterbi
                % yhat = argmax_y(p(y|x;w))
 
-               yhat = funviterbi(w, features{t}, wordlengths(t));
+               yhat = funviterbi(w, features{t}, wordlengths(t), numTags);
                
                
                %w = w - alpha * F(x,y);
@@ -40,15 +39,15 @@ function [ w ] = collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlen
                %w = w - alpha * F(x,yhat);
                w = w + alpha * F(features{t},yhat, wordlengths(t), numF);
                
-               
-               
-
+              
                if(y(t,1:wordlengths(t))' == yhat)
                    
-                   warning('y = yhat, break;)');
-                   break;
+                  % warning('y = yhat, break;)');
+                   j=j+1;
+                   %break;
                end
            end
+           j
            
        end
     
