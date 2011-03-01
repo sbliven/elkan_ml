@@ -1,4 +1,4 @@
-function [ wordacc , letteracc ] = testAccuracy(w, testY, testwordlen, testF, tags, numWords, numTags)
+function [ wordacc , letteracc ] = testAccuracy(w, testY, testwordlen, testF, numWords, numTags)
 
     wordacc = 0;
     letteracc = 0;
