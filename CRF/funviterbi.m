@@ -21,7 +21,7 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
     %Itrace = [];
     Itrace  = zeros(numTags,wordlength-1);
 
-    g=zeros(numTags,numTags);
+    g=zeros(2,2);
     for i = 2:wordlength
         %calculate g
         for k=1:numTags
@@ -46,7 +46,7 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
     
     result = zeros(1,wordlength);
     % Backtracking
-    [~, Sopt] = max(score);
+    [~, Sopt] = max(score+ending);
 
     %result = zeros(wordlength,1);
     result(wordlength) = Sopt;
@@ -59,4 +59,3 @@ function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
 
     result = result -1;
 end
-
