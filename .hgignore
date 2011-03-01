@@ -12,7 +12,7 @@ octave-core
 *.class
 *.pyo
 *.pyc
-
+*~
 syntax: regexp
 .*/report/.*\.aux
 .*/report/.*\.log
