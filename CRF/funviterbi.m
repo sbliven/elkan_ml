@@ -11,17 +11,18 @@ function [ result ] = funviterbi(w, word, wordlength, numTags)
     %wordlength = 6;
 
     %set initial values with size 4 x 1
-    initial = zeros(numTags,1)+0.5;
+    initial = [0; 0; 1; 0];
+    
 
     %a are the g_i matrices and have size 2, 2
     g = zeros(numTags,numTags);
     
     for i=1:numTags
-        for j=1:numtags
+        for j=1:numTags
                 g(i,j) = w' * word{i,j}(:,1);
         end
     end
-    
+    %g
 
     
     
@@ -29,17 +30,18 @@ function [ result ] = funviterbi(w, word, wordlength, numTags)
     score = initial + max(g,[],2);
 
     %Itrace = [];
-    Itrace  = zeros(numTags,wordlength-1);
+    Itrace  = zeros(numTags,wordlength);
 
 
     for i = 2:wordlength+1
         %calculate g
         for k=1:numTags
-            for l=1:numtags
+            for l=1:numTags
                     g(k,l) = w' * word{k,l}(:,i);
             end
         end
-        
+        i
+        %g
         %if(sum(sum(g))==0)
         %    warning('All g_i values are 0');
         %end
@@ -49,21 +51,21 @@ function [ result ] = funviterbi(w, word, wordlength, numTags)
         [maxScore I] = max(g+repmat(score', [numTags 1]), [], 2);
         score = maxScore + max(g)';
        % Itrace = [I Itrace];
-       Itrace(:,wordlength-i+1) = I;
-
+       Itrace(:,wordlength-i+2) = I;
+    
     end
-
-
+    
+    
     % Backtracking
     [Lopt Sopt] = max(score);
 
-    result = zeros(wordlength+1,1);
-    result(wordlength+1) = Sopt;
+    result = zeros(wordlength,1);
+    result(wordlength) = Sopt;
 
-    for i = 1:size(Itrace,2)
+    for i = 2:size(Itrace,2)
         Sopt = Itrace(Sopt, i);
         %result = [Sopt result];
-        result(wordlength-i) = Sopt;
+        result(wordlength-i+1) = Sopt;
     end
 
     result = result -1;

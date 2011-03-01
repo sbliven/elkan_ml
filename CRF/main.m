@@ -8,7 +8,9 @@
 %  1. j
 %  2. i
 
-[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/Zulu.win3-7.values.txt',10);
+
+[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/Zulu.win3-7.values.txt');
+%[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/fbTest/ab.values.txt');
 
 %% usefull operations:
 
@@ -33,9 +35,13 @@ spy(s);
 %collinsPerceptron( epochs, T, alpha,numF,  features, y, wordlengths)
 
 y = load('FeatureValues/Zulu.win3-7.labels.txt');
-%wordlength
-tmp=load('data/wordlength;wordindex,length.txt');
-w = collinsPerceptron( 1, numWords,numTags, 0.1, J,  f, y, tmp(:,2));
+
+
+%tmp=load('data/wordlength;wordindex,length.txt');
+wordlen = y(:,1);
+y = y(:,2:end);
+
+w = collinsPerceptron( 1, numWords, numTags, 0.1, J,  f, y, wordlen);
 
 
 

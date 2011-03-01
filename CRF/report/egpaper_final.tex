@@ -64,6 +64,20 @@ University of California, San Diego\\
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
+
+%INDICES:
+% words n=1...N
+% features j=1...J
+% positions i=1...M_n
+% tags k=1...V
+
+%LABELS
+% y_n is the correct label
+% y' is any label
+% \hat{y} is the predicted label
+% tags are u or v
+% problem: y_1 is ambiguous: i=1 or n=1?
+
 \section{Introduction}
 Conditional random fields provide a generic model for performing supervised learning. Generic feature functions are used to transform complicated input data and labels into real numbers. This abstraction allows machine learning and statistical analysis on very complicated datasets.
 
@@ -79,32 +93,111 @@ The goal of supervised classification is to predict a label, $\y$, from some inp
 \end{equation}
 where $z(\x;\w)$ normalizes the total mass over all possible labels $\y'$ to one and is equal to
 \begin{equation}
-	z(\x;\w) = \sum_{\y'} \exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right).
+	z(\x;\w) = \sum_{\y'} \exp \left( \sum_{j=1}^J w_j F_j (\x,\y) \right). \label{Eq:partition}
 \end{equation}
 
 To use this model for inference, one simply assigns the most probable label for a given $\x$,
 \begin{align}
 	\hat{\y} & =\argmax_{\y} \, p(\y\,|\,\x;\w) \\
 		&= \argmax_{\y} \sum_{j=1}^J w_j F_j(\x,\y).
+		\label{equation}
 \end{align}
 
-The weights vector $\w$ is learned according to the principle of maximum likelihood. Thus, for some set of training pairs $(\x_i,\y_i)$ for $i=\left\{1,2,\dots,N\right\}$, the objective function is to maximize the total log likelihood w.~r.~t. $\w$ over all points of
+
+The weights vector $\w$ is learned according to the principle of maximum likelihood. Thus, for some set of training pairs $(\x_n,\y_n)$ for $n=\left\{1,2,\dots,N\right\}$, the objective function is to maximize the total log likelihood w.~r.~t. $\w$ over all points of
 \begin{align}
-	LCL(\w) &= \sum_{i=1}^N \log\,p(\y_i\,|\,\x_i ;\,\w) \\
-		&= \sum_{i=1}^N \left( \sum_{j=1}^J w_j F_j (\x_i,\y_i) - \log z(\x_i;\w) \right).
+	LCL(\w) &= \sum_{n=1}^N \log\,p(\y_n\,|\,\x_n ;\,\w) \\
+		&= \sum_{n=1}^N \left( \sum_{j=1}^J w_j F_j (\x_n,\y_n) - \log z(\x_n;\w) \right).
 \end{align}
 During training, $L_2$ regularization is used such that most weights are near zero. This is important to prevent overfitting, since the number of features is often greater than the number of training pairs, resulting in an underspecified system. The regularized objective is
 \begin{align}
-	LCL^*(\w) &= \sum_{i=1}^N \log\,p(\y_i\,|\,\x_i ;\,\w) - \lambda N\parallel \w \parallel^2 \\
-		&= \sum_{i=1}^N \left( \sum_{j=1}^J w_j F_j (\x_i,\y_i)  - \log z(\x_i;\w) \right) \notag \\
+	LCL^*(\w) &= \sum_{n=1}^N \log\,p(\y_n\,|\,\x_n ;\,\w) - \lambda N\parallel \w \parallel^2 \\
+		&= \sum_{n=1}^N \left( \sum_{j=1}^J w_j F_j (\x_n,\y_n)  - \log z(\x_n;\w) \right) \notag \\
 		&\hspace{1 em}  - \lambda N\parallel \w \parallel^2
+		\label{Eq:rLCL}
 \end{align}
 where $\lambda$ is the strength of regularization.
 
-CRF Gradient
-
 \subsection{Linear Chain CRFs}
-Jonas: Linear Chain CRFs \& connection to Viterbi algorithm
+Training a CRF means finding the weight vector w that gives the best possible prediction for equation (\ref{equation}) for each training example $\x$. The argmax computation is done efficiently by the Viterbi algorithm. 
+
+The $g_i$ values are assumed to be given by the preprocessing as a $m$ by $m$ Matrix:
+\begin{
+g_i(y_{i-1},y_i) = \sum_{j=1}^{J} w_j*f_j(y_{i-1},y_{i},x,i))  
+\end{align}
+
+Let $v$ range over the range of tags. Define $U(k, v)$ to be the score of the best
+sequence of tags from position $1$ to position $k$, where tag number $k$ is required to
+equal $v$. This is a maximization over $k - 1$ tags because tag number k is fixed to
+have value v. Formally, 
+
+U(k,v)=max_{y_1 .. y_k} \sum_{i=1}^{k-1} g_i(y_{i-1},y_i) + g_i(y_{i-1},v)
+
+
+
+\subsection{Training via Stochastic Gradient Ascent}
+The weight vector $\w$ that maximizes equation \ref{Eq:rLCL} can be found using gradient ascent methods. The gradient of the $LCL$ with respect to the $j$th component of $\w$ is
+\begin{align}
+	\frac{\partial LCL^*}{\partial \w_j } &= 
+		\sum_{n=1}^N \frac{\partial}{\partial \w_j }  \log\,p(\y_n\,|\,\x_n ;\,\w)  \notag \\
+	&\hspace{1 em} - \lambda N  \frac{\partial}{\partial \w_j }\parallel \w \parallel^2 \\
+	%&= \sum_{n=1}^N \left( F_j(x_n,y_n) -  \sum_{\y'} p(\y'\,|\,\x_n ;\,\w)\,F_j(\x_n, \y' ) \right)  \notag \\
+	%&\hspace{1 em} 	- 2 \lambda N   \w_j \\
+	&= \sum_{n=1}^N \left( F_j(\x_n,\y_n) -   \mathbb{E}_{\y'\,|\,\x_n} \left[ F_j(\x_n, \y' ) \right] \right)  \notag \\
+	&\hspace{1 em} 	- 2 \lambda N   \w_{j}. \label{Eq:gradient}
+\end{align}
+The expectation in equation \ref{Eq:gradient} can be calculated by summing over all possible labels $\y'$ according to
+\begin{align}
+	\mathbb{E}_{\y'\,|\,\x_n} \left[ F_j(\x_n, \y' ) \right] &= \sum_{\y'} p(\y'\,|\,\x_n ;\,\w)\,F_j(\x_n, \y' ). \label{Eq:expectation}
+\end{align}
+
+% Define \M for forwards-backwards score
+\newcommand{\M}{\mathcal{M}}
+
+For general CRFs computing the expectation is computationally intensive since it requires summing over $V^M_n$ possible length-$M_n$ labels. For linear chain CRFs this can be solved in time $O(M_n V^2 J^2 + V^2 M_n)$ using the 
+\begin{em}forwards-backwards\end{em}
+algorithm, which is large but polynomial. The forwards-backwards algorithm involves computing two functions recursively. Let $\alpha(i,u)$ be the unnormalized  probability of the tag sequence $y_1 y_2 \dots y_i$ ending with $y_i  = u$. This can be calculated as
+\begin{align}
+	\alpha(i,u) &= \sum_{k=1}^V \alpha(i-1, v_k) \M_i(v_k,u)
+\end{align}
+for all tags $v_k$, where $\M_i(v_k,u)$ is the score
+\begin{align}
+	\M_i(v,u) &= \exp \sum_{j=1}^J w_j\, f_j(v,u,\x,i).
+\end{align}
+The base case for the forwards vector is
+\begin{align}
+	\alpha(1,v) = \M_i(\mbox{\textsc{begin}},v)
+\end{align}
+
+The backwards vector, $\beta(u,i)$, is the unnormalized probability of the tag sequence $y_i y_{i+1}\dots y_{M}$.  This is given as
+\begin{align}
+	\beta(u,i) = \sum_{k=1}^V \beta(v_k,i+1)\M_{i+1}(u,v_k)
+\end{align}
+with base case
+\begin{align}
+	\beta(v,n) = \M_{i+1}(u,\mbox{\textsc{end}}).
+\end{align}
+
+Together, the forwards and backwards algorithm can be used to calculate the partition function (Eq.\ \ref{Eq:partition}) and conditional expectation (Eq.\ \ref{Eq:expectation}).
+\begin{align}
+	z(\x_n;\w) &= \sum_{k=1}^V \alpha(M_n, v_k) \M_{M_n}(v_k,\mbox{\textsc{end}}) \\
+	&= \sum_{k=1}^V \beta(v_k, 1)  \M_1(\mbox{\textsc{begin}}, v_k)
+\end{align}
+\begin{align}
+	p(y_i = u | \x; \w) &= \frac{\alpha(i,u)\beta(u,i)}{z(\x;\w)}
+\end{align}
+\begin{align}
+	p(y_{i-1}=u,y_i=v|\x;\w) &= \frac{\alpha(i,u)\M_{i+1}\beta(v,i+1)}{z(\x;\w)}
+\end{align}
+\begin{align}
+	\mathbb{E}_{\y'\,|\,\x_n} & \left[ F_j(\x_n, \y' ) \right] 
+		= \sum_{i=1}^{M_n} \mathbb{E}_{\y'\,|\,\x_n} \left[f_j(y_{i-1},y_i,\x_n, i ) \right] \\
+		&= \sum_{i=1}^{M_n} \sum_{k=1}^V \sum_{l=1}^V \big[ p(y_{i-1}=v_k,y_i=v_l\,|\,\x_n ;\,\w) \notag \\
+		& \hspace{6 em} \cdot f_j(y_{i-1},y_i,\x_n, i ) \big] \\
+		&= \sum_{i=1}^{M_n} \sum_{k=1}^V \sum_{l=1}^V \Big[ f_j(y_{i-1},y_i,\x_n, i ) \notag \\
+		& \hspace{6 em} \cdot  \frac{\alpha(i,u)\M_{i+1}\beta(v,i+1)}{z(\x;\w)} \Big]
+\end{align}
+
 \subsection{Collin's Perceptron Algorithm}
 Jonas
 \subsection{--Other Method--}
