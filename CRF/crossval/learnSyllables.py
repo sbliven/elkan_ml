@@ -9,6 +9,7 @@ import optparse
 from syllableParser import parseSyllableFile
 from WindowFeature import WindowFeature
 from PrefixSuffixFeature import PrefixSuffixFeature
+from ConsonantVowelFeature import ConsonantVowelFeature
 
 if __name__ == "__main__":
     parser = optparse.OptionParser( usage="usage: python %prog [options] inputFile valueFile featureFile wordFile labelFile" )
@@ -27,69 +28,81 @@ if __name__ == "__main__":
     
     indices=range(len(trainData));
     
-    f=[]
-    f.append(open('zulu.1.feature','w'))
-    f.append(open('zulu.2.feature','w'))
-    f.append(open('zulu.3.feature','w'))
-    f.append(open('zulu.4.feature','w'))
-    f.append(open('zulu.5.feature','w'))
-    
-    namefile=[]
-    namefile.append(open('zulu.1.name','w'))
-    namefile.append(open('zulu.2.name','w'))
-    namefile.append(open('zulu.3.name','w'))
-    namefile.append(open('zulu.4.name','w'))
-    namefile.append(open('zulu.5.name','w'))
-    
-    wordfold=[]
-    wordfold.append(open('zulu.1.train.words','w'))
-    wordfold.append(open('zulu.2.train.words','w'))
-    wordfold.append(open('zulu.3.train.words','w'))
-    wordfold.append(open('zulu.4.train.words','w'))
-    wordfold.append(open('zulu.5.test.words','w'))
-
-    labelfold=[]    
-    labelfold.append(open('zulu.1.train.label','w'))
-    labelfold.append(open('zulu.2.train.label','w'))
-    labelfold.append(open('zulu.3.train.label','w'))
-    labelfold.append(open('zulu.4.train.label','w'))
-    labelfold.append(open('zulu.5.train.label','w'))
-    
-    trainfold=[]
-    for i in range(5):
-        trainfold.append([])
-    
-    print trainfold
+    trainfold=[[] for i in range(5)]
+    testfold=[[] for i in range(5)]
     
     from random import shuffle; indices=list(indices); shuffle(indices)
-    for i in range(len(indices)):
-        [word,label,index] = trainData[indices[i]]
-        
-        trainfold[i%5].append(trainData[indices[i]])
-        wordfold[i%5].write("%d\t%s\t%s\n" % (index,word,label))
-        maxI = max( [len(l) for w,l,i in trainData])
-        labelfold[i%5].write( " ".join( [tag for tag in label] + ["-1"]*(maxI-len(label)+1) )+" "+str(len(word)))
-        labelfold[i%5].write("\n")
     
-        for i in range(len(namefile)):
-            J = 0 #number of features
-        featureGenerators = [WindowFeature(k,"01")
-                for k in range(options.minK,options.maxK+1) ]
-        featureGenerators.extend( [ PrefixSuffixFeature(k,"01") 
-                for k in xrange(1,3) ]) #prefix
-        featureGenerators.extend( [ PrefixSuffixFeature(-k,"01") 
-                for k in xrange(1,3) ]) #suffix
+    J=[0,0,0,0,0]
+    
+    for k in range(5):        
+        for i in range(len(indices)):
+            [word,label,index] = trainData[indices[i]]
+            if(i%5==k):
+                testfold[k].append(trainData[indices[i]])
+            else:
+                trainfold[k].append(trainData[indices[i]])
+        
+    for k in range(5):
+        
+        trainwordfile=open('zulu.%d.train.word.txt'%(k),'w')
+        testwordfile=open('zulu.%d.test.word.txt'%(k),'w')
+        
+        trainlabelfile=open('zulu.%d.train.label.txt'%(k),'w')
+        testlabelfile=open('zulu.%d.test.label.txt'%(k),'w')
+        
+        featurefile=open('zulu.%d.feature.txt'%(k),'w')
+        
+        index=0
+        
+        for i in xrange(len(trainfold[k])):
+            (word,label,index)=trainfold[k][i]
+            trainfold[k][i]=(word,label,i+1)
+        
+        for i in xrange(len(testfold[k])):
+            (word,label,index)=testfold[k][i]
+            testfold[k][i]=(word,label,i+1)
+        
+        
+        #Write traindata to file
+        for (word,label,unused) in trainfold[k]:
+            index+=1
+            maxI = max( [len(l) for w,l,i in trainfold[k]])
+            trainwordfile.write("%d\t%s\t%s\n" % (index,word,label))
+            trainlabelfile.write( "%d\t" % len(word) )
+            trainlabelfile.write( "\t".join( [tag for tag in label] + ["-1"]*(maxI-len(label)+1)))
+            trainlabelfile.write("\n")
+        trainwordfile.close()
+        trainlabelfile.close()
+        
+        index=0
+        #Write testdata to file
+        for (word,label,unused) in testfold[k]:
+            index+=1
+            testwordfile.write("%d\t%s\t%s\n" % (index,word,label))
+            testlabelfile.write( "%d\t" % len(word) )
+            testlabelfile.write( " ".join( [tag for tag in label] + ["-1"]*(maxI-len(label)+1)))
+            testlabelfile.write("\n")
+        testwordfile.close()
+        testlabelfile.close()
+        
+        featureGenerators=[WindowFeature(k1,"01")
+                for k1 in range(options.minK,options.maxK+1) ]
+        featureGenerators.extend( [ PrefixSuffixFeature(k1,"01") 
+                for k1 in xrange(1,3) ]) #prefix
+        featureGenerators.extend( [ PrefixSuffixFeature(-k1,"01") 
+                for k1 in xrange(1,3) ]) #suffix
+        featureGenerators.append(ConsonantVowelFeature())
+        
+        J=0
+        for fg in featureGenerators:
+            J = fg.learnFeatures(trainfold[k], J, featurefile)
+        featurefile.close()
 
+        trainvaluefile=open('zulu.%d.train.value.txt'%(k),'w')
+        testvaluefile=open('zulu.%d.test.value.txt'%(k),'w')
         for fg in featureGenerators:
-            J = fg.learnFeatures(trainfold[i], J, namefile[i])
-
-    valuefile=[]
-    for i in range(5):
-        valuefile.append(open('zulu.'+str(i+1)+'.value','w'))
-        J = 0 #number of features
-        featureGenerators = [WindowFeature(k,"01")
-                for k in range(options.minK,options.maxK+1) ]
-        for fg in featureGenerators:
-            J = fg.learnFeatures(wordfold[i], J, namefile[i])
-        for fg in featureGenerators:
-            fg.evaluate(wordfold[i], valuefile[i])
+            fg.evaluate(trainfold[k],trainvaluefile)
+            fg.evaluate(testfold[k],testvaluefile)
+        trainvaluefile.close();
+        testvaluefile.close();
