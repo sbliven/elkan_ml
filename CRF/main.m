@@ -13,9 +13,9 @@ tags = [0 1 3 4];beginTag=3;endTag=4;
 %% Training
 
 for k = 1:5
-    %disp(sprintf('Reading input %d',k),tic
+    disp(sprintf('Reading input %d',k)),tic
     
-    prefix = 'crossval/CV on 200/zulu';
+    prefix = 'crossval/CV on whole training set/zulu';
     trainvaluefile = sprintf('%s.%d.train.value.txt', prefix, k-1);
     trainlabelfile = sprintf('%s.%d.train.label.txt', prefix, k-1);
     weightsfile = sprintf('%s.%d.weights.mat', prefix, k-1);
@@ -25,25 +25,45 @@ for k = 1:5
     y = load(trainlabelfile);
     wordlen = y(:,1);
     y = y(:,2:end);
-
+    toc
+    saveFile = sprintf('%s.%d.train.mat',prefix,k-1);
+    save saveFile k trainF numWords numTags J maxI tags beginTag endTag wordlen y
+    
     %w = collinsPerceptron( 1, numWords, numTags, 0.1, J,  f, y, wordlen);
     
-    lambda = .1;
-    epochs = 5;
-    w = zeros(J,1);
-    CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
-    for epoch = 1
-        w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);
-        CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
-    end
+%     lambda = 10;
+%     epochs = 5;
+%     w = zeros(J,1);
+%     lcls = zeros(epochs+1,1);
+%     lcls(1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
+%     for epoch = 1:epochs
+%         tic,w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);toc
+%         tic,lcls(epoch+1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag),toc
+%     end
     
-    save(weightsfile,w);
+%     save(weightsfile,w,lcls,lambda,epochs);
 end
 
 %% Testing
-
+for k = 1:5
+    %disp(sprintf('Reading input %d',k),tic
+    
+    prefix = 'crossval/CV on whole training set/zulu';    
     testvaluefile = sprintf('%s.%d.test.value.txt', prefix, k-1);
     testlabelfile = sprintf('%s.%d.test.label.txt', prefix, k-1);
+    
+    
+    [testF, numWords, numTags, J, maxI] = loadFeatures(testvaluefile);
+    
+    testY = load(testlabelfile);
+    testwordlen = testY(:,1);
+    testY = testY(:,2:end);
+
+    saveFile = sprintf('%s.%d.test.mat',prefix,k-1)
+    save saveFile k testF numWords numTags J maxI tags beginTag endTag testwordlen testY
+end
+
+
 %[f, numWords, numTags, J, maxI] = loadFeatures('FeatureValues/tinyTest/ab.values.txt');
 
 %% usefull operations:
