@@ -22,7 +22,7 @@ if __name__ == "__main__":
     (options, args) = parser.parse_args()
 
 
-    inputFilename = 'ZuluWordList.txt';
+    inputFilename = '200.txt';
 
     trainData = list(parseSyllableFile(inputFilename,options.useLineNums, options.includeAmbiguous))
     
