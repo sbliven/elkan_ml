@@ -45,7 +45,7 @@ J = range(data(:,2))+1;
 
 f = cell(numWords,1);
 
-maxI = range(data(:,3))+1;
+maxI = range(data(:,3))+2;
 
 for n = 1:numWords
 
