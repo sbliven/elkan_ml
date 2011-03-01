@@ -1,4 +1,4 @@
-function [ forwards, backwards ] = forwardsBackwards( fx, w, wordLen, numTags, beginTag, endTag )
+function [ forwards, backwards, M ] = forwardsBackwards( fx, w, wordLen, numTags, beginTag, endTag )
 %FORWARDSBACKWARDS
 %
 % INDEXING
@@ -10,8 +10,8 @@ V = numTags;
 
 tic
 % Calculate Mi
-M = cell(N,1);
-for i = 2:N %M{1} unused, stored in M1. 
+M = cell(N+1,1);
+for i = 2:N %normal M
     Mi = zeros(V,V);
     for u = 1:V
         for v = 1:V
@@ -21,15 +21,15 @@ for i = 2:N %M{1} unused, stored in M1.
     M{i} = Mi;
 end
 
-% BEGIN: M{1} replacement
-M1 = zeros(1,V); %only nonzero row is beginTag
+% BEGIN
+M{1} = zeros(1,V); %only nonzero row is beginTag
 for v = 1:V
-    M1(1,v) = exp(w'*fx{beginTag,v}(:,1));
+    M{1}(1,v) = exp(w'*fx{beginTag,v}(:,1));
 end
 % END: M{N+1} replacement
-Mn = zeros(1,V); %only nonzero row is endTag
+M{N+1} = zeros(1,V); %only nonzero row is endTag
 for u = 1:V
-    Mn(1,u) = exp(w'*fx{u,endTag}(:,N+1));
+    M{N+1}(1,u) = exp(w'*fx{u,endTag}(:,N+1));
 end
 
 toc,tic
@@ -37,7 +37,7 @@ toc,tic
 % positions should be numbered 1:N
 forwards = zeros(V, N);
 
-forwards(:,1) = M1';
+forwards(:,1) = M{1}';
 
 for i = 2:N
     %forwards(v,i) = sum_u forwards(u,i-1)*M{i}(u,v)
@@ -49,13 +49,13 @@ end
 if nargout > 1
     backwards = zeros(V, N);
 
-    backwards(:,N) = Mn';
+    backwards(:,N) = M{N+1}';
 
     for i = N-(1:N-1) %N-1:1
         %forwards(v,i) = sum_u forwards(u,i-1)*M{i}(u,v)
         % = forwards(:,i-1)'*M{i}(:,v)
 
-        backwards(:,i) = M{i+1}'*backwards(:,i+1);
+        backwards(:,i) = M{i+1}*backwards(:,i+1);
     end
 end
 
