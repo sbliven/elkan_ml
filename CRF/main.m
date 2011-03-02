@@ -55,7 +55,7 @@ for k = 1:5
     testY = testY(:,2:end);
 
     saveFile = sprintf('%s.%d.test.mat',prefix,k-1)
-    save saveFile k testF numWords numTags J maxI tags beginTag endTag testwordlen testY
+    save(saveFile, 'k', 'testF', 'numWords', 'numTags', 'J', 'maxI', 'tags', 'beginTag', 'endTag', 'testwordlen', 'testY');
 end
 
 
@@ -114,14 +114,25 @@ end
 %% SGD train
 
 %load train
+k = 4;
 
 lambda = 1e-3;
 epochs = 25;
 w = zeros(J,1);
+tic
 for epoc = 1:epochs
     w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);
 end
+toc
+CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
 
+save(sprintf('%s.%d.weightsSGD.mat',prefix,k-1),'w')
+
+
+CRFrLCL(testY,testwordlen,testF,w,0,tags,beginTag,endTag)
+tic,[ wordacc , letteracc ] = testAccuracy(w, testY, testwordlen, testF, numWords, 2),toc
+
+% load test
 
 
 
