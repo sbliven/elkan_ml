@@ -97,7 +97,7 @@ w0 = rand(J,1);
 checkgrad(@(w) CRFrLCL(y,wordlen,f,w,lambda,tags,beginTag,endTag),w0,1e-4)
 
 
-%% SGD
+%% SGD figure out lambda
 
 
 lambda = 1e-3;
@@ -109,6 +109,19 @@ for epoch = 1:epochs
     tic,w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);toc
     tic,lcls(epoch+1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag),toc
 end
+
+
+%% SGD train
+
+%load train
+
+lambda = 1e-3;
+epochs = 25;
+w = zeros(J,1);
+for epoc = 1:epochs
+    w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);
+end
+
 
 
 
