@@ -31,22 +31,14 @@ for k = 1:5
     
     %w = collinsPerceptron( 1, numWords, numTags, 0.1, J,  f, y, wordlen);
     
-%     lambda = 10;
-%     epochs = 5;
-%     w = zeros(J,1);
-%     lcls = zeros(epochs+1,1);
-%     lcls(1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
-%     for epoch = 1:epochs
-%         tic,w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);toc
-%         tic,lcls(epoch+1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag),toc
-%     end
+
     
 %     save(weightsfile,w,lcls,lambda,epochs);
 end
 
 %% Testing
 for k = 1:5
-    %disp(sprintf('Reading input %d',k),tic
+    disp(sprintf('Reading input %d',k)),tic
     
     prefix = 'crossval/CV on whole training set/zulu';    
     testvaluefile = sprintf('%s.%d.test.value.txt', prefix, k-1);
@@ -54,6 +46,9 @@ for k = 1:5
     
     
     [testF, numWords, numTags, J, maxI] = loadFeatures(testvaluefile);
+    
+    % LOAD training.k before using this.
+    %[testF, numWords, numTags, J, maxI] = loadFeatures(testvaluefile, J, maxI);
     
     testY = load(testlabelfile);
     testwordlen = testY(:,1);
@@ -105,7 +100,15 @@ checkgrad(@(w) CRFrLCL(y,wordlen,f,w,lambda,tags,beginTag,endTag),w0,1e-4)
 %% SGD
 
 
-
+lambda = 1e-3;
+epochs = 20;
+w = zeros(J,1);
+lcls = zeros(epochs+1,1);
+lcls(1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
+for epoch = 1:epochs
+    tic,w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);toc
+    tic,lcls(epoch+1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag),toc
+end
 
 
 

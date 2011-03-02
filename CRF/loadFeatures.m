@@ -1,4 +1,4 @@
-function [f, numWords, numTags, J, maxI] = loadFeatures(filename, maxWords, tags)
+function [f, numWords, numTags, J, maxI] = loadFeatures(filename, maxWords, tags, J, maxI)
 % loads the feature values from filename
 % 
 % The file should contain the following columns:
@@ -41,11 +41,16 @@ numWords = range(data(:,1))+1;
 if maxWords > 0 && numWords > maxWords
     numWords = maxWords;
 end
-J = range(data(:,2))+1;
+
+if nargin < 4
+    J = range(data(:,2))+1;
+end
 
 f = cell(numWords,1);
 
-maxI = range(data(:,3))+2;
+if nargin < 5
+    maxI = range(data(:,3))+2;
+end
 
 for n = 1:numWords
 
