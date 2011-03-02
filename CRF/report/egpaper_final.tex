@@ -22,9 +22,9 @@
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 \ifcvprfinal\pagestyle{empty}\fi
 %use \x, \y, and \w for bold vector forms
-\newcommand{\x}{\bold{x}}
+\newcommand{\x}{\bar{x}}
 \newcommand{\xb}{\bar{x}}
-\newcommand{\y}{\bold{y}}
+\newcommand{\y}{\bar{y}}
 \newcommand{\yb}{\bar{y}}
 \newcommand{\w}{\mathbf{w}}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -51,7 +51,7 @@ University of California, San Diego\\
 \thispagestyle{empty}
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-In this paper we are presenting our results from using Conditional Random Fields(CRF) to segment words in the Zulu language. A CRF model with different generic feature functions was used to segment novel Zulu words. The feature functions captured patterns in prefixes and suffixes, vowel/consonant patterns and patterns for windows of three to seven consecutive specific letters. The weights were learned using Collin’s Perceptron Algorithm and Stochastic Gradient Descent (SGD). Our model obtained about 74\% word accuracy and 96\% letter level accuracy.
+In this report we present our results from using Conditional Random Fields (CRF) to segment words in the Zulu language. A CRF model with different generic feature functions is used to segment novel Zulu words. The feature functions captured patterns in prefixes and suffixes, vowel/consonant patterns and patterns for windows of three to seven consecutive specific letters. The weights are learned using Collins perceptron Algorithm and Stochastic Gradient Descent (SGD). Our model obtained about 74\% word accuracy and 96\% letter level accuracy.
 \end{abstract}
 %%%%%%%%% BODY TEXT
 %INDICES:
@@ -76,7 +76,8 @@ One problem for which this is useful is automatic detection of syllable boundari
 
 
 \subsection{Conditional Random Field model}
-The goal of supervised classification is to predict a label, $\y$, from some input data, $\x$. Conditional random fields do not place any restrictions on the type of data and labels being learned. To allow this abstraction, conditional random fields introduces the concept of \begin{em}feature functions\end{em} of the form $F(\x,\y)$ which attempt to measure the compatibility of $\x$ with the label $\y$. A number of such feature functions are calculated for each $(\x,\y)$ pair, and the weighted sum of $J$ feature functions is used to determine the probability that $\y$ is the correct label for $\x$, according the the equation
+
+The goal of supervised classification is to predict a label, $\y$, from some input data, $\x$. Conditional random fields do not place any restrictions on the type of data and labels being learned. To allow this abstraction, conditional random fields introduces the concept of \begin{em}feature functions\end{em} of the form $F(\x,\y)$ which attempt to measure the compatibility of $\x$ with the label $\y$. A large number of such feature functions are calculated for each $(\x,\y)$ pair, and the weighted sum of $J$ feature functions is used to determine the probability that $\y$ is the correct label for $\x$, according to the equation
 \begin{equation}
         p(\yb\,|\,\xb;\w) = \frac{\exp \left( \sum_{j=1}^J w_j F_j (\xb,\yb) \right)}{z(\x;\w)}
 \end{equation}
@@ -87,8 +88,8 @@ where $z(\x;\w)$ normalizes the total mass over all possible labels $y'$ to one 
 
 To use this model for inference, one simply assigns the most probable label for a given $\xb$,
 \begin{align}
-        \hat{y} & =\argmax_{\y} \, p(\yb\,|\,\xb;\w) \\
-                &= \argmax_{\y} \sum_{j=1}^J w_j F_j(\xb,\yb).
+        \hat{y} & =\argmax_{\yb} \, p(\yb\,|\,\xb;\w) \\
+                &= \argmax_{\yb} \sum_{j=1}^J w_j F_j(\xb,\yb).
                 \label{equation}
 \end{align}
 
@@ -112,12 +113,12 @@ where $\lambda$ is the strength of regularization.
 
 Training a CRF means finding the weight vector w that gives the best possible prediction for equation (\ref{equation}) for each training example $\x$. For the general case, computing Eq. \ref{equation} takes exponential time to iterate over all possible values.
 
-This problem can be circumvented by restricting the model to linear chain CRFs. This refers to CRFs with features which depend only on two consutive tags. This allows all features $F_j(\x,\y)$ to be decomposed into low-level feature functions
+This problem can be circumvented by restricting the model to linear chain CRFs. This refers to CRFs with features which depend only on two consecutive tags. This allows all features $F_j(\x,\y)$ to be decomposed into low-level feature functions
 \begin{align}
 F_j(\x,\y) &= \sum_{i=1}^{M_n} f_j(y_{i-1},y_{i},\xb,i).
 \end{align}
 
-For linear chain CRFs, Eq \ref{equation} can be computated efficiently by the Viterbi algorithm. 
+For linear chain CRFs, Eq \ref{equation} can be computed efficiently by the Viterbi algorithm. 
 The $g_i$ values are assumed to be given by preprocessing as a $m$ by $m$ Matrix:
 \begin{align}
 g_i(y_{i-1},y_i) = \sum_{j=1}^{J} w_j f_j(y_{i-1},y_{i},\xb,i))  
@@ -135,20 +136,23 @@ U(k, v) = max_u [U(k-1, u) + g_k(u, v)]
 \label{recu}
 \end{align}
 Now, one can backtrack the path which gives the highest probability.
+
+
 \subsection{Training via Stochastic Gradient Ascent}
+
 The weight vector $\w$ that maximizes Equation \ref{Eq:rLCL} can be found using gradient ascent methods. The gradient of the $LCL$ with respect to the $j$th component of $\w$ is
 \begin{align}
-        \frac{\partial LCL^*}{\partial \w_j } &= 
+        \frac{\partial}{\partial \w_j } LCL^* &= 
                 \sum_{n=1}^N \frac{\partial}{\partial \w_j }  \log\,p(y_n\,|\,\xb_n ;\,\w)  \notag \\
         &\hspace{1 em} - \lambda N  \frac{\partial}{\partial \w_j }\parallel \w \parallel^2 \\
-        %&= \sum_{n=1}^N \left( F_j(\x_n,y_n) -  \sum_{\y'} p(\y'\,|\,\x_n ;\,\w)\,F_j(\xb_n, \y' ) \right)  \notag \\
+        %&= \sum_{n=1}^N \left( F_j(\xb_n,y_n) -  \sum_{\y'} p(\y'\,|\,\xb_n ;\,\w)\,F_j(\xb_n, \y' ) \right)  \notag \\
         %&\hspace{1 em}         - 2 \lambda N   \w_j \\
-        &= \sum_{n=1}^N \left( F_j(\x_n,y_n) -   \mathbb{E}_{\y'\,|\,\x_n} \left[ F_j(\x_n, \y' ) \right] \right)  \notag \\
+        &= \sum_{n=1}^N \left( F_j(\xb_n,y_n) -   \mathbb{E}_{\y'\,|\,\xb_n} \left[ F_j(\xb_n, \y' ) \right] \right)  \notag \\
         &\hspace{1 em}         - 2 \lambda N   \w_{j}. \label{Eq:gradient}
 \end{align}
 The expectation in equation \ref{Eq:gradient} can be calculated by summing over all possible labels $\y'$ according to
 \begin{align}
-        \mathbb{E}_{\y'\,|\,\xb_n} \left[ F_j(\x_n, \y' ) \right] &= \sum_{\y'} p(\y'\,|\,\x_n ;\,\w)\,F_j(\x_n, \y' ). \label{Eq:expectation}
+        \mathbb{E}_{\y'\,|\,\xb_n} \left[ F_j(\xb_n, \y' ) \right] &= \sum_{\y'} p(\y'\,|\,\xb_n ;\,\w)\,F_j(\xb_n, \y' ). \label{Eq:expectation}
 \end{align}
 % Define \M for forwards-backwards score
 \newcommand{\M}{\mathcal{M}}
@@ -160,7 +164,7 @@ algorithm, which is large but polynomial. The forwards-backwards algorithm invol
 \end{align}
 for all tags $v_k$, where $\M_i(v_k,u)$ is the score
 \begin{align}
-        \M_i(v,u) &= \exp \sum_{j=1}^J w_j\, f_j(v,u,\x,i).
+        \M_i(v,u) &= \exp \sum_{j=1}^J w_j\, f_j(v,u,\xb,i).
 \end{align}
 The base case for the forwards vector is
 \begin{align}
@@ -186,12 +190,12 @@ Together, the forwards and backwards algorithm can be used to calculate the part
         p(y_{i-1}=u,y_i=v|\xb;\w) &= \frac{\alpha(i,u)\M_{i+1}\beta(v,i+1)}{z(\x;\w)}
 \end{align}
 \begin{align}
-        \mathbb{E}_{\y'\,|\,\x_n} & \left[ F_j(\x_n, \y' ) \right] 
-                = \sum_{i=1}^{M_n} \mathbb{E}_{\y'\,|\,\x_n} \left[f_j(y_{i-1},y_i,\x_n, i ) \right] \\
-                &= \sum_{i=1}^{M_n} \sum_{k=1}^V \sum_{l=1}^V \big[ p(y_{i-1}=v_k,y_i=v_l\,|\,\x_n ;\,\w) \notag \\
-                & \hspace{6 em} \cdot f_j(y_{i-1},y_i,\x_n, i ) \big] \\
-                &= \sum_{i=1}^{M_n} \sum_{k=1}^V \sum_{l=1}^V \Big[ f_j(y_{i-1},y_i,\x_n, i ) \notag \\
-                & \hspace{6 em} \cdot  \frac{\alpha(i,u)\M_{i+1}\beta(v,i+1)}{z(\x;\w)} \Big]
+        \mathbb{E}_{\y'\,|\,\xb_n} & \left[ F_j(\xb_n, \y' ) \right] 
+                = \sum_{i=1}^{M_n} \mathbb{E}_{\y'\,|\,\xb_n} \left[f_j(y_{i-1},y_i,\xb_n, i ) \right] \\
+                &= \sum_{i=1}^{M_n} \sum_{k=1}^V \sum_{l=1}^V \big[ p(y_{i-1}=v_k,y_i=v_l\,|\,\xb_n ;\,\w) \notag \\
+                & \hspace{6 em} \cdot f_j(y_{i-1},y_i,\xb_n, i ) \big] \\
+                &= \sum_{i=1}^{M_n} \sum_{k=1}^V \sum_{l=1}^V \Big[ f_j(y_{i-1},y_i,\xb_n, i ) \notag \\
+                & \hspace{6 em} \cdot  \frac{\alpha(i,u)\M_{i+1}\beta(v,i+1)}{z(\xb;\w)} \Big]
 \end{align}
 
 Using the forwards-backwards algorithm to calculate the gradient of $LCL*$, standard stochastic gradient ascent can be used to find the maximum $\w$ with the update rule
@@ -201,8 +205,8 @@ Using the forwards-backwards algorithm to calculate the gradient of $LCL*$, stan
 for each training pair $n=1,2,\ldots,N$.
 
 
-\subsection{Collin's Perceptron Algorithm}
-Although the forwards-backwards algorithm allows the computation of the gradient in polynomial time, this is still a significant computational challenge. Collin’s Perceptron Algorithm attempts to improve on that time by approximating the gradient.
+\subsection{Collins Perceptron Algorithm}
+Although the forwards-backwards algorithm allows the computation of the gradient in polynomial time, this is still a significant computational challenge. Collins perceptron Algorithm attempts to improve on that time by approximating the gradient.
 
 By placing all the probability mass on the most likely $\y$ value, i.~e.~by using the approximation $p(\yb|\xb;w) = I(y = \hat{y})$, where $\hat{y}=argmax_y p(\yb|\xb;w)$,
 the stochastic gradient update rule simplifies to 
@@ -211,7 +215,7 @@ the stochastic gradient update rule simplifies to
         w_j := w_j + F_j(\xb, \hat{y})
 \end{align}
 This rule is applied for every weight $w_j$, for a given training example $\langle \xb, \yb\rangle$. Given
-a training example $\x$, the label $\hat{y}$ can be thought of as an impostor compared to the true label y \ref{elkan}.
+a training example $\xb$, the label $\hat{y}$ can be thought of as an impostor compared to the true label y \ref{elkan}.
 
 
 \section{Methods}
@@ -234,7 +238,7 @@ Three models were used for generating features: window features, prefix/suffix f
 f_j(\xb,y_{i-1},y_i,i) =& \prod_{w=1}^k I(x_{i-w}= x_{i-w}) \notag\\
 &\cdot I(y_{i-1}=u)I(y_i=v)
 \end{align}
-Thus for a word \begin{tt}abcd\end{tt} with label \begin{tt}0010\end{tt} two 3-window features would be generated; one testing $I(\x_{i-2},\x_{i-1},\x_{i} = \mbox{``abc''})I(\y_{i-1},\y_{i} = ``01'')$, and one testing $I(x_{i-2},x_{i-1},x_{i} = \mbox{``bcd''})I(y_{i-1}y_{i} = \mbox{``10''})$.
+Thus for a word \begin{tt}abcd\end{tt} with label \begin{tt}0010\end{tt} two 3-window features would be generated; one testing $I(x_{i-2},x_{i-1},x_{i} = \mbox{``abc''})I(\y_{i-1},\y_{i} = ``01'')$, and one testing $I(x_{i-2},x_{i-1},x_{i} = \mbox{``bcd''})I(y_{i-1}y_{i} = \mbox{``10''})$.
 
 \begin{em}Prefix and suffix features.\end{em}
 In order to capture beginnings and endings we also made similar features for prefixes and suffixes. These features are windows of length one or two which must occur at either the beginning or end of the word. For instance, the 1-prefix for letter \begin{tt}a\end{tt} and label \begin{tt}0\end{tt} would be
@@ -247,14 +251,14 @@ f_j(\xb,y_{i-1},y_i,i) =& I(i=n) I(x_{i-1}x_i = ka) I(y_{i-1}y_i = 00)
 \end{align}
 
 \begin{em}Vowel and consonant features.\end{em}
-The final type of feature we looked at consists of vowel and consonant patterns. South African Linguist Linda Van Huyssteen \cite{huyssteen03} notes that Zulu syllables are often `open' syllables, meaning they tend to end with vowels. In order to capture this we made features with consonants/vowels(cv) in two and two letters together with their labels. We thus has 16 features of the form:
+The final type of feature we looked at consists of vowel and consonant patterns. South African Linguist Linda Van Huyssteen notes that Zulu syllables are often `open' syllables, meaning they tend to end with vowels \cite{huyssteen03}. In order to capture this we made features with consonants/vowels(cv) in two and two letters together with their labels. We thus has 16 features of the form:
 \begin{align}
 f_j(y_{i-1},y_i,\xb,i)=&I(y_{i-1}=0)I(y_i=1) \notag \\
-& I(\x_{i-1} \in \mathcal{C})I(\x_{i} \in \mathcal{V})
+& I(x_{i-1} \in \mathcal{C})I(x_{i} \in \mathcal{V})
 \end{align}
 for all combinations of tags $0,1$ and letters in sets $\mathcal{C},\mathcal{V}$ representing consonants and vowels.
 
-The example above is the feature capturing the consonant-vowel syllable boundary pattern. Other common patterns include vowel-consonant syllable boundaries and intrasyllable consonant-vowel patterns.
+The example above is the feature capturing the consonant-vowel syllable boundary pattern. Other common patterns include vowel-consonant syllable boundaries and intra-syllable consonant-vowel patterns.
 
 \subsection{Design of the Viterbi algorithm}
 The Viterbi algorithm was implemented by first creating a table of score values $U(k,v)$. The table was created recursively by using Equation \ref{recu}. The score for the begin tags were added to $U(0,v)$. Before starting the backtracking, the score for the end tag were added to U(0,k). The Viterbi algorithm has complexity $O(n^2)$.
@@ -274,9 +278,9 @@ The parameter $\lambda$ was optimized based on a grid search with $\lambda = \le
 
 
 
-As with the Viterbi algorithm, the forwards-backwards algorithm iteratively calculates tables of values for $\alpha(\cdot,\cdot)$. Features occuring at the beginning and end of labels were used to initialize the forwards and backwards tables.
+As with the Viterbi algorithm, the forwards-backwards algorithm iteratively calculates tables of values for $\alpha(\cdot,\cdot)$. Features occurring at the beginning and end of labels were used to initialize the forwards and backwards tables.
 
-Several methods were used to check the correctness of the forwards-backwards implementation. The partition function and log likelihood were computed combinatorically for a small test word for all possible labels. This was found to be numerically equal to the equivalent results generated by the forwards-backwards algorithm. Also, after training $\w$ by SGD, it was found that
+Several methods were used to check the correctness of the forwards-backwards implementation. The partition function and log likelihood were computed combinatorially for a small test word for all possible labels. This was found to be numerically equal to the equivalent results generated by the forwards-backwards algorithm. Also, after training $\w$ by SGD, it was found that
 \begin{equation}
 \sum_{(\xb,\yb)\in T} F_j(\xb,\yb) \approx \sum_{(\x,\cdot)\in T} \mathbb{E}_{\y’\,|\,\x} \left[ F_j(\xb, \y' ) \right]
 \end{equation}
@@ -285,7 +289,7 @@ as predicted for the maximum $LCL$. Finally, gradients were checked numerically 
 
 \subsection{Design of Collins Perceptron}
 
-The learning rate $\alpha$ was set to $0.02/T$. This is a widely used learning rate for gradient descent. Since Collins Perceptron is similar to gradient descent, this learning rate seemed appropriate.
+The learning rate $\alpha$ was set to $0.02/T$. This is a widely used learning rate for gradient descent. Since Collins perceptron is similar to gradient descent, this learning rate seemed appropriate.
 The algorithm needed in our case only 3 epochs until convergence.
 
 \subsection{Evaluation}
@@ -306,15 +310,16 @@ Two metrics were used to measure the accuracy of a prediction. For each test exa
 
 
 \section{Results}
-To test the algorithms the accuracy was measured using a 4-fold cross validation. Using Collin’s Perceptron, the average word accuracy was about 74\%. The letter level accuracy was about 96\%. The results can be seen in Table \ref{resultsCollins}.
+To test the algorithms the accuracy was measured using a 4-fold cross validation. Using Collins perceptron, the average word accuracy was about 74\%. The letter level accuracy was about 96\%. The results can be seen in Table \ref{resultsCollins}.
 
-The results using SGD are shown in Table \ref{resultsSGD}. The overall results are slightly worse than using Collin’s; 65\% of words are correct and 94\% of tags. One explanation of this is that the perceptron algorithm is trained explicitly to maximize accuracy, while SGD is trying to maximize the $LCL$.
+The results using SGD are shown in Table \ref{resultsSGD}. The overall results are slightly worse than using Collins perceptron; 65\% of words are correct and 94\% of tags. One explanation of this is that the perceptron algorithm is trained explicitly to maximize accuracy, while SGD is trying to maximize the $LCL$.
 
 
 \begin{table}
 	\begin{tabular}{|l|l|l|}
     	\hline
     	~   	& Word Level Accuracy & Letter Level Accuracy \\
+	\hline
     	Test 1  & 0.70  &	           0.95	\\
     	Test 2  & 0.80	& 			0.97             	\\
     	Test 3  & 0.70       	& 			0.95               	\\
@@ -322,7 +327,7 @@ The results using SGD are shown in Table \ref{resultsSGD}. The overall results a
     	Overall & 0.74               	& 			0.96               	\\
     	\hline
 	\end{tabular}
-	\caption{Prediction accuracy using Collins Perceptron with the Viterbi algorithm}
+	\caption{Prediction accuracy using Collins perceptron with the Viterbi algorithm}
 \label{resultsCollins}
 \end{table}
 
@@ -330,6 +335,7 @@ The results using SGD are shown in Table \ref{resultsSGD}. The overall results a
 	\begin{tabular}{|l|l|l|}
     	\hline
     	~   	& Word Level accuracy & Letter Level Accuracy \\
+	\hline
     	Test 1  & 0.71  &	           0.96	\\
     	Test 2  & 0.72	& 			0.96             	\\
     	%Test 3  &       	& 			              	\\
@@ -337,19 +343,19 @@ The results using SGD are shown in Table \ref{resultsSGD}. The overall results a
     	Overall &               	0.65 & 			0.94              	\\
     	\hline
 	\end{tabular}
-	\caption{Prediction Accurarcy using SGD with the Viterbi algorithm. Test 3 was omitted.}
+	\caption{Prediction Accuracy using SGD with the Viterbi algorithm. Test 3 was omitted.}
 \label{resultsSGD}
 \end{table}
 
 
-\begin{figure}[tb]
+\begin{figure*}[tb]
 \centering
-\begin{minipage}{7 cm}
-	\includegraphics[width=7cm]{figures/weights.eps}
+\begin{minipage}{\linewidth}
+	\includegraphics[width=\linewidth]{figures/weights.eps}
 \end{minipage}
-\caption{Feature weights (Test 2). Collors correspond to the type of feature: (blue--purple) 3--7 windows, (yellow) prefix and suffix, (black) consonant-vowel features}
+\caption{Feature weights (Test 2). Colors correspond to the type of feature: (blue--purple) 3--7 windows, (yellow) prefix and suffix, (black) consonant-vowel features}
 \label{Fig:weights}
-\end{figure}
+\end{figure*}
 
 \begin{table}
 	\begin{tabular}{|l|l|l|}
@@ -376,12 +382,13 @@ By looking at the relative weights one can estimate the relative contributions o
 
 %Note: Why are CV features negatively weighted?
 
-%\section{Discussion}
 \section{Conclusion}
 
 Conditional Random Fields form a very general method for supervised learning. Their main strength comes from the huge variety of feature functions that can be used for analysis, and the fact that these features can be applied to non-numerical data such as natural languages.
 
-In this study we were able to predict syllable boundaries with high accuracy. This can be attributed to our wide range of features, including both naive but comprehensive window features and more sophisticated consonant-vowel features based on prior linguistic knowledge. 
+In this study we were able to predict syllable boundaries with high accuracy. This can be attributed to our wide range of features, including both naive but comprehensive window features and more sophisticated consonant-vowel features based on prior linguistic knowledge.
+
+While we were able to predict individual tags with high accuracy, 74\% word accuracy may be too low for some applications, such as reliable hyphenation. However, this accuracy should be sufficient when supplemented by other methods. For example, a dictionary lookup could be used for most words, with a CRF classifier held in reserve for novel words.
 
 \nocite{bishop06,bottou11,elkan11}
 {\small
