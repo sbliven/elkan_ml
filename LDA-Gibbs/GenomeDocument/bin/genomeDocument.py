@@ -34,7 +34,7 @@ class Genome:
         self.proteins[accession] = count + 1
 
     def __str__(self):
-        return "%d %s %s:%s (%d proteins)" %( self.n, self.taxID,
+        return "%d\t%s %s:%s (%d proteins)" %( self.n, self.taxID,
                 self.species, self.domain,
                 len(self.proteins) )
 
