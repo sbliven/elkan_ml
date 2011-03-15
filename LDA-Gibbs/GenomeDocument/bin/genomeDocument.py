@@ -18,6 +18,7 @@ import optparse
 import gzip
 import xml.dom.minidom
 import re
+from itertools import islice
 
 class Genome:
     def __init__(self,n,taxID,species,domain):
@@ -39,13 +40,20 @@ class Genome:
                 len(self.proteins) )
 
 class UniProt:
-    def __init__(self):
+    def __init__(self, genomes=None):
         self.proteins = {}
-        self.genomes = {}
+        if genomes is None:
+            self.genomes = {}
+            self.createGenomes = True
+        else:
+            self.genomes = genomes
+            self.createGenomes = False
 
 
     def parse(self, file):
+        print("Starting Parse...")
         doc = xml.dom.minidom.parse(file)
+        print("Done")
         self.handleUniprot(doc)
 
     def handleUniprot(self,doc):
@@ -53,7 +61,7 @@ class UniProt:
         for entry in doc.getElementsByTagName("entry"):
             self.handleEntry(entry)
             entryNum += 1
-            if entryNum % 1000 == 0:
+            if entryNum % 1 == 0:
                 print("Parsed %d uniprot entries."%entryNum)
 
 
@@ -94,35 +102,41 @@ class UniProt:
         if self.genomes.has_key(taxID):
             return self.genomes[taxID]
 
-        name = None
-        for aName in organism.getElementsByTagName("name"):
-            if aName.attributes["type"].value == "scientific":
-                name = aName.firstChild.data
-        if name is None:
-            sys.stderr.write("Parse Error! No scientific name.\n")
+        if self.createGenomes:
+            # Create a new genome for this organism
+
+            name = None
+            for aName in organism.getElementsByTagName("name"):
+                if aName.attributes["type"].value == "scientific":
+                    name = aName.firstChild.data
+            if name is None:
+                sys.stderr.write("Parse Error! No scientific name.\n")
+                return None
+
+            lineages = organism.getElementsByTagName("lineage")
+            if len(lineages) != 1:
+                sys.stderr.write("Parse Error! Wrong number of lineages (%d)\n" %\
+                        len(lineages))
+                return None
+            lineage = lineages[0]
+
+            domain = self.handleLineage(lineage)
+            if domain is None:
+                return None
+
+            # Filter out viral genomes
+            if domain != "Eukaryota" and \
+                    domain != "Bacteria" and \
+                    domain != "Archaea":
+                return None
+
+            genome = Genome(len(self.genomes)+1,taxID, name,domain)
+
+            self.genomes[taxID] = genome
+            return genome
+        else:
+            # Don't create a new genome
             return None
-
-        lineages = organism.getElementsByTagName("lineage")
-        if len(lineages) != 1:
-            sys.stderr.write("Parse Error! Wrong number of lineages (%d)\n" %\
-                    len(lineages))
-            return None
-        lineage = lineages[0]
-
-        domain = self.handleLineage(lineage)
-        if domain is None:
-            return None
-
-        # Filter out viral genomes
-        if domain != "Eukaryota" and \
-                domain != "Bacteria" and \
-                domain != "Archaea":
-            return None
-
-        genome = Genome(len(self.genomes)+1,taxID, name,domain)
-
-        self.genomes[taxID] = genome
-        return genome
 
     def handleLineage(self,lineage):
         """Parses a lineage and extracts the domain of this organism
@@ -222,6 +236,39 @@ def _getProteinsFromUniprot(file):
     """
     pass #TODO
 
+def readGenomes(genomeFile,headerLines=1):
+    """Read genome info from a tab-delimeted file.
+
+    Columns:
+     1. Taxon Uniprot ID
+     2. Mnemonic
+     3. Scientific name
+     4. Common name
+     5. Synonym
+     6. Other Names
+     7. Reviewed
+     8. Rank
+     9. Lineage
+    10. Parent
+    """
+    genomes = {}
+
+    lineNum = headerLines
+    for line in islice(genomeFile,headerLines,None): #ignore header
+        lineNum += 1
+        line = line.strip("\n")
+        columns = line.split("\t")
+        if len(columns) != 10:
+            sys.stderr.write("Warning: error reading genome at line %d.\n"%lineNum)
+        else:
+            taxID = columns[0]
+            name = columns[2]
+            domain = columns[8].split("; ")[0]
+            genomes[len(genomes)+1] =  Genome(len(genomes)+1, taxID, name, domain) 
+
+    return genomes
+
+
 if __name__ == "__main__":
     parser = optparse.OptionParser( usage="usage: python %prog [options]" )
     parser.add_option("-v","--verbose", help="Long messages",
@@ -232,15 +279,23 @@ if __name__ == "__main__":
         parser.print_usage()
         parser.exit("Error: Expected 0 argument, but found %d"%len(args) )
 
+    sys.stdout.write("Reading Genomes...")
+    genomeFile = open("eukaryota.txt","r")
+    genomes = readGenomes(genomeFile)
+    genomeFile.close()
+    print("Read %d genomes." % len(genomes))
 
-    uniprot = UniProt()
-    #uniprotFile = gzip.GzipFile("uniprot_sprot.xml.gz")
-    uniprotFile = open("uniprot_short.xml")
+    sys.stdout.write("Reading Proteins...")
+    uniprot = UniProt(genomes)
+    uniprotFile = gzip.GzipFile("uniprot_sprot.xml.gz")
+    #uniprotFile = open("uniprot_short.xml")
     uniprot.parse(uniprotFile)
     uniprotFile.close()
+    print("Read %d Proteins." % len(uniprot.proteins))
 
-    #pfamA = gzip.GzipFile("Pfam-A.full.gz","r")
-    pfamA = open("Pfam-A.short.txt","r")
+    sys.stdout.write("Reading Pfam...")
+    pfamA = gzip.GzipFile("Pfam-A.full.gz","r")
+    #pfamA = open("Pfam-A.short.txt","r")
     pfams = {}
     for pfam, proteins in getProteinListFromStockholm(pfamA):
         for prot in proteins:
@@ -252,6 +307,7 @@ if __name__ == "__main__":
         pfams[pfam] = len(pfams)+1
         if len(pfams)%1000 == 0:
             print("Read %d pfams.\n"%len(pfams))
+    print("Read %d pfams." % len(pfams))
 
     #Now output genomes
     prefix = "uniprot"
