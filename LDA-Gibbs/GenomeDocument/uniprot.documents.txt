@@ -1,0 +1,1207 @@
+376	477974	Bacteria	Desulforudis audaxviator (strain MP104C)	0 pfams
+482	526225	Bacteria	Geodermatophilus obscurus (strain ATCC 25078 / DSM 43160 / JCM 3152 / G-20)	0 pfams
+1130	559295	Eukaryota	Lachancea thermotolerans (strain CBS 6340)	0 pfams
+342	1718	Bacteria	Corynebacterium glutamicum	0 pfams
+1204	526221	Eukaryota	Verticillium albo-atrum (strain VaMs.102)	0 pfams
+382	526222	Bacteria	Desulfovibrio salexigens (strain ATCC 14822 / DSM 2638 / NCIB 8403 / VKM B-1763)	0 pfams
+600	460265	Bacteria	Methylobacterium nodulans (strain ORS2060 / LMG 21967)	0 pfams
+771	272942	Bacteria	Rhodobacter capsulatus (strain ATCC BAA-309 / NBRC 16581 / SB1003)	0 pfams
+772	272943	Bacteria	Rhodobacter sphaeroides (strain ATCC 17023 / 2.4.1 / NCIB 8253 / DSM 158)	0 pfams
+1015	565575	Bacteria	Ureaplasma urealyticum serovar 10 (strain ATCC 33699 / Western)	0 pfams
+1177	545124	Eukaryota	Saccharomyces cerevisiae (strain AWRI1631)	0 pfams
+883	523796	Bacteria	Staphylococcus aureus (strain MRSA ST398 / isolate S0385)	0 pfams
+385	391774	Bacteria	Desulfovibrio vulgaris subsp. vulgaris (strain DP4)	0 pfams
+487	411154	Bacteria	Gramella forsetii (strain KT0803)	0 pfams
+492	374930	Bacteria	Haemophilus influenzae (strain PittEE)	0 pfams
+493	374931	Bacteria	Haemophilus influenzae (strain PittGG)	0 pfams
+929	370551	Bacteria	Streptococcus pyogenes serotype M12 (strain MGAS9429)	0 pfams
+271	246194	Bacteria	Carboxydothermus hydrogenoformans (strain Z-2901 / DSM 6008)	0 pfams
+386	246195	Bacteria	Dichelobacter nodosus (strain VCS1703A)	0 pfams
+144	290340	Bacteria	Arthrobacter aurescens (strain TC1)	0 pfams
+650	246197	Bacteria	Myxococcus xanthus (strain DK 1622)	0 pfams
+93	243159	Bacteria	Acidithiobacillus ferrooxidans (strain ATCC 23270 / DSM 14882 / NCIB 8455)	0 pfams
+343	340322	Bacteria	Corynebacterium glutamicum (strain R)	0 pfams
+581	683837	Bacteria	Listeria seeligeri serovar 1/2b (strain ATCC 35967 / DSM 20751 / CIP 100100 / SLCC 3954)	0 pfams
+1049	446471	Bacteria	Xylanimonas cellulosilytica (strain DSM 15894 / CECT 5975 / LMG 20990 / XIL07)	0 pfams
+558	400673	Bacteria	Legionella pneumophila (strain Corby)	0 pfams
+254	320373	Bacteria	Burkholderia pseudomallei (strain 668)	0 pfams
+253	320372	Bacteria	Burkholderia pseudomallei (strain 1710b)	0 pfams
+1117	58839	Eukaryota	Encephalitozoon intestinalis	0 pfams
+520	608538	Bacteria	Hydrogenobacter thermophilus (strain DSM 6534 / IAM 12695 / TK-6)	0 pfams
+465	418136	Bacteria	Francisella tularensis subsp. tularensis (strain WY96-3418)	0 pfams
+748	160488	Bacteria	Pseudomonas putida (strain KT2440)	0 pfams
+683	334380	Bacteria	Orientia tsutsugamushi (strain Ikeda)	0 pfams
+173	315750	Bacteria	Bacillus pumilus (strain SAFR-032)	0 pfams
+283	813	Bacteria	Chlamydia trachomatis	0 pfams
+479	443144	Bacteria	Geobacter sp. (strain M21)	0 pfams
+179	817	Bacteria	Bacteroides fragilis	0 pfams
+808	680646	Bacteria	Rothia mucilaginosa (strain DY-18)	0 pfams
+66	311400	Archaea	Pyrococcus kodakaraensis	0 pfams
+116	311403	Bacteria	Agrobacterium radiobacter (strain K84 / ATCC BAA-868)	0 pfams
+118	311402	Bacteria	Agrobacterium vitis (strain S4 / ATCC BAA-846)	0 pfams
+32	419665	Archaea	Methanococcus aeolicus (strain Nankai-3 / ATCC BAA-1280)	0 pfams
+787	395960	Bacteria	Rhodopseudomonas palustris (strain TIE-1)	0 pfams
+62	384616	Archaea	Pyrobaculum islandicum (strain DSM 4184 / JCM 9189)	0 pfams
+840	325240	Bacteria	Shewanella baltica (strain OS155 / ATCC BAA-1091)	0 pfams
+894	451516	Bacteria	Staphylococcus aureus (strain USA300 / TCH1516)	0 pfams
+197	555970	Bacteria	Bifidobacterium animalis subsp. lactis (strain DSM 10140 / JCM 10602 / LMG 18314)	0 pfams
+19	453591	Archaea	Ignicoccus hospitalis (strain KIN4/I / DSM 18386 / JCM 14125)	0 pfams
+60	340102	Archaea	Pyrobaculum arsenaticum (strain DSM 13514 / JCM 11321)	0 pfams
+731	290512	Bacteria	Prosthecochloris aestuarii (strain DSM 271 / SK 413)	0 pfams
+208	340100	Bacteria	Bordetella petrii (strain ATCC BAA-461 / DSM 12804 / CCUG 43448)	0 pfams
+278	446466	Bacteria	Cellulomonas flavigena (strain ATCC 482 / DSM 20109 / NCIB 8073 / NRS 134)	0 pfams
+686	435591	Bacteria	Parabacteroides distasonis (strain ATCC 8503 / DSM 20701 / NCTC 11152)	0 pfams
+946	299768	Bacteria	Streptococcus thermophilus (strain CNRZ 1066)	0 pfams
+570	523794	Bacteria	Leptotrichia buccalis (strain ATCC 14201 / DSM 1135 / JCM 12969 / NCTC 10249)	0 pfams
+944	264199	Bacteria	Streptococcus thermophilus (strain ATCC BAA-250 / LMG 18311)	0 pfams
+397	269484	Bacteria	Ehrlichia canis (strain Jake)	0 pfams
+363	243164	Bacteria	Dehalococcoides ethenogenes (strain 195)	0 pfams
+227	29459	Bacteria	Brucella melitensis	0 pfams
+110	537457	Bacteria	Actinobacillus pleuropneumoniae serotype 7 (strain AP76)	0 pfams
+1103	240176	Eukaryota	Coprinopsis cinerea (strain Okayama-7 / 130 / FGSC 9003)	0 pfams
+762	288705	Bacteria	Renibacterium salmoninarum (strain ATCC 33209 / DSM 20767 / IFO 15589)	0 pfams
+318	441772	Bacteria	Clostridium botulinum (strain Langeland / NCTC 10281 / Type F)	0 pfams
+316	441771	Bacteria	Clostridium botulinum (strain Hall / ATCC 3502 / NCTC 13319 / Type A)	0 pfams
+314	441770	Bacteria	Clostridium botulinum (strain ATCC 19397 / Type A)	0 pfams
+763	347834	Bacteria	Rhizobium etli (strain CFN 42 / ATCC 51251)	0 pfams
+330	195103	Bacteria	Clostridium perfringens (strain ATCC 13124 / NCTC 8237 / Type A)	0 pfams
+964	269084	Bacteria	Synechococcus sp. (strain ATCC 27144 / PCC 6301 / SAUG 1402/1)	0 pfams
+7	490899	Archaea	Desulfurococcus kamchatkensis (strain 1221n / DSM 18924)	0 pfams
+857	637905	Bacteria	Shewanella violacea (strain JCM 10179 / CIP 106290 / LMG 19151 / DSS12)	0 pfams
+1176	4932	Eukaryota	Saccharomyces cerevisiae	0 pfams
+751	264730	Bacteria	Pseudomonas syringae pv. phaseolicola (strain 1448A / Race 6)	0 pfams
+658	272831	Bacteria	Neisseria meningitidis serogroup C / serotype 2a (strain ATCC 700532 / FAM18)	0 pfams
+86	351160	Archaea	Uncultured methanogenic archaeon RC-I	0 pfams
+995	309803	Bacteria	Thermotoga neapolitana (strain ATCC 49049 / DSM 4359 / NS-E)	0 pfams
+1155	502780	Eukaryota	Paracoccidioides brasiliensis (strain Pb18)	0 pfams
+161	226900	Bacteria	Bacillus cereus (strain ATCC 14579 / DSM 31)	0 pfams
+143	76114	Bacteria	Aromatoleum aromaticum (strain EbN1)	0 pfams
+502	555778	Bacteria	Halothiobacillus neapolitanus (strain ATCC 23641 / c2)	0 pfams
+673	63737	Bacteria	Nostoc punctiforme (strain ATCC 29133 / PCC 73102)	0 pfams
+357	43989	Bacteria	Cyanothece sp. (strain ATCC 51142)	0 pfams
+24	420247	Archaea	Methanobrevibacter smithii (strain PS / ATCC 35061 / DSM 861)	0 pfams
+136	320483	Bacteria	Anaplasma marginale (strain Florida)	0 pfams
+646	2104	Bacteria	Mycoplasma pneumoniae	0 pfams
+890	93061	Bacteria	Staphylococcus aureus (strain NCTC 8325)	0 pfams
+700	123214	Bacteria	Persephonella marina (strain DSM 14350 / EX-H1)	0 pfams
+980	340099	Bacteria	Thermoanaerobacter pseudethanolicus (strain ATCC 33223 / 39E)	0 pfams
+814	309807	Bacteria	Salinibacter ruber (strain DSM 13855 / M31)	0 pfams
+545	33959	Bacteria	Lactobacillus johnsonii	0 pfams
+1012	471821	Bacteria	Uncultured termite group 1 bacterium phylotype Rs-D17	0 pfams
+1119	481877	Eukaryota	Enterocytozoon bieneusi (strain H348)	0 pfams
+1080	284811	Eukaryota	Ashbya gossypii (strain ATCC 10895 / CBS 109.51 / FGSC 9923 / NRRL Y-1056)	0 pfams
+77	555311	Archaea	Sulfolobus solfataricus (strain 98/2)	0 pfams
+1096	573826	Eukaryota	Candida dubliniensis (strain CD36 / CBS 7987 / NCPF 3949 / NRRL Y-17841)	0 pfams
+893	367830	Bacteria	Staphylococcus aureus (strain USA300)	0 pfams
+1069	622759	Bacteria	Zymomonas mobilis subsp. mobilis (strain NCIB 11163)	0 pfams
+284	315277	Bacteria	Chlamydia trachomatis serovar A (strain HAR-13 / ATCC VR-571B)	0 pfams
+571	349519	Bacteria	Leuconostoc citreum (strain KM20)	0 pfams
+871	234267	Bacteria	Solibacter usitatus (strain Ellin6076)	0 pfams
+1151	9940	Eukaryota	Ovis aries	0 pfams
+380	207559	Bacteria	Desulfovibrio desulfuricans (strain G20)	0 pfams
+64	186497	Archaea	Pyrococcus furiosus (strain ATCC 43587 / DSM 3638 / JCM 8422 / Vc1)	0 pfams
+615	410289	Bacteria	Mycobacterium bovis (strain BCG / Pasteur 1173P2)	0 pfams
+759	428406	Bacteria	Ralstonia pickettii (strain 12D)	0 pfams
+439	413997	Bacteria	Escherichia coli (strain B / REL606)	0 pfams
+207	520	Bacteria	Bordetella pertussis	0 pfams
+622	246196	Bacteria	Mycobacterium smegmatis (strain ATCC 700084 / mc(2)155)	0 pfams
+325	645463	Bacteria	Clostridium difficile (strain R20291)	0 pfams
+324	645462	Bacteria	Clostridium difficile (strain CD196)	0 pfams
+1120	34391	Eukaryota	Epidermophyton floccosum	0 pfams
+1071	447093	Eukaryota	Ajellomyces capsulata (strain ATCC 26029 / G186AR / H82 / RMSCC 2432)	0 pfams
+54	228908	Archaea	Nanoarchaeum equitans (strain Kin4-M)	0 pfams
+73	426118	Archaea	Sulfolobus islandicus (strain M.16.4 / Kamchatka #3)	0 pfams
+687	318586	Bacteria	Paracoccus denitrificans (strain Pd 1222)	0 pfams
+13	485914	Archaea	Halomicrobium mukohataei (strain ATCC 700874 / DSM 12286 / JCM 9738 / NCIMB 13541)	0 pfams
+811	471857	Bacteria	Saccharomonospora viridis (strain ATCC 15386 / DSM 43017 / JCM 3036 / NBRC 12207 / P101)	0 pfams
+485	442	Bacteria	Gluconobacter oxydans	0 pfams
+1132	5671	Eukaryota	Leishmania infantum	0 pfams
+280	485918	Bacteria	Chitinophaga pinensis (strain ATCC 43595 / DSM 2588 / NCIB 11800 / UQM 2034)	0 pfams
+1165	5823	Eukaryota	Plasmodium berghei (strain Anka)	0 pfams
+804	515618	Bacteria	Riesia pediculicola (strain USDA)	0 pfams
+448	515619	Bacteria	Eubacterium rectale (strain ATCC 33656 / VPI 0990)	0 pfams
+586	342108	Bacteria	Magnetospirillum magneticum (strain AMB-1 / ATCC 700264)	0 pfams
+1045	342109	Bacteria	Xanthomonas oryzae pv. oryzae (strain MAFF 311018)	0 pfams
+608	465515	Bacteria	Micrococcus luteus (strain ATCC 4698 / IFO 3333 / NCTC 2665)	0 pfams
+902	391008	Bacteria	Stenotrophomonas maltophilia (strain R551-3)	0 pfams
+802	392021	Bacteria	Rickettsia rickettsii (strain Sheila Smith)	0 pfams
+1166	5825	Eukaryota	Plasmodium chabaudi	0 pfams
+352	360115	Bacteria	Coxiella burnetii (strain RSA 331 / Henzerling II)	0 pfams
+903	378806	Bacteria	Stigmatella aurantiaca (strain DW4/3-1)	0 pfams
+50	521011	Archaea	Methanosphaerula palustris (strain ATCC BAA-1556 / DSM 19958 / E1-9c)	0 pfams
+1070	7159	Eukaryota	Aedes aegypti	0 pfams
+234	561501	Bacteria	Buchnera aphidicola subsp. Acyrthosiphon pisum (strain Tuc7)	0 pfams
+101	480119	Bacteria	Acinetobacter baumannii (strain AB0057)	0 pfams
+168	86665	Bacteria	Bacillus halodurans	0 pfams
+473	544556	Bacteria	Geobacillus sp. (strain Y412MC61)	0 pfams
+710	296591	Bacteria	Polaromonas sp. (strain JS666 / ATCC BAA-500)	0 pfams
+648	2107	Bacteria	Mycoplasma pulmonis	0 pfams
+1173	561896	Eukaryota	Postia placenta (strain ATCC 44394 / Madison 698-R)	0 pfams
+452	59374	Bacteria	Fibrobacter succinogenes (strain ATCC 19169 / S85)	0 pfams
+215	412418	Bacteria	Borrelia recurrentis (strain A1)	0 pfams
+212	412419	Bacteria	Borrelia duttonii (strain Ly)	0 pfams
+220	288000	Bacteria	Bradyrhizobium sp. (strain BTAi1 / ATCC BAA-1182)	0 pfams
+454	531844	Bacteria	Flavobacteriaceae bacterium (strain 3519-10)	0 pfams
+379	525146	Bacteria	Desulfovibrio desulfuricans (strain ATCC 27774 / DSM 6949)	0 pfams
+664	323098	Bacteria	Nitrobacter winogradskyi (strain Nb-255 / ATCC 25391)	0 pfams
+1206	4952	Eukaryota	Yarrowia lipolytica	0 pfams
+1192	35128	Eukaryota	Thalassiosira pseudonana	0 pfams
+588	394221	Bacteria	Maricaulis maris (strain MCS10)	0 pfams
+579	568819	Bacteria	Listeria monocytogenes serotype 4b (strain Clip81459)	0 pfams
+938	388919	Bacteria	Streptococcus sanguinis (strain SK36)	0 pfams
+918	373153	Bacteria	Streptococcus pneumoniae serotype 2 (strain D39 / NCTC 7466)	0 pfams
+1114	7245	Eukaryota	Drosophila yakuba	0 pfams
+152	322710	Bacteria	Azotobacter vinelandii (strain DJ / ATCC BAA-1303)	0 pfams
+697	319225	Bacteria	Pelodictyon luteolum (strain DSM 273)	0 pfams
+500	349124	Bacteria	Halorhodospira halophila (strain DSM 244 / SL1)	0 pfams
+81	604354	Archaea	Thermococcus sibiricus (strain MM 739 / DSM 12597)	0 pfams
+496	228400	Bacteria	Haemophilus somnus (strain 2336)	0 pfams
+682	357244	Bacteria	Orientia tsutsugamushi (strain Boryong)	0 pfams
+1156	5888	Eukaryota	Paramecium tetraurelia	0 pfams
+589	351348	Bacteria	Marinobacter aquaeolei (strain ATCC 700491 / DSM 11845 / VT8)	0 pfams
+47	269797	Archaea	Methanosarcina barkeri (strain Fusaro / DSM 804)	0 pfams
+789	269796	Bacteria	Rhodospirillum rubrum (strain ATCC 11170 / NCIB 8255)	0 pfams
+477	269799	Bacteria	Geobacter metallireducens (strain GS-15 / ATCC 53774 / DSM 7210)	0 pfams
+128	452471	Bacteria	Amoebophilus asiaticus (strain 5a2)	0 pfams
+345	645127	Bacteria	Corynebacterium kroppenstedtii (strain DSM 44385 / CCUG 35717)	0 pfams
+950	1902	Bacteria	Streptomyces coelicolor	0 pfams
+932	319700	Bacteria	Streptococcus pyogenes serotype M28	0 pfams
+949	749414	Bacteria	Streptomyces bingchenggensis (strain BCW-1)	0 pfams
+483	33072	Bacteria	Gloeobacter violaceus	0 pfams
+182	818	Bacteria	Bacteroides thetaiotaomicron	0 pfams
+540	390333	Bacteria	Lactobacillus delbrueckii subsp. bulgaricus (strain ATCC 11842 / DSM 20081)	0 pfams
+331	289380	Bacteria	Clostridium perfringens (strain SM101 / Type A)	0 pfams
+972	32051	Bacteria	Synechococcus sp. (strain WH7803)	0 pfams
+781	265606	Bacteria	Rhodopirellula baltica	0 pfams
+750	379731	Bacteria	Pseudomonas stutzeri (strain A1501)	0 pfams
+74	439386	Archaea	Sulfolobus islandicus (strain Y.G.57.14 / Yellowstone #1)	0 pfams
+901	522373	Bacteria	Stenotrophomonas maltophilia (strain K279a)	0 pfams
+1011	521096	Bacteria	Tsukamurella paurometabola (strain ATCC 8368 / DSM 20162 / JCM 10117 / NBRC 16120 / NCTC 13040)	0 pfams
+239	398577	Bacteria	Burkholderia ambifaria (strain MC40-6)	0 pfams
+53	523846	Archaea	Methanothermus fervidus (strain ATCC 43054 / DSM 2088 / JCM 10308 / V24 S)	0 pfams
+1040	340	Bacteria	Xanthomonas campestris pv. campestris	0 pfams
+791	347255	Bacteria	Rickettsia africae (strain ESF-5)	0 pfams
+369	398578	Bacteria	Delftia acidovorans (strain DSM 14801 / SPH-1)	0 pfams
+843	407976	Bacteria	Shewanella baltica (strain OS223)	0 pfams
+530	272620	Bacteria	Klebsiella pneumoniae subsp. pneumoniae (strain ATCC 700721 / MGH 78578)	0 pfams
+554	272622	Bacteria	Lactococcus lactis subsp. cremoris (strain SK11)	0 pfams
+819	41514	Bacteria	Salmonella arizonae (strain ATCC BAA-731 / CDC346-86 / RSK2980)	0 pfams
+218	565034	Bacteria	Brachyspira hyodysenteriae (strain ATCC 49526 / WA1)	0 pfams
+828	272994	Bacteria	Salmonella paratyphi B (strain ATCC BAA-1250 / SPB7)	0 pfams
+1067	871271	Bacteria	Zinderia insecticola (strain CARI)	0 pfams
+1207	559307	Eukaryota	Zygosaccharomyces rouxii (strain ATCC 2623 / CBS 732 / IFO 1130 / NBRC 1623 / NCYC 568)	0 pfams
+594	420662	Bacteria	Methylibium petroleiphilum (strain PM1)	0 pfams
+986	469371	Bacteria	Thermobispora bispora (strain ATCC 19993 / DSM 43833 / CBS 139.67 / JCM 10125 / NBRC 14880 / R51)	0 pfams
+140	63363	Bacteria	Aquifex aeolicus	0 pfams
+1074	559297	Eukaryota	Ajellomyces dermatitidis (strain ER-3)	0 pfams
+36	426368	Archaea	Methanococcus maripaludis (strain C7 / ATCC BAA-1331)	0 pfams
+844	318161	Bacteria	Shewanella denitrificans (strain OS217 / ATCC BAA-1090 / DSM 15013)	0 pfams
+69	425944	Archaea	Sulfolobus islandicus (strain L.D.8.5 / Lassen #2)	0 pfams
+549	557433	Bacteria	Lactobacillus reuteri (strain JCM 1112)	0 pfams
+1002	317025	Bacteria	Thiomicrospira crunogena (strain XCL-2)	0 pfams
+712	312153	Bacteria	Polynucleobacter sp. (strain QLW-P1DMWA-1)	0 pfams
+845	318167	Bacteria	Shewanella frigidimarina (strain NCIMB 400)	0 pfams
+527	523791	Bacteria	Kangiella koreensis (strain DSM 16069 / KCTC 12182 / SW-125)	0 pfams
+146	290399	Bacteria	Arthrobacter sp. (strain FB24)	0 pfams
+305	290398	Bacteria	Chromohalobacter salexigens (strain DSM 3043 / ATCC BAA-138 / NCIMB 13768)	0 pfams
+445	364106	Bacteria	Escherichia coli (strain UTI89 / UPEC)	0 pfams
+1140	10090	Eukaryota	Mus musculus	0 pfams
+355	264198	Bacteria	Cupriavidus pinatubonensis (strain JMP134 / LMG 1197)	0 pfams
+649	262723	Bacteria	Mycoplasma synoviae (strain 53)	0 pfams
+84	273116	Archaea	Thermoplasma volcanium (strain ATCC 51530 / DSM 4299 / IFO 15438 / JCM 9571 / GSS1)	0 pfams
+12	309800	Archaea	Haloferax volcanii (strain ATCC 29605 / DSM 3757 / IFO 14742 / NCIMB 2012 / DS2)	0 pfams
+954	641892	Bacteria	Sulcia muelleri (strain DMIN)	0 pfams
+248	395019	Bacteria	Burkholderia multivorans (strain ATCC 17616 / 249)	0 pfams
+973	84588	Bacteria	Synechococcus sp. (strain WH8102)	0 pfams
+879	93062	Bacteria	Staphylococcus aureus (strain COL)	0 pfams
+133	290397	Bacteria	Anaeromyxobacter dehalogenans (strain 2CP-C)	0 pfams
+719	93060	Bacteria	Prochlorococcus marinus (strain MIT 9215)	0 pfams
+557	363253	Bacteria	Lawsonia intracellularis (strain PHE/MN1-00)	0 pfams
+1107	7176	Eukaryota	Culex quinquefasciatus	0 pfams
+1084	451804	Eukaryota	Aspergillus fumigatus (strain CEA10 / CBS 144.89 / FGSC A1163)	0 pfams
+1085	425011	Eukaryota	Aspergillus niger (strain CBS 513.88 / FGSC A1513)	0 pfams
+1039	92829	Bacteria	Xanthomonas axonopodis pv. citri	0 pfams
+1195	5811	Eukaryota	Toxoplasma gondii	0 pfams
+770	394	Bacteria	Rhizobium sp. (strain NGR234)	0 pfams
+1187	13686	Eukaryota	Solenopsis invicta	0 pfams
+978	377629	Bacteria	Teredinibacter turnerae (strain ATCC 39867 / T7901)	0 pfams
+273	479433	Bacteria	Catenulispora acidiphila (strain DSM 44928 / NRRL B-24433 / NBRC 102108 / JCM 14897)	0 pfams
+953	479432	Bacteria	Streptosporangium roseum (strain ATCC 12428 / DSM 43021 / JCM 3005 / NI 9100)	0 pfams
+651	479431	Bacteria	Nakamurella multipartita (strain ATCC 700099 / DSM 44233 / JCM 9543 / Y-104)	0 pfams
+56	348780	Archaea	Natronomonas pharaonis (strain DSM 2160 / ATCC 35678)	0 pfams
+1017	479436	Bacteria	Veillonella parvula (strain ATCC 10790 / DSM 2008 / JCM 12972 / Te3)	0 pfams
+534	479435	Bacteria	Kribbella flavida (strain DSM 17836 / JCM 10339 / NBRC 14399)	0 pfams
+689	747	Bacteria	Pasteurella multocida	0 pfams
+632	347257	Bacteria	Mycoplasma agalactiae (strain PG2)	0 pfams
+639	347256	Bacteria	Mycoplasma hominis (strain ATCC 23114 / IFO 14850 / NCTC 10111 / PG21)	0 pfams
+548	557436	Bacteria	Lactobacillus reuteri (strain DSM 20016)	0 pfams
+726	59920	Bacteria	Prochlorococcus marinus (strain NATL2A)	0 pfams
+185	634504	Bacteria	Bartonella grahamii (strain as4aup)	0 pfams
+721	59922	Bacteria	Prochlorococcus marinus (strain MIT 9303)	0 pfams
+525	375286	Bacteria	Janthinobacterium sp. (strain Marseille) (Minibacterium massiliensis)	0 pfams
+663	323097	Bacteria	Nitrobacter hamburgensis (strain X14 / DSM 10229)	0 pfams
+640	295358	Bacteria	Mycoplasma hyopneumoniae (strain 232)	0 pfams
+943	568813	Bacteria	Streptococcus suis (strain SC84)	0 pfams
+941	568814	Bacteria	Streptococcus suis (strain BM407)	0 pfams
+1083	5085	Eukaryota	Aspergillus fumigatus	0 pfams
+993	416591	Bacteria	Thermotoga lettingae (strain ATCC BAA-301 / DSM 14385 / TMO)	0 pfams
+198	401473	Bacteria	Bifidobacterium dentium (strain ATCC 27534 / DSM 20436 / JCM 1195 / Bd1)	0 pfams
+882	359786	Bacteria	Staphylococcus aureus (strain JH9)	0 pfams
+223	235	Bacteria	Brucella abortus	0 pfams
+1024	312309	Bacteria	Vibrio fischeri (strain ATCC 700601 / ES114)	0 pfams
+11	478009	Archaea	Halobacterium salinarum (strain ATCC 29341 / DSM 671 / R1)	0 pfams
+1058	377628	Bacteria	Yersinia pestis bv. Antiqua (strain Nepal516)	0 pfams
+394	634503	Bacteria	Edwardsiella ictaluri (strain 93-146)	0 pfams
+170	545693	Bacteria	Bacillus megaterium (strain ATCC 12872 / QMB1551)	0 pfams
+977	56780	Bacteria	Syntrophus aciditrophicus (strain SB)	0 pfams
+1081	5057	Eukaryota	Aspergillus clavatus	0 pfams
+628	336982	Bacteria	Mycobacterium tuberculosis (strain F11)	0 pfams
+90	591001	Bacteria	Acidaminococcus fermentans (strain ATCC 25085 / DSM 20731 / VR4)	0 pfams
+1100	38033	Eukaryota	Chaetomium globosum	0 pfams
+801	452659	Bacteria	Rickettsia rickettsii (strain Iowa)	0 pfams
+238	339670	Bacteria	Burkholderia ambifaria (strain ATCC BAA-244 / AMMD)	0 pfams
+111	339671	Bacteria	Actinobacillus succinogenes (strain ATCC 55618 / 130Z)	0 pfams
+1129	486041	Eukaryota	Laccaria bicolor (strain S238N-H82)	0 pfams
+889	158879	Bacteria	Staphylococcus aureus (strain N315)	0 pfams
+887	158878	Bacteria	Staphylococcus aureus (strain Mu50 / ATCC 700699)	0 pfams
+913	365659	Bacteria	Streptococcus mitis (strain B6)	0 pfams
+531	640131	Bacteria	Klebsiella variicola (strain At-22)	0 pfams
+366	546414	Bacteria	Deinococcus deserti (strain VCD115 / DSM 17065 / LMG 22923)	0 pfams
+135	447217	Bacteria	Anaeromyxobacter sp. (strain K)	0 pfams
+513	570508	Bacteria	Helicobacter pylori (strain P12)	0 pfams
+923	487214	Bacteria	Streptococcus pneumoniae (strain Hungary19A-6)	0 pfams
+468	298653	Bacteria	Frankia sp. (strain EAN1pec)	0 pfams
+364	216389	Bacteria	Dehalococcoides sp. (strain BAV1)	0 pfams
+1170	73239	Eukaryota	Plasmodium yoelii yoelii	0 pfams
+338	309798	Bacteria	Coprothermobacter proteolyticus (strain ATCC 35245 / DSM 5265 / BT)	0 pfams
+390	309799	Bacteria	Dictyoglomus thermophilum (strain ATCC 35947 / DSM 3960 / H-6-12)	0 pfams
+1199	31285	Eukaryota	Trypanosoma brucei gambiense	0 pfams
+475	404380	Bacteria	Geobacter bemidjiensis (strain Bem / ATCC BAA-1014 / DSM 16622)	0 pfams
+699	370438	Bacteria	Pelotomaculum thermopropionicum (strain DSM 13744 / JCM 10971 / SI)	0 pfams
+455	376686	Bacteria	Flavobacterium johnsoniae (strain ATCC 17061 / DSM 2064 / UW101)	0 pfams
+222	358681	Bacteria	Brevibacillus brevis (strain 47 / JCM 6285 / NBRC 100599)	0 pfams
+236	372461	Bacteria	Buchnera aphidicola subsp. Cinara cedri	0 pfams
+538	321967	Bacteria	Lactobacillus casei (strain ATCC 334)	0 pfams
+1078	3702	Eukaryota	Arabidopsis thaliana	0 pfams
+1047	406818	Bacteria	Xenorhabdus bovienii (strain SS-2004)	0 pfams
+244	13373	Bacteria	Burkholderia mallei	0 pfams
+29	579137	Archaea	Methanocaldococcus vulcanius (strain ATCC 700851 / DSM 12094 / M7)	0 pfams
+1157	500485	Eukaryota	Penicillium chrysogenum (strain ATCC 28089 / DSM 1075 / Wisconsin 54-1255)	0 pfams
+40	368407	Archaea	Methanoculleus marisnigri (strain ATCC 35101 / DSM 1498 / JR1)	0 pfams
+873	479434	Bacteria	Sphaerobacter thermophilus (strain DSM 20745 / S 6022)	0 pfams
+543	324831	Bacteria	Lactobacillus gasseri (strain ATCC 33323 / DSM 20243)	0 pfams
+960	525898	Bacteria	Sulfurospirillum deleyianum (strain ATCC 51133 / DSM 6946 / 5175)	0 pfams
+735	342610	Bacteria	Pseudoalteromonas atlantica (strain T6c / BAA-1087)	0 pfams
+441	316385	Bacteria	Escherichia coli (strain K12 / DH10B)	0 pfams
+837	640132	Bacteria	Segniliparus rotundus (strain ATCC BAA-972 / CDC 1076 / CIP 108378 / DSM 44985 / JCM 13578)	0 pfams
+82	368408	Archaea	Thermofilum pendens (strain Hrk 5)	0 pfams
+934	370554	Bacteria	Streptococcus pyogenes serotype M4 (strain MGAS10750)	0 pfams
+466	326424	Bacteria	Frankia alni (strain ACN14a)	0 pfams
+300	326427	Bacteria	Chloroflexus aggregans (strain MD-66 / DSM 9485)	0 pfams
+412	585395	Bacteria	Escherichia coli O103:H2 (strain 12009 / EHEC)	0 pfams
+705	141679	Bacteria	Photorhabdus luminescens subsp. laumondii	0 pfams
+153	326423	Bacteria	Bacillus amyloliquefaciens (strain FZB42)	0 pfams
+1000	396588	Bacteria	Thioalkalivibrio sp. (strain HL-EbGR7)	0 pfams
+807	375451	Bacteria	Roseobacter denitrificans (strain ATCC 33942 / OCh 114)	0 pfams
+1116	6035	Eukaryota	Encephalitozoon cuniculi	0 pfams
+853	94122	Bacteria	Shewanella sp. (strain ANA-3)	0 pfams
+14	362976	Archaea	Haloquadratum walsbyi (strain DSM 16790)	0 pfams
+693	485917	Bacteria	Pedobacter heparinus (strain ATCC 13125 / DSM 2366 / NCIB 9290)	0 pfams
+1034	163164	Bacteria	Wolbachia pipientis wMel	0 pfams
+592	266779	Bacteria	Mesorhizobium sp. (strain BNC1)	0 pfams
+127	314275	Bacteria	Alteromonas macleodii (strain DSM 17117 / Deep ecotype)	0 pfams
+909	553482	Bacteria	Streptococcus equi subsp. equi (strain 4047)	0 pfams
+914	1309	Bacteria	Streptococcus mutans	0 pfams
+790	518766	Bacteria	Rhodothermus marinus (strain ATCC 43812 / DSM 4252 / R-10)	0 pfams
+150	511995	Bacteria	Azobacteroides pseudotrichonymphae genomovar. CFP2	0 pfams
+1122	5741	Eukaryota	Giardia intestinalis	0 pfams
+1108	7955	Eukaryota	Danio rerio	0 pfams
+1143	660122	Eukaryota	Nectria haematococca (strain 77-13-4 / FGSC 9596 / MPVI)	0 pfams
+1111	7227	Eukaryota	Drosophila melanogaster	0 pfams
+701	403833	Bacteria	Petrotoga mobilis (strain DSM 10674 / SJ95)	0 pfams
+210	139	Bacteria	Borrelia burgdorferi	0 pfams
+657	491	Bacteria	Neisseria meningitidis serogroup B	0 pfams
+984	525904	Bacteria	Thermobaculum terrenum (strain ATCC BAA-798 / YNP1)	0 pfams
+1009	218496	Bacteria	Tropheryma whipplei (strain TW08/27)	0 pfams
+1138	425265	Eukaryota	Malassezia globosa (strain ATCC 96807 / CBS 7966)	0 pfams
+1141	554155	Eukaryota	Nannizzia otae (strain CBS 113480)	0 pfams
+1075	559298	Eukaryota	Ajellomyces dermatitidis (strain SLH14081)	0 pfams
+556	557598	Bacteria	Laribacter hongkongensis (strain HLHK9)	0 pfams
+587	221988	Bacteria	Mannheimia succiniciproducens (strain MBEL55E)	0 pfams
+126	572477	Bacteria	Allochromatium vinosum (strain ATCC 17899 / DSM 180 / NBRC 103801 / D)	0 pfams
+817	369723	Bacteria	Salinispora tropica (strain ATCC BAA-916 / DSM 44818 / CNB-440)	0 pfams
+942	218494	Bacteria	Streptococcus suis (strain P1/7)	0 pfams
+99	535289	Bacteria	Acidovorax ebreus (strain TPSY)	0 pfams
+65	53953	Archaea	Pyrococcus horikoshii	0 pfams
+584	458233	Bacteria	Macrococcus caseolyticus (strain JCSC5402)	0 pfams
+458	458234	Bacteria	Francisella tularensis subsp. holarctica (strain FTNF002-00 / FTA)	0 pfams
+591	2151	Bacteria	Mesoplasma florum	0 pfams
+599	419610	Bacteria	Methylobacterium extorquens (strain PA1)	0 pfams
+444	439855	Bacteria	Escherichia coli (strain SMS-3-5 / SECEC)	0 pfams
+720	167546	Bacteria	Prochlorococcus marinus (strain MIT 9301)	0 pfams
+595	265072	Bacteria	Methylobacillus flagellatus (strain KT / ATCC 51484 / DSM 6875)	0 pfams
+821	439851	Bacteria	Salmonella dublin (strain CT_02021853)	0 pfams
+724	167542	Bacteria	Prochlorococcus marinus (strain MIT 9515)	0 pfams
+165	288681	Bacteria	Bacillus cereus (strain ZK / E33L)	0 pfams
+1158	441960	Eukaryota	Penicillium marneffei (strain ATCC 18224 / CBS 334.59 / QM 7333)	0 pfams
+900	639283	Bacteria	Starkeya novella (strain ATCC 8093 / DSM 506 / CCM 1077 / IAM 12100 / NBRC 12443 / NCIB 9113)	0 pfams
+815	761659	Bacteria	Salinibacter ruber (strain M8)	0 pfams
+694	198252	Bacteria	Pelagibacter ubique	0 pfams
+1172	13642	Eukaryota	Polysphondylium pallidum	0 pfams
+419	544404	Bacteria	Escherichia coli O157:H7 (strain TW14359 / EHEC)	0 pfams
+714	431947	Bacteria	Porphyromonas gingivalis (strain ATCC 33277 / DSM 20709 / JCM 12257)	0 pfams
+416	431946	Bacteria	Escherichia coli O150:H5 (strain SE15)	0 pfams
+375	96561	Bacteria	Desulfococcus oleovorans (strain DSM 6200 / Hxd3)	0 pfams
+326	431943	Bacteria	Clostridium kluyveri (strain ATCC 8527 / DSM 555 / NCIMB 10680)	0 pfams
+287	634464	Bacteria	Chlamydia trachomatis serovar E (strain Sweden2)	0 pfams
+729	553199	Bacteria	Propionibacterium acnes (strain SK137)	0 pfams
+242	406425	Bacteria	Burkholderia cenocepacia (strain MC0-3)	0 pfams
+671	196162	Bacteria	Nocardioides sp. (strain BAA-499 / JS614)	0 pfams
+34	402880	Archaea	Methanococcus maripaludis (strain C5 / ATCC BAA-1333)	0 pfams
+688	402881	Bacteria	Parvibaculum lavamentivorans (strain DS-1 / DSM 13023 / NCIMB 13966)	0 pfams
+841	402882	Bacteria	Shewanella baltica (strain OS185)	0 pfams
+1167	36329	Eukaryota	Plasmodium falciparum (isolate 3D7)	0 pfams
+1175	10116	Eukaryota	Rattus norvegicus	0 pfams
+225	430066	Bacteria	Brucella abortus (strain S19)	0 pfams
+935	471876	Bacteria	Streptococcus pyogenes serotype M49 (strain NZ131)	0 pfams
+1124	184922	Eukaryota	Giardia intestinalis (strain ATCC 50803 / WB clone C6)	0 pfams
+775	557760	Bacteria	Rhodobacter sphaeroides (strain KD131 / KCTC 12085)	0 pfams
+958	436114	Bacteria	Sulfurihydrogenibium sp. (strain YO3AOP1)	0 pfams
+680	100379	Bacteria	Onion yellows phytoplasma	0 pfams
+733	529507	Bacteria	Proteus mirabilis (strain HI4320)	0 pfams
+782	1076	Bacteria	Rhodopseudomonas palustris	0 pfams
+145	452863	Bacteria	Arthrobacter chlorophenolicus (strain A6 / ATCC 700700 / DSM 12829 / JCM 12360)	0 pfams
+131	521460	Bacteria	Anaerocellum thermophilum (strain DSM 6725 / Z-1320)	0 pfams
+799	562019	Bacteria	Rickettsia peacockii (strain Rustic)	0 pfams
+92	349163	Bacteria	Acidiphilium cryptum (strain JF-5)	0 pfams
+611	749219	Bacteria	Moraxella catarrhalis (strain RH4)	0 pfams
+378	349161	Bacteria	Desulfotomaculum reducens (strain MI-1)	0 pfams
+1121	9031	Eukaryota	Gallus gallus	0 pfams
+928	370553	Bacteria	Streptococcus pyogenes serotype M12 (strain MGAS2096)	0 pfams
+442	595496	Bacteria	Escherichia coli (strain K12 / MC4100 / BW2952)	0 pfams
+247	320388	Bacteria	Burkholderia mallei (strain SAVP1)	0 pfams
+246	320389	Bacteria	Burkholderia mallei (strain NCTC 10247)	0 pfams
+113	380703	Bacteria	Aeromonas hydrophila subsp. hydrophila (strain ATCC 7966 / NCIB 9240)	0 pfams
+219	375	Bacteria	Bradyrhizobium japonicum	0 pfams
+499	768066	Bacteria	Halomonas elongata (strain ATCC 33173 / DSM 2581 / NBRC 15536 / NCIMB 2198 / 1H9)	0 pfams
+344	306537	Bacteria	Corynebacterium jeikeium (strain K411)	0 pfams
+785	316057	Bacteria	Rhodopseudomonas palustris (strain BisB5)	0 pfams
+784	316056	Bacteria	Rhodopseudomonas palustris (strain BisB18)	0 pfams
+267	354242	Bacteria	Campylobacter jejuni subsp. jejuni serotype O:23/36 (strain 81-176)	0 pfams
+1125	55529	Eukaryota	Guillardia theta	0 pfams
+160	222523	Bacteria	Bacillus cereus (strain ATCC 10987)	0 pfams
+353	693216	Bacteria	Cronobacter turicensis (strain DSM 18703 / LMG 23827 / z3032)	0 pfams
+867	292414	Bacteria	Silicibacter sp. (strain TM1040)	0 pfams
+1001	292415	Bacteria	Thiobacillus denitrificans (strain ATCC 25259)	0 pfams
+999	300852	Bacteria	Thermus thermophilus (strain HB8 / ATCC 27634 / DSM 579)	0 pfams
+786	316058	Bacteria	Rhodopseudomonas palustris (strain HaA2)	0 pfams
+243	216591	Bacteria	Burkholderia cepacia (strain J2315 / LMG 16656)	0 pfams
+707	482235	Bacteria	Phytoplasma mali (strain AT)	0 pfams
+424	216592	Bacteria	Escherichia coli O44:H18 (strain 042 / EAEC)	0 pfams
+744	216595	Bacteria	Pseudomonas fluorescens (strain SBW25)	0 pfams
+302	324602	Bacteria	Chloroflexus aurantiacus (strain ATCC 29366 / DSM 635 / J-10-fl)	0 pfams
+835	216597	Bacteria	Salmonella typhimurium (strain SL1344)	0 pfams
+767	216596	Bacteria	Rhizobium leguminosarum bv. viciae (strain 3841)	0 pfams
+1031	196600	Bacteria	Vibrio vulnificus (strain YJ016)	0 pfams
+730	754252	Bacteria	Propionibacterium freudenreichii subsp. shermanii (strain ATCC 9614 / CIP 103027 / CIRM-BIA1)	0 pfams
+61	410359	Archaea	Pyrobaculum calidifontis (strain JCM 11548 / VA1)	0 pfams
+310	1488	Bacteria	Clostridium acetobutylicum	0 pfams
+829	476213	Bacteria	Salmonella paratyphi C (strain RKS4594)	0 pfams
+1183	578458	Eukaryota	Schizophyllum commune (strain H4-8 / FGSC 9210)	0 pfams
+916	1313	Bacteria	Streptococcus pneumoniae	0 pfams
+290	471473	Bacteria	Chlamydia trachomatis serovar L2b (strain UCH-1/proctitis)	0 pfams
+289	471472	Bacteria	Chlamydia trachomatis serovar L2 (strain 434/Bu / ATCC VR-902B)	0 pfams
+501	373903	Bacteria	Halothermothrix orenii (strain H 168 / OCM 544 / DSM 9562)	0 pfams
+567	173	Bacteria	Leptospira interrogans	0 pfams
+180	862962	Bacteria	Bacteroides fragilis (strain 638R)	0 pfams
+70	429572	Archaea	Sulfolobus islandicus (strain L.S.2.15 / Lassen #1)	0 pfams
+1023	593588	Bacteria	Vibrio cholerae serotype O1 (strain MJ-1236)	0 pfams
+957	204536	Bacteria	Sulfurihydrogenibium azorense (strain Az-Fu1 / DSM 15241 / OCM 825)	0 pfams
+156	568206	Bacteria	Bacillus anthracis (strain CDC 684 / NRRL 3495)	0 pfams
+176	412694	Bacteria	Bacillus thuringiensis (strain Al Hakam)	0 pfams
+1038	78245	Bacteria	Xanthobacter autotrophicus (strain ATCC BAA-1158 / Py2)	0 pfams
+866	89184	Bacteria	Silicibacter pomeroyi	0 pfams
+1041	314565	Bacteria	Xanthomonas campestris pv. campestris (strain 8004)	0 pfams
+504	382638	Bacteria	Helicobacter acinonychis (strain Sheeba)	0 pfams
+1168	5851	Eukaryota	Plasmodium knowlesi (strain H)	0 pfams
+332	357809	Bacteria	Clostridium phytofermentans (strain ATCC 700394 / DSM 18823 / ISDg)	0 pfams
+806	357808	Bacteria	Roseiflexus sp. (strain RS-1)	0 pfams
+1105	237895	Eukaryota	Cryptosporidium hominis	0 pfams
+757	357804	Bacteria	Psychromonas ingrahamii (strain 37)	0 pfams
+542	334390	Bacteria	Lactobacillus fermentum (strain IFO 3956 / LMG 18251)	0 pfams
+68	2285	Archaea	Sulfolobus acidocaldarius	0 pfams
+76	2287	Archaea	Sulfolobus solfataricus	0 pfams
+121	521098	Bacteria	Alicyclobacillus acidocaldarius subsp. acidocaldarius (strain ATCC 27009 / DSM 446 / 104-1A)	0 pfams
+746	351746	Bacteria	Pseudomonas putida (strain F1 / ATCC 700007)	0 pfams
+856	351745	Bacteria	Shewanella sp. (strain W3-18-1)	0 pfams
+1059	637382	Bacteria	Yersinia pestis (strain D106004)	0 pfams
+392	398580	Bacteria	Dinoroseobacter shibae (strain DFL 12)	0 pfams
+270	521097	Bacteria	Capnocytophaga ochracea (strain ATCC 27872 / DSM 7271 / JCM 12966 / VPI 2845)	0 pfams
+389	561229	Bacteria	Dickeya zeae (strain Ech1591)	0 pfams
+148	521095	Bacteria	Atopobium parvulum (strain ATCC 33793 / DSM 20469 / JCM 10300 / VPI 0546)	0 pfams
+221	114615	Bacteria	Bradyrhizobium sp. (strain ORS278)	0 pfams
+998	262724	Bacteria	Thermus thermophilus (strain HB27 / ATCC BAA-163 / DSM 7039)	0 pfams
+863	373384	Bacteria	Shigella flexneri serotype 5b (strain 8401)	0 pfams
+129	749927	Bacteria	Amycolatopsis mediterranei (strain U-32)	0 pfams
+435	536056	Bacteria	Escherichia coli (strain ATCC 33849 / DSM 4235 / NCIB 12045 / K12 / DH1)	0 pfams
+509	684950	Bacteria	Helicobacter pylori (strain 52)	0 pfams
+641	262722	Bacteria	Mycoplasma hyopneumoniae (strain 7448)	0 pfams
+833	588858	Bacteria	Salmonella typhimurium (strain 14028s / SGSC 2262)	0 pfams
+259	351627	Bacteria	Caldicellulosiruptor saccharolyticus (strain ATCC 43494 / DSM 8903)	0 pfams
+286	672161	Bacteria	Chlamydia trachomatis serovar B (strain TZ1A828/OT)	0 pfams
+975	335543	Bacteria	Syntrophobacter fumaroxidans (strain DSM 10017 / MPOB)	0 pfams
+976	335541	Bacteria	Syntrophomonas wolfei subsp. wolfei (strain Goettingen)	0 pfams
+206	519	Bacteria	Bordetella parapertussis	0 pfams
+205	518	Bacteria	Bordetella bronchiseptica	0 pfams
+989	471852	Bacteria	Thermomonospora curvata (strain ATCC 19995 / DSM 43183 / JCM 3096 / NCIMB 10081)	0 pfams
+44	456442	Archaea	Methanoregula boonei (strain 6A8)	0 pfams
+564	456481	Bacteria	Leptospira biflexa serovar Patoc (strain Patoc 1 / ATCC 23582 / Paris)	0 pfams
+842	399599	Bacteria	Shewanella baltica (strain OS195)	0 pfams
+583	444177	Bacteria	Lysinibacillus sphaericus (strain C3-41)	0 pfams
+624	189918	Bacteria	Mycobacterium sp. (strain KMS)	0 pfams
+921	171101	Bacteria	Streptococcus pneumoniae (strain ATCC BAA-255 / R6)	0 pfams
+1093	6238	Eukaryota	Caenorhabditis briggsae	0 pfams
+1050	2371	Bacteria	Xylella fastidiosa	0 pfams
+463	119856	Bacteria	Francisella tularensis subsp. tularensis	0 pfams
+1019	412965	Bacteria	Vesicomyosocius okutanii subsp. Calyptogena okutanii (strain HA)	0 pfams
+862	623	Bacteria	Shigella flexneri	0 pfams
+1193	5874	Eukaryota	Theileria annulata	0 pfams
+899	342451	Bacteria	Staphylococcus saprophyticus subsp. saprophyticus (strain ATCC 15305 / DSM 20229)	0 pfams
+610	264732	Bacteria	Moorella thermoacetica (strain ATCC 39073)	0 pfams
+715	264731	Bacteria	Prevotella ruminicola (strain ATCC 19189 / JCM 8958 / 23)	0 pfams
+892	663951	Bacteria	Staphylococcus aureus (strain TW20 / 0582)	0 pfams
+795	293613	Bacteria	Rickettsia canadensis (strain McKiel)	0 pfams
+797	42862	Bacteria	Rickettsia felis	0 pfams
+272	387662	Bacteria	Carsonella ruddii (strain PV)	0 pfams
+507	85963	Bacteria	Helicobacter pylori J99	0 pfams
+249	391038	Bacteria	Burkholderia phymatum (strain DSM 17167 / STM815)	0 pfams
+1044	64187	Bacteria	Xanthomonas oryzae pv. oryzae	0 pfams
+491	281310	Bacteria	Haemophilus influenzae (strain 86-028NP)	0 pfams
+1134	5665	Eukaryota	Leishmania mexicana	0 pfams
+169	279010	Bacteria	Bacillus licheniformis (strain DSM 13 / ATCC 14580)	0 pfams
+315	508765	Bacteria	Clostridium botulinum (strain Eklund 17B / Type B)	0 pfams
+313	508767	Bacteria	Clostridium botulinum (strain Alaska E43 / Type E3)	0 pfams
+57	436308	Archaea	Nitrosopumilus maritimus (strain SCM1)	0 pfams
+816	391037	Bacteria	Salinispora arenicola (strain CNS-205)	0 pfams
+834	568708	Bacteria	Salmonella typhimurium (strain D23580)	0 pfams
+643	2118	Bacteria	Mycoplasma mobile	0 pfams
+37	406327	Archaea	Methanococcus vannielii (strain SB / ATCC 35089 / DSM 1224)	0 pfams
+367	319795	Bacteria	Deinococcus geothermalis (strain DSM 11300)	0 pfams
+773	349102	Bacteria	Rhodobacter sphaeroides (strain ATCC 17025 / ATH 2.4.3)	0 pfams
+329	1502	Bacteria	Clostridium perfringens	0 pfams
+849	398579	Bacteria	Shewanella pealeana (strain ATCC 700345 / ANG-SQ1)	0 pfams
+1020	666	Bacteria	Vibrio cholerae	0 pfams
+1008	203124	Bacteria	Trichodesmium erythraeum (strain IMS101)	0 pfams
+400	254945	Bacteria	Ehrlichia ruminantium (strain Welgevonden)	0 pfams
+764	491916	Bacteria	Rhizobium etli (strain CIAT 652)	0 pfams
+537	387344	Bacteria	Lactobacillus brevis (strain ATCC 367 / JCM 1170)	0 pfams
+139	491915	Bacteria	Anoxybacillus flavithermus (strain DSM 21510 / WK1)	0 pfams
+924	488222	Bacteria	Streptococcus pneumoniae (strain JJA)	0 pfams
+264	197	Bacteria	Campylobacter jejuni	0 pfams
+919	488221	Bacteria	Streptococcus pneumoniae (strain 70585)	0 pfams
+449	262543	Bacteria	Exiguobacterium sibiricum (strain DSM 17290 / JCM 13490 / 255-15)	0 pfams
+296	290315	Bacteria	Chlorobium limicola (strain DSM 245 / NBRC 103803)	0 pfams
+298	290317	Bacteria	Chlorobium phaeobacteroides (strain DSM 266)	0 pfams
+832	90371	Bacteria	Salmonella typhimurium	0 pfams
+732	290318	Bacteria	Prosthecochloris vibrioformis (strain DSM 265)	0 pfams
+670	37329	Bacteria	Nocardia farcinica	0 pfams
+401	445932	Bacteria	Elusimicrobium minutum (strain Pei191)	0 pfams
+896	176280	Bacteria	Staphylococcus epidermidis (strain ATCC 12228)	0 pfams
+551	362948	Bacteria	Lactobacillus salivarius subsp. salivarius (strain UCC118)	0 pfams
+494	557723	Bacteria	Haemophilus parasuis serovar 5 (strain SH0165)	0 pfams
+824	454169	Bacteria	Salmonella heidelberg (strain SL476)	0 pfams
+434	585055	Bacteria	Escherichia coli (strain 55989 / EAEC)	0 pfams
+446	585054	Bacteria	Escherichia fergusonii (strain ATCC 35469 / DSM 13698 / CDC 0568-73)	0 pfams
+430	585057	Bacteria	Escherichia coli O7:K1 (strain IAI39 / ExPEC)	0 pfams
+420	585056	Bacteria	Escherichia coli O17:K52:H18 (strain UMN026 / ExPEC)	0 pfams
+252	357348	Bacteria	Burkholderia pseudomallei (strain 1106a)	0 pfams
+474	420246	Bacteria	Geobacillus thermodenitrificans (strain NG80-2)	0 pfams
+982	119072	Bacteria	Thermoanaerobacter tengcongensis	0 pfams
+521	380749	Bacteria	Hydrogenobaculum sp. (strain Y04AAS1)	0 pfams
+1149	436017	Eukaryota	Ostreococcus lucimarinus (strain CCE9901)	0 pfams
+337	469383	Bacteria	Conexibacter woesei (strain DSM 14684 / JCM 11494 / NBRC 100937 / ID131577)	0 pfams
+451	381764	Bacteria	Fervidobacterium nodosum (strain ATCC 35602 / DSM 5306 / Rt17-B1)	0 pfams
+1033	570417	Bacteria	Wolbachia pipientis subsp. Culex pipiens (strain wPip)	0 pfams
+925	488223	Bacteria	Streptococcus pneumoniae (strain P1031)	0 pfams
+186	38323	Bacteria	Bartonella henselae	0 pfams
+373	138119	Bacteria	Desulfitobacterium hafniense (strain Y51)	0 pfams
+1203	436907	Eukaryota	Vanderwaltozyma polyspora (strain ATCC 22028 / DSM 70294)	0 pfams
+107	62977	Bacteria	Acinetobacter sp. (strain ADP1)	0 pfams
+1189	59729	Eukaryota	Taeniopygia guttata	0 pfams
+255	269483	Bacteria	Burkholderia sp. (strain 383)	0 pfams
+257	269482	Bacteria	Burkholderia vietnamiensis (strain G4 / LMG 22486)	0 pfams
+183	435590	Bacteria	Bacteroides vulgatus (strain ATCC 8482 / DSM 1447 / NCTC 11154)	0 pfams
+80	523850	Archaea	Thermococcus onnurineus (strain NA1)	0 pfams
+384	883	Bacteria	Desulfovibrio vulgaris (strain Miyazaki F / DSM 19637)	0 pfams
+383	882	Bacteria	Desulfovibrio vulgaris (strain Hildenborough / ATCC 29579 / NCIMB 8303)	0 pfams
+609	449447	Bacteria	Microcystis aeruginosa (strain NIES-843)	0 pfams
+669	323848	Bacteria	Nitrosospira multiformis (strain ATCC 25196 / NCIMB 11849)	0 pfams
+1153	502779	Eukaryota	Paracoccidioides brasiliensis (strain ATCC MYA-826 / Pb01)	0 pfams
+1190	441959	Eukaryota	Talaromyces stipitatus (strain ATCC 10500 / CBS 375.48 / QM 6759 / NRRL 1006)	0 pfams
+516	757424	Bacteria	Herbaspirillum seropedicae (strain SmR1)	0 pfams
+965	32049	Bacteria	Synechococcus sp. (strain ATCC 27264 / PCC 7002 / PR-6)	0 pfams
+240	331271	Bacteria	Burkholderia cenocepacia (strain AU 1054)	0 pfams
+336	167879	Bacteria	Colwellia psychrerythraea (strain 34H / ATCC BAA-681)	0 pfams
+706	59748	Bacteria	Phytoplasma australiense	0 pfams
+461	441952	Bacteria	Francisella tularensis subsp. mediasiatica (strain FSC147)	0 pfams
+231	470137	Bacteria	Brucella suis (strain ATCC 23445 / NCTC 10510)	0 pfams
+1174	426418	Eukaryota	Pyrenophora tritici-repentis (strain Pt-1C-BFP)	0 pfams
+1098	294747	Eukaryota	Candida tropicalis (strain ATCC MYA-3404 / T1)	0 pfams
+884	282458	Bacteria	Staphylococcus aureus (strain MRSA252)	0 pfams
+1010	203267	Bacteria	Tropheryma whipplei (strain Twist)	0 pfams
+211	445985	Bacteria	Borrelia burgdorferi (strain ZS7)	0 pfams
+114	382245	Bacteria	Aeromonas salmonicida (strain A449)	0 pfams
+78	273063	Archaea	Sulfolobus tokodaii (strain DSM 16993 / JCM 10545 / NBRC 100140 / 7)	0 pfams
+453	334413	Bacteria	Finegoldia magna (strain ATCC 29328)	0 pfams
+633	243272	Bacteria	Mycoplasma arthritidis (strain 158L3-1)	0 pfams
+277	366602	Bacteria	Caulobacter sp. (strain K31)	0 pfams
+524	290400	Bacteria	Jannaschia sp. (strain CCS1)	0 pfams
+1095	294748	Eukaryota	Candida albicans (strain WO-1)	0 pfams
+311	290402	Bacteria	Clostridium beijerinckii (strain ATCC 51743 / NCIMB 8052)	0 pfams
+35	444158	Archaea	Methanococcus maripaludis (strain C6 / ATCC BAA-1332)	0 pfams
+983	580327	Bacteria	Thermoanaerobacterium thermosaccharolyticum (strain ATCC 7956 / DSM 571 / NCIB 9385 / NCA 3814)	0 pfams
+792	293614	Bacteria	Rickettsia akari (strain Hartford)	0 pfams
+831	90370	Bacteria	Salmonella typhi	0 pfams
+936	160491	Bacteria	Streptococcus pyogenes serotype M5 (strain Manfredo)	0 pfams
+317	536232	Bacteria	Clostridium botulinum (strain Kyoto / Type A2)	0 pfams
+536	1579	Bacteria	Lactobacillus acidophilus	0 pfams
+85	444157	Archaea	Thermoproteus neutrophilus (strain DSM 2338 / JCM 9278 / V24Sta)	0 pfams
+753	323	Bacteria	Pseudomonas syringae pv. tomato	0 pfams
+886	418127	Bacteria	Staphylococcus aureus (strain Mu3 / ATCC 700698)	0 pfams
+1016	543728	Bacteria	Variovorax paradoxus (strain S110)	0 pfams
+1028	150340	Bacteria	Vibrio sp. (strain Ex25)	0 pfams
+528	266940	Bacteria	Kineococcus radiotolerans (strain ATCC BAA-149 / DSM 14245 / SRS30216)	0 pfams
+1106	5807	Eukaryota	Cryptosporidium parvum	0 pfams
+1064	502801	Bacteria	Yersinia pseudotuberculosis serotype IB (strain PB1/+)	0 pfams
+178	315730	Bacteria	Bacillus weihenstephanensis (strain KBAB4)	0 pfams
+723	74547	Bacteria	Prochlorococcus marinus (strain MIT 9313)	0 pfams
+258	266265	Bacteria	Burkholderia xenovorans (strain LB400)	0 pfams
+348	777	Bacteria	Coxiella burnetii	0 pfams
+426	701177	Bacteria	Escherichia coli O55:H7 (strain CB9615 / EPEC)	0 pfams
+727	59919	Bacteria	Prochlorococcus marinus subsp. pastoris (strain CCMP1986 / MED4)	0 pfams
+237	98794	Bacteria	Buchnera aphidicola subsp. Schizaphis graminum	0 pfams
+320	498213	Bacteria	Clostridium botulinum (strain Okra / Type B1)	0 pfams
+1201	336963	Eukaryota	Uncinocarpus reesii (strain UAMH 1704)	0 pfams
+279	498211	Bacteria	Cellvibrio japonicus (strain Ueda107)	0 pfams
+395	498217	Bacteria	Edwardsiella tarda (strain EIB202)	0 pfams
+319	498214	Bacteria	Clostridium botulinum (strain Loch Maree / Type A3)	0 pfams
+1200	5693	Eukaryota	Trypanosoma cruzi	0 pfams
+147	322098	Bacteria	Aster yellows witches'-broom phytoplasma (strain AYWB)	0 pfams
+1128	28985	Eukaryota	Kluyveromyces lactis	0 pfams
+917	512566	Bacteria	Streptococcus pneumoniae serotype 19F (strain G54)	0 pfams
+514	512562	Bacteria	Helicobacter pylori (strain Shi470)	0 pfams
+251	28450	Bacteria	Burkholderia pseudomallei	0 pfams
+478	316067	Bacteria	Geobacter sp. (strain FRC-32)	0 pfams
+1082	332952	Eukaryota	Aspergillus flavus (strain ATCC 200026 / FGSC A1120 / NRRL 3357 / JCM 12722 / SRRC 167)	0 pfams
+407	29471	Bacteria	Erwinia carotovora subsp. atroseptica	0 pfams
+9	2238	Archaea	Haloarcula marismortui	0 pfams
+623	164757	Bacteria	Mycobacterium sp. (strain JLS)	0 pfams
+625	164756	Bacteria	Mycobacterium sp. (strain MCS)	0 pfams
+994	2336	Bacteria	Thermotoga maritima	0 pfams
+428	362663	Bacteria	Escherichia coli O6:K15:H31 (strain 536 / UPEC)	0 pfams
+1147	578460	Eukaryota	Nosema ceranae (strain BRL01)	0 pfams
+872	448385	Bacteria	Sorangium cellulosum (strain So ce56)	0 pfams
+3	2234	Archaea	Archaeoglobus fulgidus	0 pfams
+880	681288	Bacteria	Staphylococcus aureus (strain ED98)	0 pfams
+301	480224	Bacteria	Chloroflexus aurantiacus (strain ATCC 29364 / DSM 637 / Y-400-fl)	0 pfams
+618	1769	Bacteria	Mycobacterium leprae	0 pfams
+51	323259	Archaea	Methanospirillum hungatei (strain JF-1 / DSM 864)	0 pfams
+777	632772	Bacteria	Rhodococcus opacus (strain B4)	0 pfams
+952	680198	Bacteria	Streptomyces scabies (strain 87.22)	0 pfams
+322	573061	Bacteria	Clostridium cellulovorans (strain ATCC 35296 / DSM 3052 / OCM 3 / 743B)	0 pfams
+26	573063	Archaea	Methanocaldococcus infernus (strain DSM 11812 / JCM 15783 / ME)	0 pfams
+1032	36870	Bacteria	Wigglesworthia glossinidia brevipalpis	0 pfams
+103	405416	Bacteria	Acinetobacter baumannii (strain ACICU)	0 pfams
+25	573064	Archaea	Methanocaldococcus fervens (strain DSM 4213 / JCM 157852 / AG86)	0 pfams
+574	1642	Bacteria	Listeria innocua	0 pfams
+467	106370	Bacteria	Frankia sp. (strain CcI3)	0 pfams
+963	1140	Bacteria	Synechococcus elongatus (strain PCC 7942)	0 pfams
+108	434271	Bacteria	Actinobacillus pleuropneumoniae serotype 3 (strain JL03)	0 pfams
+738	557722	Bacteria	Pseudomonas aeruginosa (strain LESB58)	0 pfams
+71	427317	Archaea	Sulfolobus islandicus (strain M.14.25 / Kamchatka #1)	0 pfams
+1109	4959	Eukaryota	Debaryomyces hansenii	0 pfams
+72	427318	Archaea	Sulfolobus islandicus (strain M.16.27)	0 pfams
+974	1148	Bacteria	Synechocystis sp. (strain ATCC 27184 / PCC 6803 / N-1)	0 pfams
+966	64471	Bacteria	Synechococcus sp. (strain CC9311)	0 pfams
+798	416276	Bacteria	Rickettsia massiliae (strain Mtu5)	0 pfams
+1073	339724	Eukaryota	Ajellomyces capsulata (strain NAm1 / WU24)	0 pfams
+130	240292	Bacteria	Anabaena variabilis (strain ATCC 29413 / PCC 7937)	0 pfams
+638	2097	Bacteria	Mycoplasma genitalium	0 pfams
+636	2096	Bacteria	Mycoplasma gallisepticum	0 pfams
+415	331111	Bacteria	Escherichia coli O139:H28 (strain E24377A / ETEC)	0 pfams
+578	552536	Bacteria	Listeria monocytogenes serotype 4a (strain HCC23)	0 pfams
+541	321956	Bacteria	Lactobacillus delbrueckii subsp. bulgaricus (strain ATCC BAA-365)	0 pfams
+433	331112	Bacteria	Escherichia coli O9:H4 (strain HS)	0 pfams
+1145	331117	Eukaryota	Neosartorya fischeri (strain ATCC 1020 / DSM 3700 / FGSC A1164 / NRRL 181)	0 pfams
+981	399726	Bacteria	Thermoanaerobacter sp. (strain X514)	0 pfams
+438	469008	Bacteria	Escherichia coli (strain B / BL21-DE3)	0 pfams
+877	703339	Bacteria	Staphylococcus aureus (strain 04-02981)	0 pfams
+920	561276	Bacteria	Streptococcus pneumoniae (strain ATCC 700669 / Spain 23F-1)	0 pfams
+616	561275	Bacteria	Mycobacterium bovis (strain BCG / Tokyo 172 / ATCC 35737 / TMC 1019)	0 pfams
+1161	4905	Eukaryota	Pichia angusta	0 pfams
+15	519442	Archaea	Halorhabdus utahensis (strain DSM 12940 / JCM 11049 / AX-2)	0 pfams
+904	519441	Bacteria	Streptobacillus moniliformis (strain ATCC 14647 / DSM 12112 / NCTC 10651 / 9901)	0 pfams
+1068	542	Bacteria	Zymomonas mobilis	0 pfams
+911	552526	Bacteria	Streptococcus equi subsp. zooepidemicus (strain MGCS10565)	0 pfams
+818	454166	Bacteria	Salmonella agona (strain SL483)	0 pfams
+1046	360094	Bacteria	Xanthomonas oryzae pv. oryzae (strain PXO99A)	0 pfams
+184	360095	Bacteria	Bartonella bacilliformis (strain ATCC 35685 / KC583)	0 pfams
+1091	332648	Eukaryota	Botryotinia fuckeliana (strain B05.10)	0 pfams
+10	2242	Archaea	Halobacterium salinarium	0 pfams
+471	1462	Bacteria	Geobacillus kaustophilus	0 pfams
+1026	338187	Bacteria	Vibrio harveyi (strain ATCC BAA-1116 / BB120)	0 pfams
+529	507522	Bacteria	Klebsiella pneumoniae (strain 342)	0 pfams
+149	62928	Bacteria	Azoarcus sp. (strain BH72)	0 pfams
+1086	5062	Eukaryota	Aspergillus oryzae	0 pfams
+377	84980	Bacteria	Desulfotalea psychrophila	0 pfams
+1007	455434	Bacteria	Treponema pallidum subsp. pallidum (strain SS14)	0 pfams
+661	222891	Bacteria	Neorickettsia sennetsu (strain Miyayama)	0 pfams
+1171	5145	Eukaryota	Podospora anserina	0 pfams
+1088	5068	Eukaryota	Aspergillus tubingensis	0 pfams
+820	28901	Bacteria	Salmonella choleraesuis	0 pfams
+413	585396	Bacteria	Escherichia coli O111:H- (strain 11128 / EHEC)	0 pfams
+432	585397	Bacteria	Escherichia coli O81 (strain ED1a)	0 pfams
+102	557600	Bacteria	Acinetobacter baumannii (strain AB307-0294)	0 pfams
+417	83334	Bacteria	Escherichia coli O157:H7	0 pfams
+1056	349746	Bacteria	Yersinia pestis bv. Antiqua (strain Angola)	0 pfams
+308	443906	Bacteria	Clavibacter michiganensis subsp. michiganensis (strain NCPPB 382)	0 pfams
+1118	5759	Eukaryota	Entamoeba histolytica	0 pfams
+518	316274	Bacteria	Herpetosiphon aurantiacus (strain ATCC 23779 / DSM 785)	0 pfams
+1013	134821	Bacteria	Ureaplasma parvum	0 pfams
+115	634176	Bacteria	Aggregatibacter aphrophilus (strain NJ8700)	0 pfams
+910	553483	Bacteria	Streptococcus equi subsp. zooepidemicus (strain H70)	0 pfams
+256	271848	Bacteria	Burkholderia thailandensis (strain E264 / ATCC 700388 / DSM 13276 / CIP 106301)	0 pfams
+1036	66084	Bacteria	Wolbachia sp. subsp. Drosophila simulans (strain wRi)	0 pfams
+1029	575788	Bacteria	Vibrio splendidus (strain LGP32)	0 pfams
+141	644284	Bacteria	Arcanobacterium haemolyticum (strain ATCC 9345 / DSM 20595 / NBRC 15585 / NCTC 8452 / 11018)	0 pfams
+20	374847	Archaea	Korarchaeum cryptofilum (strain OPF8)	0 pfams
+370	644282	Bacteria	Desulfarculus baarsii (strain ATCC 33931 / DSM 2075 / VKM B-1802 / 2st14)	0 pfams
+196	580050	Bacteria	Bifidobacterium animalis subsp. lactis (strain Bl-04 / DGCC2908 / RB 4825 / SD5219)	0 pfams
+28	644281	Archaea	Methanocaldococcus sp. (strain FS406-22)	0 pfams
+605	414	Bacteria	Methylococcus capsulatus	0 pfams
+437	511693	Bacteria	Escherichia coli (strain B / BL21)	0 pfams
+547	644042	Bacteria	Lactobacillus plantarum (strain JDM1)	0 pfams
+915	511691	Bacteria	Streptococcus mutans serotype c (strain NN2025)	0 pfams
+668	335283	Bacteria	Nitrosomonas eutropha (strain C91)	0 pfams
+793	391896	Bacteria	Rickettsia bellii (strain OSU 85-389)	0 pfams
+508	290847	Bacteria	Helicobacter pylori (strain 51)	0 pfams
+645	28227	Bacteria	Mycoplasma penetrans	0 pfams
+250	398527	Bacteria	Burkholderia phytofirmans (strain DSM 17436 / PsJN)	0 pfams
+563	355278	Bacteria	Leptospira biflexa serovar Patoc (strain Patoc 1 / Ames)	0 pfams
+756	349106	Bacteria	Psychrobacter sp. (strain PRwf-1)	0 pfams
+774	349101	Bacteria	Rhodobacter sphaeroides (strain ATCC 17029 / ATH 2.4.9)	0 pfams
+404	399742	Bacteria	Enterobacter sp. (strain 638)	0 pfams
+1003	75379	Bacteria	Thiomonas intermedia (strain K12)	0 pfams
+94	380394	Bacteria	Acidithiobacillus ferrooxidans (strain ATCC 53993)	0 pfams
+809	266117	Bacteria	Rubrobacter xylanophilus (strain DSM 9941 / NBRC 16129)	0 pfams
+335	203119	Bacteria	Clostridium thermocellum (strain ATCC 27405 / DSM 1237)	0 pfams
+566	355276	Bacteria	Leptospira borgpetersenii serovar Hardjo-bovis (strain L550)	0 pfams
+565	355277	Bacteria	Leptospira borgpetersenii serovar Hardjo-bovis (strain JB197)	0 pfams
+805	383372	Bacteria	Roseiflexus castenholzii (strain DSM 13941 / HLO8)	0 pfams
+868	366394	Bacteria	Sinorhizobium medicae (strain WSM419)	0 pfams
+695	338963	Bacteria	Pelobacter carbinolicus (strain DSM 2380 / Gra Bd 1)	0 pfams
+851	319224	Bacteria	Shewanella putrefaciens (strain CN-32 / ATCC BAA-453)	0 pfams
+696	338966	Bacteria	Pelobacter propionicus (strain DSM 2379)	0 pfams
+1169	126793	Eukaryota	Plasmodium vivax (strain Salvador I)	0 pfams
+132	455488	Bacteria	Anaeromyxobacter dehalogenans (strain 2CP-1 / ATCC BAA-258)	0 pfams
+142	367737	Bacteria	Arcobacter butzleri (strain RM4018)	0 pfams
+779	338969	Bacteria	Rhodoferax ferrireducens (strain DSM 15236 / ATCC BAA-621 / T118)	0 pfams
+1077	7165	Eukaryota	Anopheles gambiae	0 pfams
+459	376619	Bacteria	Francisella tularensis subsp. holarctica (strain LVS)	0 pfams
+288	718219	Bacteria	Chlamydia trachomatis serovar G (strain G/9301)	0 pfams
+1090	9913	Eukaryota	Bos taurus	0 pfams
+747	76869	Bacteria	Pseudomonas putida (strain GB-1)	0 pfams
+713	837	Bacteria	Porphyromonas gingivalis	0 pfams
+679	504832	Bacteria	Oligotropha carboxidovorans (strain ATCC 49405 / DSM 1227 / OM5)	0 pfams
+175	655816	Bacteria	Bacillus subtilis subsp. spizizenii (strain ATCC 23059 / NRRL B-14472 / W23)	0 pfams
+535	478801	Bacteria	Kytococcus sedentarius (strain ATCC 14392 / DSM 20547 / CCM 314 / 541)	0 pfams
+423	573235	Bacteria	Escherichia coli O26:H11 (strain 11368 / EHEC)	0 pfams
+1159	13684	Eukaryota	Phaeosphaeria nodorum	0 pfams
+979	85643	Bacteria	Thauera sp. (strain MZ1T)	0 pfams
+1097	5478	Eukaryota	Candida glabrata	0 pfams
+1	439481	Archaea	Aciduliprofundum boonei (strain DSM 19572 / T469)	0 pfams
+580	265669	Bacteria	Listeria monocytogenes serotype 4b (strain F2365)	0 pfams
+1115	162425	Eukaryota	Emericella nidulans	0 pfams
+665	472759	Bacteria	Nitrosococcus halophilus (strain Nc4)	0 pfams
+75	419942	Archaea	Sulfolobus islandicus (strain Y.N.15.51 / Yellowstone #2)	0 pfams
+79	593117	Archaea	Thermococcus gammatolerans (strain DSM 15229 / JCM 11827 / EJ3)	0 pfams
+627	419947	Bacteria	Mycobacterium tuberculosis (strain ATCC 25177 / H37Ra)	0 pfams
+275	565050	Bacteria	Caulobacter crescentus (strain NA1000 / CB15N)	0 pfams
+898	279808	Bacteria	Staphylococcus haemolyticus (strain JCSC1435)	0 pfams
+603	426117	Bacteria	Methylobacterium sp. (strain 4-46)	0 pfams
+362	159087	Bacteria	Dechloromonas aromatica (strain RCB)	0 pfams
+768	381	Bacteria	Rhizobium loti	0 pfams
+769	382	Bacteria	Rhizobium meliloti	0 pfams
+230	29461	Bacteria	Brucella suis	0 pfams
+303	517418	Bacteria	Chloroherpeton thalassium (strain ATCC 35110 / GB-78)	0 pfams
+470	379066	Bacteria	Gemmatimonas aurantiaca (strain T-27 / DSM 14586 / JCM 11422 / NBRC 100505)	0 pfams
+294	517417	Bacteria	Chlorobaculum parvum (strain NCIB 8327)	0 pfams
+193	367928	Bacteria	Bifidobacterium adolescentis (strain ATCC 15703 / DSM 20083)	0 pfams
+885	282459	Bacteria	Staphylococcus aureus (strain MSSA476)	0 pfams
+410	338565	Bacteria	Erwinia tasmaniensis (strain DSM 17950 / Et1/99)	0 pfams
+848	70863	Bacteria	Shewanella oneidensis	0 pfams
+634	340047	Bacteria	Mycoplasma capricolum subsp. capricolum (strain California kid / ATCC 27343 / NCTC 10154)	0 pfams
+796	781	Bacteria	Rickettsia conorii	0 pfams
+22	187420	Archaea	Methanobacterium thermoautotrophicum	0 pfams
+204	360910	Bacteria	Bordetella avium (strain 197N)	0 pfams
+402	716541	Bacteria	Enterobacter cloacae subsp. cloacae (strain ATCC 13047 / DSM 30054 / NBRC 13535 / NCDC 279-56)	0 pfams
+878	273036	Bacteria	Staphylococcus aureus (strain bovine RF122 / ET3-1)	0 pfams
+749	390235	Bacteria	Pseudomonas putida (strain W619)	0 pfams
+209	390236	Bacteria	Borrelia afzelii (strain PKo)	0 pfams
+854	60480	Bacteria	Shewanella sp. (strain MR-4)	0 pfams
+692	278197	Bacteria	Pediococcus pentosaceus (strain ATCC 25745 / 183-1w)	0 pfams
+644	44101	Bacteria	Mycoplasma mycoides subsp. mycoides SC	0 pfams
+88	634452	Bacteria	Acetobacter pasteurianus (strain NBRC 3283 / LMG 1513 / CCTM 1153)	0 pfams
+1194	5875	Eukaryota	Theileria parva	0 pfams
+356	164546	Bacteria	Cupriavidus taiwanensis (strain R1 / LMG 19424)	0 pfams
+292	83557	Bacteria	Chlamydophila caviae	0 pfams
+291	83555	Bacteria	Chlamydophila abortus	0 pfams
+1060	637385	Bacteria	Yersinia pestis (strain D182038)	0 pfams
+647	722438	Bacteria	Mycoplasma pneumoniae (strain ATCC 15531 / NBRC 14401 / NCTC 10119 / FH)	0 pfams
+1062	637386	Bacteria	Yersinia pestis (strain Z176003)	0 pfams
+660	434131	Bacteria	Neorickettsia risticii (strain Illinois)	0 pfams
+1188	771870	Eukaryota	Sordaria macrospora (strain ATCC MYA-333 / DSM 997 / K(L3346) / K-hell)	0 pfams
+825	423368	Bacteria	Salmonella newport (strain SL254)	0 pfams
+1113	7244	Eukaryota	Drosophila virilis	0 pfams
+96	240015	Bacteria	Acidobacterium capsulatum (strain ATCC 51196 / DSM 11244 / JCM 7670)	0 pfams
+399	302409	Bacteria	Ehrlichia ruminantium (strain Gardel)	0 pfams
+472	471223	Bacteria	Geobacillus sp. (strain WCH70)	0 pfams
+164	361100	Bacteria	Bacillus cereus (strain Q1)	0 pfams
+855	60481	Bacteria	Shewanella sp. (strain MR-7)	0 pfams
+681	452637	Bacteria	Opitutus terrae (strain DSM 11246 / PB90-1)	0 pfams
+27	2190	Archaea	Methanocaldococcus jannaschii	0 pfams
+691	561231	Bacteria	Pectobacterium wasabiae (strain WPP163)	0 pfams
+690	561230	Bacteria	Pectobacterium carotovorum subsp. carotovorum (strain PC1)	0 pfams
+235	224915	Bacteria	Buchnera aphidicola subsp. Baizongia pistaciae (strain Bp)	0 pfams
+1022	579112	Bacteria	Vibrio cholerae serotype O1 (strain M66-2)	0 pfams
+637	710128	Bacteria	Mycoplasma gallisepticum (strain R(high / passage 156))	0 pfams
+1205	3908	Eukaryota	Vicia sativa	0 pfams
+268	407148	Bacteria	Campylobacter jejuni subsp. jejuni serotype O:6 (strain 81116 / NCTC 11828)	0 pfams
+656	65699	Bacteria	Neisseria meningitidis serogroup A	0 pfams
+858	392500	Bacteria	Shewanella woodyi (strain ATCC 51908 / MS32)	0 pfams
+703	74109	Bacteria	Photobacterium profundum	0 pfams
+988	309801	Bacteria	Thermomicrobium roseum (strain ATCC 27502 / DSM 5159 / P-2)	0 pfams
+45	349307	Archaea	Methanosaeta thermophila (strain DSM 6194 / PT)	0 pfams
+174	1423	Bacteria	Bacillus subtilis	0 pfams
+635	572263	Bacteria	Mycoplasma conjunctivae (strain ATCC 25834 / HRC/581 / NCTC 10147)	0 pfams
+157	572264	Bacteria	Bacillus cereus (strain 03BB102)	0 pfams
+503	572265	Bacteria	Hamiltonella defensa subsp. Acyrthosiphon pisum (strain 5AT)	0 pfams
+226	483179	Bacteria	Brucella canis (strain ATCC 23365 / NCTC 10854)	0 pfams
+48	2209	Archaea	Methanosarcina mazei	0 pfams
+810	413404	Bacteria	Ruthia magnifica subsp. Calyptogena magnifica	0 pfams
+676	182710	Bacteria	Oceanobacillus iheyensis	0 pfams
+1055	632	Bacteria	Yersinia pestis	0 pfams
+794	336407	Bacteria	Rickettsia bellii (strain RML369-C)	0 pfams
+4	572546	Archaea	Archaeoglobus profundus (strain DSM 5631 / JCM 9629 / NBRC 100127 / Av18)	0 pfams
+489	730	Bacteria	Haemophilus ducreyi	0 pfams
+365	255470	Bacteria	Dehalococcoides sp. (strain CBDB1)	0 pfams
+1052	405441	Bacteria	Xylella fastidiosa (strain M23)	0 pfams
+1051	405440	Bacteria	Xylella fastidiosa (strain M12)	0 pfams
+1005	158	Bacteria	Treponema denticola	0 pfams
+800	782	Bacteria	Rickettsia prowazekii	0 pfams
+134	404589	Bacteria	Anaeromyxobacter sp. (strain Fw109-5)	0 pfams
+544	405566	Bacteria	Lactobacillus helveticus (strain DPC 4571)	0 pfams
+241	331272	Bacteria	Burkholderia cenocepacia (strain HI2424)	0 pfams
+881	359787	Bacteria	Staphylococcus aureus (strain JH1)	0 pfams
+16	416348	Archaea	Halorubrum lacusprofundi (strain ATCC 49239 / DSM 5036 / JCM 8891 / ACAM 34)	0 pfams
+1063	633	Bacteria	Yersinia pseudotuberculosis	0 pfams
+391	515635	Bacteria	Dictyoglomus turgidum (strain Z-1310 / DSM 6724)	0 pfams
+803	785	Bacteria	Rickettsia typhi	0 pfams
+1079	663331	Eukaryota	Arthroderma benhamiae (strain CBS 112371)	0 pfams
+405	1351	Bacteria	Enterococcus faecalis	0 pfams
+716	1219	Bacteria	Prochlorococcus marinus	0 pfams
+702	450851	Bacteria	Phenylobacterium zucineum (strain HLK1)	0 pfams
+985	269800	Bacteria	Thermobifida fusca (strain YX)	0 pfams
+629	478434	Bacteria	Mycobacterium tuberculosis (strain KZN 1435 / MDR)	0 pfams
+585	156889	Bacteria	Magnetococcus sp. (strain MC-1)	0 pfams
+552	416870	Bacteria	Lactococcus lactis subsp. cremoris (strain MG1363)	0 pfams
+339	548476	Bacteria	Corynebacterium aurimucosum (strain ATCC 700975 / DSM 44827 / CN-1)	0 pfams
+515	498761	Bacteria	Heliobacterium modesticaldum (strain ATCC 51547 / Ice1)	0 pfams
+1006	160	Bacteria	Treponema pallidum	0 pfams
+8	589924	Archaea	Ferroglobus placidus (strain DSM 10642 / AEDII12DO)	0 pfams
+839	326297	Bacteria	Shewanella amazonensis (strain ATCC BAA-1098 / SB2B)	0 pfams
+49	339860	Archaea	Methanosphaera stadtmanae (strain DSM 3091)	0 pfams
+476	398767	Bacteria	Geobacter lovleyi (strain ATCC BAA-1151 / DSM 17278 / SZ)	0 pfams
+752	205918	Bacteria	Pseudomonas syringae pv. syringae (strain B728a)	0 pfams
+776	234621	Bacteria	Rhodococcus erythropolis (strain PR4 / NBRC 100887)	0 pfams
+822	550537	Bacteria	Salmonella enteritidis PT4 (strain P125109)	0 pfams
+1182	4934	Eukaryota	Saccharomyces kluyveri	0 pfams
+450	360911	Bacteria	Exiguobacterium sp. (strain ATCC BAA-1283 / AT1b)	0 pfams
+593	481448	Bacteria	Methylacidiphilum infernorum (isolate V4)	0 pfams
+232	118099	Bacteria	Buchnera aphidicola subsp. Acyrthosiphon pisum	0 pfams
+59	178306	Archaea	Pyrobaculum aerophilum (strain ATCC 51768 / IM2 / DSM 7523 / JCM 9630 / NBRC 100827)	0 pfams
+495	205914	Bacteria	Haemophilus somnus (strain 129Pt)	0 pfams
+1137	242507	Eukaryota	Magnaporthe oryzae (strain 70-15 / FGSC 8958)	0 pfams
+95	204669	Bacteria	Acidobacteria bacterium (strain Ellin345)	0 pfams
+737	287	Bacteria	Pseudomonas aeruginosa	0 pfams
+765	395491	Bacteria	Rhizobium leguminosarum bv. trifolii (strain WSM1325)	0 pfams
+569	395495	Bacteria	Leptothrix cholodnii (strain ATCC 51168 / LMG 8142 / SP-6)	0 pfams
+361	269798	Bacteria	Cytophaga hutchinsonii (strain ATCC 33406 / NCIMB 9469)	0 pfams
+87	329726	Bacteria	Acaryochloris marina (strain MBIC 11017)	0 pfams
+334	1513	Bacteria	Clostridium tetani	0 pfams
+21	399549	Archaea	Metallosphaera sedula (strain ATCC 51363 / DSM 5348)	0 pfams
+962	2734	Bacteria	Symbiobacterium thermophilum	0 pfams
+1099	9615	Eukaryota	Canis familiaris	0 pfams
+1127	6945	Eukaryota	Ixodes scapularis	0 pfams
+951	455632	Bacteria	Streptomyces griseus subsp. griseus (strain JCM 4626 / NBRC 13350)	0 pfams
+245	412022	Bacteria	Burkholderia mallei (strain NCTC 10229)	0 pfams
+876	446470	Bacteria	Stackebrandtia nassauensis (strain DSM 44728 / NRRL B-16338 / NBRC 102104 / LLR-40K-21)	0 pfams
+717	146891	Bacteria	Prochlorococcus marinus (strain AS9601)	0 pfams
+274	155892	Bacteria	Caulobacter crescentus	0 pfams
+739	381754	Bacteria	Pseudomonas aeruginosa (strain PA7)	0 pfams
+216	314724	Bacteria	Borrelia turicatae (strain 91E135)	0 pfams
+214	314723	Bacteria	Borrelia hermsii (strain DAH)	0 pfams
+1152	9598	Eukaryota	Pan troglodytes	0 pfams
+906	216495	Bacteria	Streptococcus agalactiae serotype III	0 pfams
+117	176299	Bacteria	Agrobacterium tumefaciens (strain C58 / ATCC 33970)	0 pfams
+31	259564	Archaea	Methanococcoides burtonii (strain DSM 6242)	0 pfams
+396	718251	Bacteria	Edwardsiella tarda (strain FL6-60)	0 pfams
+1072	544712	Eukaryota	Ajellomyces capsulata (strain H143)	0 pfams
+939	391295	Bacteria	Streptococcus suis (strain 05ZYH33)	0 pfams
+940	391296	Bacteria	Streptococcus suis (strain 98HAH33)	0 pfams
+813	405948	Bacteria	Saccharopolyspora erythraea (strain NRRL 23338)	0 pfams
+265	195099	Bacteria	Campylobacter jejuni (strain RM1221)	0 pfams
+1135	7209	Eukaryota	Loa loa	0 pfams
+553	746361	Bacteria	Lactococcus lactis subsp. cremoris (strain NZ9000)	0 pfams
+1197	5722	Eukaryota	Trichomonas vaginalis	0 pfams
+992	197221	Bacteria	Thermosynechococcus elongatus (strain BP-1)	0 pfams
+598	661410	Bacteria	Methylobacterium extorquens (strain DSM 5838 / DM4)	0 pfams
+956	595499	Bacteria	Sulcia muelleri (strain SMDSEM)	0 pfams
+997	126740	Bacteria	Thermotoga sp. (strain RQ2)	0 pfams
+698	324925	Bacteria	Pelodictyon phaeoclathratiforme (strain DSM 5477 / BU-1)	0 pfams
+990	484019	Bacteria	Thermosipho africanus (strain TCF52B)	0 pfams
+533	521045	Bacteria	Kosmotoga olearia (strain TBF 19.5.1)	0 pfams
+780	648757	Bacteria	Rhodomicrobium vannielii (strain ATCC 17100 / ATH 3.1.1 / DSM 162 / LMG 4299)	0 pfams
+351	434922	Bacteria	Coxiella burnetii (strain Dugway 5J108-111)	0 pfams
+349	434923	Bacteria	Coxiella burnetii (strain CbuG_Q212)	0 pfams
+1021	345073	Bacteria	Vibrio cholerae serotype O1 (strain ATCC 39541 / Ogawa 395 / O395)	0 pfams
+408	644651	Bacteria	Erwinia pyrifoliae (strain DSM 12163 / CIP 106111 / Ep16/96)	0 pfams
+1004	595494	Bacteria	Tolumonas auensis (strain DSM 9187 / TA4)	0 pfams
+350	434924	Bacteria	Coxiella burnetii (strain CbuK_Q154)	0 pfams
+933	301448	Bacteria	Streptococcus pyogenes serotype M3	0 pfams
+480	35554	Bacteria	Geobacter sulfurreducens	0 pfams
+282	83558	Bacteria	Chlamydia pneumoniae	0 pfams
+568	44275	Bacteria	Leptospira interrogans serogroup Icterohaemorrhagiae serovar copenhageni	0 pfams
+562	59736	Bacteria	Leifsonia xyli subsp. xyli	0 pfams
+859	344609	Bacteria	Shigella boydii serotype 18 (strain CDC 3083-94 / BS512)	0 pfams
+1027	670	Bacteria	Vibrio parahaemolyticus	0 pfams
+1110	44689	Eukaryota	Dictyostelium discoideum	0 pfams
+847	323850	Bacteria	Shewanella loihica (strain ATCC BAA-1088 / PV-4)	0 pfams
+276	509190	Bacteria	Caulobacter segnis (strain ATCC 21756 / DSM 7131 / JCM 7823 / NBRC 15250 / LMG 17158 / TK0059)	0 pfams
+852	425104	Bacteria	Shewanella sediminis (strain HAW-EB3)	0 pfams
+519	582402	Bacteria	Hirschia baltica (strain ATCC 49814 / DSM 5838 / IFAM 1418)	0 pfams
+577	637381	Bacteria	Listeria monocytogenes serotype 1/2a (strain 08-5923)	0 pfams
+192	471853	Bacteria	Beutenbergia cavernae (strain ATCC BAA-8 / DSM 12333 / NBRC 16432)	0 pfams
+52	79929	Archaea	Methanothermobacter marburgensis (strain DSM 2133 / 14651 / NBRC 100331 / OCM 82 / Marburg)	0 pfams
+869	471855	Bacteria	Slackia heliotrinireducens (strain ATCC 29202 / DSM 20476 / NCTC 11029 / RHS 1)	0 pfams
+393	471854	Bacteria	Dyadobacter fermentans (strain ATCC 700827 / DSM 18053 / NS114)	0 pfams
+83	273075	Archaea	Thermoplasma acidophilum (strain ATCC 25905 / DSM 1728 / JCM 9062 / NBRC 15155 / AMRC-C165)	0 pfams
+526	471856	Bacteria	Jonesia denitrificans (strain ATCC 14870 / DSM 20603 / CIP 55134)	0 pfams
+812	203122	Bacteria	Saccharophagus degradans (strain 2-40 / ATCC 43961 / DSM 17024)	0 pfams
+678	203123	Bacteria	Oenococcus oeni (strain BAA-331 / PSU-1)	0 pfams
+572	203120	Bacteria	Leuconostoc mesenteroides subsp. mesenteroides (strain ATCC 8293 / NCDO 523)	0 pfams
+67	399550	Archaea	Staphylothermus marinus (strain ATCC 43588 / DSM 3639 / F1)	0 pfams
+827	554290	Bacteria	Salmonella paratyphi A (strain AKU_12601)	0 pfams
+685	706191	Bacteria	Pantoea ananatis (strain LMG 20103)	0 pfams
+488	391165	Bacteria	Granulibacter bethesdensis (strain ATCC BAA-1260 / CGDNIH1)	0 pfams
+590	400668	Bacteria	Marinomonas sp. (strain MWYL1)	0 pfams
+224	359391	Bacteria	Brucella abortus (strain 2308)	0 pfams
+104	400667	Bacteria	Acinetobacter baumannii (strain ATCC 17978 / NCDC KC 755)	0 pfams
+1164	4924	Eukaryota	Pichia stipitis	0 pfams
+124	293826	Bacteria	Alkaliphilus metalliredigens (strain QYMF)	0 pfams
+23	634498	Archaea	Methanobrevibacter ruminantium (strain ATCC 35063 / DSM 1093 / JCM 13430 / M1)	0 pfams
+409	634499	Bacteria	Erwinia pyrifoliae (strain Ep1/96)	0 pfams
+166	315749	Bacteria	Bacillus cereus subsp. cytotoxis (strain NVH 391-98)	0 pfams
+959	326298	Bacteria	Sulfurimonas denitrificans (strain ATCC 33889 / DSM 1251)	0 pfams
+601	441620	Bacteria	Methylobacterium populi (strain ATCC BAA-705 / NCIMB 13946 / BJ001)	0 pfams
+187	803	Bacteria	Bartonella quintana	0 pfams
+1048	406817	Bacteria	Xenorhabdus nematophila (strain ATCC 19061 / DSM 3370 / LMG 1036 / NCIB 9965 / AN6)	0 pfams
+922	516950	Bacteria	Streptococcus pneumoniae (strain CGSP14)	0 pfams
+968	316279	Bacteria	Synechococcus sp. (strain CC9902)	0 pfams
+971	316278	Bacteria	Synechococcus sp. (strain RCC307)	0 pfams
+506	210	Bacteria	Helicobacter pylori	0 pfams
+1043	316273	Bacteria	Xanthomonas campestris pv. vesicatoria (strain 85-10)	0 pfams
+440	83333	Bacteria	Escherichia coli (strain K12)	0 pfams
+613	243243	Bacteria	Mycobacterium avium (strain 104)	0 pfams
+122	316275	Bacteria	Aliivibrio salmonicida (strain LFI1238)	0 pfams
+2	56636	Archaea	Aeropyrum pernix	0 pfams
+295	340177	Bacteria	Chlorobium chlorochromatii (strain CaD3)	0 pfams
+1025	388396	Bacteria	Vibrio fischeri (strain MJ11)	0 pfams
+151	438753	Bacteria	Azorhizobium caulinodans (strain ATCC 43989 / DSM 5975 / ORS 571)	0 pfams
+522	228405	Bacteria	Hyphomonas neptunium (strain ATCC 15444)	0 pfams
+1102	222929	Eukaryota	Coccidioides posadasii (strain C735)	0 pfams
+927	301447	Bacteria	Streptococcus pyogenes serotype M1	0 pfams
+888	196620	Bacteria	Staphylococcus aureus (strain MW2)	0 pfams
+754	259536	Bacteria	Psychrobacter arcticus (strain DSM 17307 / 273-4)	0 pfams
+617	350054	Bacteria	Mycobacterium gilvum (strain PYR-GCK)	0 pfams
+711	452638	Bacteria	Polynucleobacter necessarius (strain STIR1)	0 pfams
+43	2320	Archaea	Methanopyrus kandleri	0 pfams
+1202	5270	Eukaryota	Ustilago maydis	0 pfams
+621	1770	Bacteria	Mycobacterium paratuberculosis	0 pfams
+626	1773	Bacteria	Mycobacterium tuberculosis	0 pfams
+358	65393	Bacteria	Cyanothece sp. (strain PCC 7424)	0 pfams
+89	441768	Bacteria	Acholeplasma laidlawii (strain PG-8A)	0 pfams
+659	374833	Bacteria	Neisseria meningitidis serogroup C (strain 053442)	0 pfams
+631	350058	Bacteria	Mycobacterium vanbaalenii (strain DSM 7251 / PYR-1)	0 pfams
+550	314315	Bacteria	Lactobacillus sakei subsp. sakei (strain 23K)	0 pfams
+98	397945	Bacteria	Acidovorax avenae subsp. citrulli (strain AAC00-1)	0 pfams
+823	550538	Bacteria	Salmonella gallinarum (strain 287/91 / NCTC 13346)	0 pfams
+1180	285006	Eukaryota	Saccharomyces cerevisiae (strain RM11-1a)	0 pfams
+895	396513	Bacteria	Staphylococcus carnosus (strain TM300)	0 pfams
+937	301450	Bacteria	Streptococcus pyogenes serotype M6	0 pfams
+666	323261	Bacteria	Nitrosococcus oceani (strain ATCC 19707 / NCIMB 11848)	0 pfams
+741	384676	Bacteria	Pseudomonas entomophila (strain L48)	0 pfams
+63	29292	Archaea	Pyrococcus abyssi	0 pfams
+307	637910	Bacteria	Citrobacter rodentium (strain ICC168)	0 pfams
+5	397948	Archaea	Caldivirga maquilingensis (strain DSMZ 13496 / IC-167)	0 pfams
+1139	81824	Eukaryota	Monosiga brevicollis	0 pfams
+109	416269	Bacteria	Actinobacillus pleuropneumoniae serotype 5b (strain L20)	0 pfams
+510	592205	Bacteria	Helicobacter pylori (strain B38)	0 pfams
+299	1097	Bacteria	Chlorobium tepidum	0 pfams
+709	365044	Bacteria	Polaromonas naphthalenivorans (strain CJ2)	0 pfams
+838	399741	Bacteria	Serratia proteamaculans (strain 568)	0 pfams
+930	301451	Bacteria	Streptococcus pyogenes serotype M18	0 pfams
+346	681645	Bacteria	Corynebacterium pseudotuberculosis (strain C231)	0 pfams
+181	272559	Bacteria	Bacteroides fragilis (strain ATCC 25285 / NCTC 9343)	0 pfams
+1076	43151	Eukaryota	Anopheles darlingi	0 pfams
+498	502025	Bacteria	Haliangium ochraceum (strain DSM 14365 / JCM 11303 / SMP-2)	0 pfams
+991	391009	Bacteria	Thermosipho melanesiensis (strain BI429 / DSM 12029)	0 pfams
+1030	672	Bacteria	Vibrio vulnificus	0 pfams
+1148	39947	Eukaryota	Oryza sativa subsp. japonica	0 pfams
+1198	663202	Eukaryota	Trichophyton verrucosum (strain HKI 0517)	0 pfams
+505	32025	Bacteria	Helicobacter hepaticus	0 pfams
+1018	391735	Bacteria	Verminephrobacter eiseniae (strain EF01-2)	0 pfams
+233	563178	Bacteria	Buchnera aphidicola subsp. Acyrthosiphon pisum (strain 5A)	0 pfams
+203	291272	Bacteria	Blochmannia pennsylvanicus (strain BPEN)	0 pfams
+200	205913	Bacteria	Bifidobacterium longum (strain DJO10A)	0 pfams
+443	409438	Bacteria	Escherichia coli (strain SE11)	0 pfams
+411	314225	Bacteria	Erythrobacter litoralis (strain HTCC2594)	0 pfams
+105	509173	Bacteria	Acinetobacter baumannii (strain AYE)	0 pfams
+106	509170	Bacteria	Acinetobacter baumannii (strain SDF)	0 pfams
+1112	46245	Eukaryota	Drosophila pseudoobscura pseudoobscura	0 pfams
+745	399739	Bacteria	Pseudomonas mendocina (strain ymp)	0 pfams
+202	203907	Bacteria	Blochmannia floridanus	0 pfams
+1053	183190	Bacteria	Xylella fastidiosa (strain Temecula1 / ATCC 700964)	0 pfams
+891	426430	Bacteria	Staphylococcus aureus (strain Newman)	0 pfams
+159	405535	Bacteria	Bacillus cereus (strain AH820)	0 pfams
+158	405534	Bacteria	Bacillus cereus (strain AH187)	0 pfams
+907	216466	Bacteria	Streptococcus agalactiae serotype V	0 pfams
+163	405531	Bacteria	Bacillus cereus (strain G9842)	0 pfams
+162	405532	Bacteria	Bacillus cereus (strain B4264)	0 pfams
+427	217992	Bacteria	Escherichia coli O6	0 pfams
+1178	574961	Eukaryota	Saccharomyces cerevisiae (strain JAY291)	0 pfams
+1061	386656	Bacteria	Yersinia pestis (strain Pestoides F)	0 pfams
+654	242231	Bacteria	Neisseria gonorrhoeae (strain ATCC 700825 / FA 1090)	0 pfams
+708	530564	Bacteria	Pirellula staleyi (strain ATCC 27377 / DSM 6068 / ICPB 4128)	0 pfams
+758	266264	Bacteria	Ralstonia metallidurans (strain CH34 / ATCC 43123 / DSM 2839)	0 pfams
+539	543734	Bacteria	Lactobacillus casei (strain BL23)	0 pfams
+722	74546	Bacteria	Prochlorococcus marinus (strain MIT 9312)	0 pfams
+1065	349747	Bacteria	Yersinia pseudotuberculosis serotype O:1b (strain IP 31758)	0 pfams
+381	573370	Bacteria	Desulfovibrio magneticus (strain ATCC 700980 / DSM 13731 / RS-1)	0 pfams
+967	110662	Bacteria	Synechococcus sp. (strain CC9605)	0 pfams
+1131	5660	Eukaryota	Leishmania braziliensis	0 pfams
+347	504474	Bacteria	Corynebacterium urealyticum (strain ATCC 43042 / DSM 7109)	0 pfams
+874	392499	Bacteria	Sphingomonas wittichii (strain RW1 / DSM 6014 / JCM 10273)	0 pfams
+119	349741	Bacteria	Akkermansia muciniphila (strain ATCC BAA-835)	0 pfams
+1057	360102	Bacteria	Yersinia pestis bv. Antiqua (strain Antiqua)	0 pfams
+306	290338	Bacteria	Citrobacter koseri (strain ATCC BAA-895 / CDC 4225-83 / SGSC4696)	0 pfams
+260	360104	Bacteria	Campylobacter concisus (strain 13826)	0 pfams
+261	360105	Bacteria	Campylobacter curvus (strain 525.92)	0 pfams
+262	360106	Bacteria	Campylobacter fetus subsp. fetus (strain 82-40)	0 pfams
+263	360107	Bacteria	Campylobacter hominis (strain ATCC BAA-381 / LMG 19568 / NCTC 13146 / CH001A)	0 pfams
+371	439235	Bacteria	Desulfatibacillum alkenivorans (strain AK-01)	0 pfams
+191	395963	Bacteria	Beijerinckia indica subsp. indica (strain ATCC 9039 / DSM 1715 / NCIB 8712)	0 pfams
+760	402626	Bacteria	Ralstonia pickettii (strain 12J)	0 pfams
+359	395961	Bacteria	Cyanothece sp. (strain PCC 7425 / ATCC 29141)	0 pfams
+604	395965	Bacteria	Methylocella silvestris (strain BL2 / DSM 15510 / NCIMB 13906)	0 pfams
+189	374463	Bacteria	Baumannia cicadellinicola subsp. Homalodisca coagulata	0 pfams
+655	521006	Bacteria	Neisseria gonorrhoeae (strain NCCP11945)	0 pfams
+1160	145481	Eukaryota	Physcomitrella patens subsp. patens	0 pfams
+285	580049	Bacteria	Chlamydia trachomatis serovar B (strain Jali20/OT)	0 pfams
+172	398511	Bacteria	Bacillus pseudofirmus (strain OF4)	0 pfams
+341	152794	Bacteria	Corynebacterium efficiens	0 pfams
+304	536	Bacteria	Chromobacterium violaceum	0 pfams
+41	644295	Archaea	Methanohalobium evestigatum (strain DSM 3721 / OCM 161 / Z-7303)	0 pfams
+213	29519	Bacteria	Borrelia garinii	0 pfams
+125	350688	Bacteria	Alkaliphilus oremlandii (strain OhILAs)	0 pfams
+788	414684	Bacteria	Rhodospirillum centenum (strain ATCC 51521 / SW)	0 pfams
+42	547558	Archaea	Methanohalophilus mahii (strain ATCC 35705 / DSM 5219 / SLP)	0 pfams
+55	547559	Archaea	Natrialba magadii (strain ATCC 43099 / DSM 3394 / NCIMB 2190 / MS3)	0 pfams
+112	446462	Bacteria	Actinosynnema mirum (strain ATCC 29888 / DSM 43827 / NBRC 14064 / IMRU 3971)	0 pfams
+1092	7739	Eukaryota	Branchiostoma floridae	0 pfams
+321	394503	Bacteria	Clostridium cellulolyticum (strain ATCC 35319 / DSM 5812 / JCM 6584 / H10)	0 pfams
+653	598659	Bacteria	Nautilia profundicola (strain ATCC BAA-1463 / DSM 18972 / AmH)	0 pfams
+217	446465	Bacteria	Brachybacterium faecium (strain ATCC 43885 / DSM 4810 / NCIB 9860)	0 pfams
+667	915	Bacteria	Nitrosomonas europaea	0 pfams
+418	444450	Bacteria	Escherichia coli O157:H7 (strain EC4115 / EHEC)	0 pfams
+672	446468	Bacteria	Nocardiopsis dassonvillei (strain ATCC 23218 / DSM 43111 / IMRU 509 / JCM 7437 / NCTC 10488)	0 pfams
+836	446469	Bacteria	Sanguibacter keddieii (strain ATCC 51767 / DSM 10542 / NCFB 3025 / ST-74)	0 pfams
+740	208963	Bacteria	Pseudomonas aeruginosa (strain UCBPP-PA14)	0 pfams
+154	1392	Bacteria	Bacillus anthracis	0 pfams
+704	553480	Bacteria	Photorhabdus asymbiotica subsp. asymbiotica (strain ATCC 43949 / 3105-77)	0 pfams
+970	321327	Bacteria	Synechococcus sp. (strain JA-3-3Ab)	0 pfams
+607	582744	Bacteria	Methylovorus sp. (strain SIP3-4)	0 pfams
+674	103690	Bacteria	Nostoc sp. (strain PCC 7120 / UTEX 2576)	0 pfams
+464	393115	Bacteria	Francisella tularensis subsp. tularensis (strain FSC 198)	0 pfams
+360	41431	Bacteria	Cyanothece sp. (strain PCC 8801)	0 pfams
+195	552531	Bacteria	Bifidobacterium animalis subsp. lactis (strain BB-12)	0 pfams
+761	305	Bacteria	Ralstonia solanacearum	0 pfams
+926	487213	Bacteria	Streptococcus pneumoniae (strain Taiwan19F-14)	0 pfams
+194	442563	Bacteria	Bifidobacterium animalis subsp. lactis (strain AD011)	0 pfams
+469	76856	Bacteria	Fusobacterium nucleatum subsp. nucleatum	0 pfams
+354	381666	Bacteria	Cupriavidus necator (strain ATCC 17699 / H16 / DSM 428 / Stanier 337)	0 pfams
+826	54388	Bacteria	Salmonella paratyphi A	0 pfams
+846	458817	Bacteria	Shewanella halifaxensis (strain HAW-EB4)	0 pfams
+576	653938	Bacteria	Listeria monocytogenes serotype 1/2a (strain 08-5578)	0 pfams
+425	585035	Bacteria	Escherichia coli O45:K1 (strain S88 / ExPEC)	0 pfams
+431	585034	Bacteria	Escherichia coli O8 (strain IAI1)	0 pfams
+38	456320	Archaea	Methanococcus voltae (strain ATCC BAA-1334 / A3)	0 pfams
+486	526226	Bacteria	Gordonia bronchialis (strain ATCC 25592 / DSM 43247 / JCM 3198 / NCTC 10667)	0 pfams
+123	187272	Bacteria	Alkalilimnicola ehrlichei (strain MLHE-1)	0 pfams
+1037	844	Bacteria	Wolinella succinogenes	0 pfams
+120	393595	Bacteria	Alcanivorax borkumensis (strain SK2 / ATCC 700651 / DSM 11573)	0 pfams
+33	39152	Archaea	Methanococcus maripaludis	0 pfams
+1181	307796	Eukaryota	Saccharomyces cerevisiae (strain YJM789)	0 pfams
+1184	402676	Eukaryota	Schizosaccharomyces japonicus (strain yFS275 / FY16936)	0 pfams
+422	405955	Bacteria	Escherichia coli O1:K1 / APEC	0 pfams
+1014	505682	Bacteria	Ureaplasma parvum serovar 3 (strain ATCC 27815 / 27 / NCTC 11736)	0 pfams
+1142	7425	Eukaryota	Nasonia vitripennis	0 pfams
+1144	45351	Eukaryota	Nematostella vectensis	0 pfams
+1136	36914	Eukaryota	Lodderomyces elongisporus	0 pfams
+642	262719	Bacteria	Mycoplasma hyopneumoniae (strain J / ATCC 25934 / NCTC 10110)	0 pfams
+969	321332	Bacteria	Synechococcus sp. (strain JA-2-3B'a(2-13))	0 pfams
+905	355315	Bacteria	Streptococcus agalactiae serotype Ia	0 pfams
+597	272630	Bacteria	Methylobacterium extorquens (strain ATCC 14718 / DSM 1338 / AM1)	0 pfams
+908	486410	Bacteria	Streptococcus dysgalactiae subsp. equisimilis (strain GGS_124)	0 pfams
+875	117207	Bacteria	Sphingopyxis alaskensis	0 pfams
+1154	482561	Eukaryota	Paracoccidioides brasiliensis (strain Pb03)	0 pfams
+91	525909	Bacteria	Acidimicrobium ferrooxidans (strain DSM 10331 / JCM 15462 / NBRC 103882 / ICP)	0 pfams
+429	316401	Bacteria	Escherichia coli O78:H11 (strain H10407 / ETEC)	0 pfams
+619	561304	Bacteria	Mycobacterium leprae (strain Br4923)	0 pfams
+18	415426	Archaea	Hyperthermus butylicus (strain DSM 5456 / JCM 9403)	0 pfams
+783	316055	Bacteria	Rhodopseudomonas palustris (strain BisA53)	0 pfams
+1035	292805	Bacteria	Wolbachia sp. subsp. Brugia malayi (strain TRS)	0 pfams
+1133	5664	Eukaryota	Leishmania major	0 pfams
+865	300269	Bacteria	Shigella sonnei (strain Ss046)	0 pfams
+860	300268	Bacteria	Shigella boydii serotype 4 (strain Sb227)	0 pfams
+948	33903	Bacteria	Streptomyces avermitilis	0 pfams
+861	300267	Bacteria	Shigella dysenteriae serotype 1 (strain Sd197)	0 pfams
+17	543526	Archaea	Haloterrigena turkmenica (strain ATCC 51198 / DSM 5511 / NCIMB 13204 / VKM B-1734)	0 pfams
+58	263820	Archaea	Picrophilus torridus (strain ATCC 700027 / DSM 9790 / JCM 10055 / NBRC 100828)	0 pfams
+229	444178	Bacteria	Brucella ovis (strain ATCC 25840 / 63/290 / NCTC 10512)	0 pfams
+955	444179	Bacteria	Sulcia muelleri (strain GWSS)	0 pfams
+575	1639	Bacteria	Listeria monocytogenes	0 pfams
+1146	5141	Eukaryota	Neurospora crassa	0 pfams
+718	93059	Bacteria	Prochlorococcus marinus (strain MIT 9211)	0 pfams
+177	180856	Bacteria	Bacillus thuringiensis subsp. konkukian	0 pfams
+309	31964	Bacteria	Clavibacter michiganensis subsp. sepedonicus (strain ATCC 33113 / JCM 9667)	0 pfams
+30	304371	Archaea	Methanocella paludicola (strain DSM 17711 / JCM 13418 / NBRC 101707 / SANAE)	0 pfams
+612	561007	Bacteria	Mycobacterium abscessus (strain ATCC 19977 / DSM 44196)	0 pfams
+596	440085	Bacteria	Methylobacterium chloromethanicum (strain CM4 / NCIMB 13688)	0 pfams
+414	574521	Bacteria	Escherichia coli O127:H6 (strain E2348/69 / EPEC)	0 pfams
+675	279238	Bacteria	Novosphingobium aromaticivorans (strain DSM 12444)	0 pfams
+897	176279	Bacteria	Staphylococcus epidermidis (strain ATCC 35984 / RP62A)	0 pfams
+532	378753	Bacteria	Kocuria rhizophila (strain ATCC 9341 / DSM 348 / NBRC 103217 / DC2201)	0 pfams
+1089	5865	Eukaryota	Babesia bovis	0 pfams
+734	264201	Bacteria	Protochlamydia amoebophila (strain UWE25)	0 pfams
+293	264202	Bacteria	Chlamydophila felis (strain Fe/C-56)	0 pfams
+281	83560	Bacteria	Chlamydia muridarum	0 pfams
+684	324057	Bacteria	Paenibacillus sp. (strain JDR-2)	0 pfams
+100	232721	Bacteria	Acidovorax sp. (strain JS42)	0 pfams
+743	220664	Bacteria	Pseudomonas fluorescens (strain Pf-5 / ATCC BAA-477)	0 pfams
+755	335284	Bacteria	Psychrobacter cryohalolentis (strain K5)	0 pfams
+436	481805	Bacteria	Escherichia coli (strain ATCC 8739 / DSM 1576 / Crooks)	0 pfams
+1179	643680	Eukaryota	Saccharomyces cerevisiae (strain Lalvin EC1118 / Prise de mousse)	0 pfams
+523	135577	Bacteria	Idiomarina loihiensis	0 pfams
+1066	502800	Bacteria	Yersinia pseudotuberculosis serotype O:3 (strain YPIII)	0 pfams
+388	579405	Bacteria	Dickeya dadantii (strain Ech703)	0 pfams
+961	387093	Bacteria	Sulfurovum sp. (strain NBC37-1)	0 pfams
+1185	4896	Eukaryota	Schizosaccharomyces pombe	0 pfams
+97	351607	Bacteria	Acidothermus cellulolyticus (strain ATCC 43068 / 11B)	0 pfams
+481	351605	Bacteria	Geobacter uraniireducens (strain Rf4)	0 pfams
+546	1590	Bacteria	Lactobacillus plantarum	0 pfams
+1163	644223	Eukaryota	Pichia pastoris (strain GS115)	0 pfams
+1123	598745	Eukaryota	Giardia intestinalis (strain ATCC 50581 / GS clone H7)	0 pfams
+736	326442	Bacteria	Pseudoalteromonas haloplanktis (strain TAC 125)	0 pfams
+228	546272	Bacteria	Brucella melitensis biotype 2 (strain ATCC 23457)	0 pfams
+778	101510	Bacteria	Rhodococcus sp. (strain RHA1)	0 pfams
+138	212042	Bacteria	Anaplasma phagocytophilum (strain HZ)	0 pfams
+46	2214	Archaea	Methanosarcina acetivorans	0 pfams
+912	29390	Bacteria	Streptococcus gordonii (strain Challis / ATCC 35105 / CH1 / DL1 / V288)	0 pfams
+497	349521	Bacteria	Hahella chejuensis (strain KCTC 2396)	0 pfams
+137	234826	Bacteria	Anaplasma marginale (strain St. Maries)	0 pfams
+1186	665079	Eukaryota	Sclerotinia sclerotiorum (strain ATCC 18683 / 1980 / Ss-1)	0 pfams
+1150	70448	Eukaryota	Ostreococcus tauri	0 pfams
+864	591020	Bacteria	Shigella flexneri serotype X (strain 2002017)	0 pfams
+490	727	Bacteria	Haemophilus influenzae	0 pfams
+602	426355	Bacteria	Methylobacterium radiotolerans (strain ATCC 27329 / DSM 1819 / JCM 2831)	0 pfams
+327	583346	Bacteria	Clostridium kluyveri (strain NBRC 12016)	0 pfams
+606	583345	Bacteria	Methylotenera mobilis (strain JLW8 / ATCC BAA-1282 / DSM 17540)	0 pfams
+201	391904	Bacteria	Bifidobacterium longum subsp. infantis (strain ATCC 15697 / DSM 20088 / NCTC 11817 / S12)	0 pfams
+766	395492	Bacteria	Rhizobium leguminosarum bv. trifolii (strain WSM2304)	0 pfams
+728	1747	Bacteria	Propionibacterium acnes	0 pfams
+582	386043	Bacteria	Listeria welshimeri serovar 6b (strain ATCC 35897 / DSM 20650 / SLCC5334)	0 pfams
+620	216594	Bacteria	Mycobacterium marinum (strain ATCC BAA-535 / M)	0 pfams
+1191	99883	Eukaryota	Tetraodon nigroviridis	0 pfams
+167	66692	Bacteria	Bacillus clausii (strain KSM-K16)	0 pfams
+188	382640	Bacteria	Bartonella tribocorum (strain CIP 105476 / IBS 506)	0 pfams
+573	537021	Bacteria	Liberibacter asiaticus (strain psy62)	0 pfams
+1101	306902	Eukaryota	Clavispora lusitaniae (strain ATCC 42720)	0 pfams
+421	714962	Bacteria	Escherichia coli O18:K1:H7 (strain IHE3034 / ExPEC)	0 pfams
+297	331678	Bacteria	Chlorobium phaeobacteroides (strain BS1)	0 pfams
+947	218495	Bacteria	Streptococcus uberis (strain ATCC BAA-854 / 0140J)	0 pfams
+312	515621	Bacteria	Clostridium botulinum (strain 657 / Type Ba4)	0 pfams
+447	515620	Bacteria	Eubacterium eligens (strain ATCC 27750 / VPI C15-48)	0 pfams
+484	272568	Bacteria	Gluconacetobacter diazotrophicus (strain ATCC 49037 / DSM 5601 / PAl5)	0 pfams
+511	563041	Bacteria	Helicobacter pylori (strain G27)	0 pfams
+398	205920	Bacteria	Ehrlichia chaffeensis (strain Arkansas)	0 pfams
+742	205922	Bacteria	Pseudomonas fluorescens (strain Pf0-1)	0 pfams
+266	360109	Bacteria	Campylobacter jejuni subsp. doylei (strain ATCC BAA-1458 / RM4099 / 269.97)	0 pfams
+323	272563	Bacteria	Clostridium difficile (strain 630)	0 pfams
+677	439375	Bacteria	Ochrobactrum anthropi (strain ATCC 49188 / DSM 6882 / NCTC 12168)	0 pfams
+372	272564	Bacteria	Desulfitobacterium hafniense (strain DCB-2 / DSM 10664)	0 pfams
+561	272624	Bacteria	Legionella pneumophila subsp. pneumophila (strain Philadelphia 1 / ATCC 33152 / DSM 7513)	0 pfams
+190	959	Bacteria	Bdellovibrio bacteriovorus	0 pfams
+512	357544	Bacteria	Helicobacter pylori (strain HPAG1)	0 pfams
+39	410358	Archaea	Methanocorpusculum labreanum (strain ATCC 43576 / DSM 4855 / Z)	0 pfams
+1042	509169	Bacteria	Xanthomonas campestris pv. campestris (strain B100)	0 pfams
+1162	4929	Eukaryota	Pichia guilliermondii	0 pfams
+1087	341663	Eukaryota	Aspergillus terreus (strain NIH 2624 / FGSC A1156)	0 pfams
+931	370552	Bacteria	Streptococcus pyogenes serotype M2 (strain MGAS10270)	0 pfams
+269	306263	Bacteria	Campylobacter lari (strain RM2100 / D67 / ATCC BAA-1060)	0 pfams
+6	46770	Archaea	Cenarchaeum symbiosum	0 pfams
+368	1299	Bacteria	Deinococcus radiodurans	0 pfams
+387	198628	Bacteria	Dickeya dadantii (strain 3937)	0 pfams
+333	499177	Bacteria	Clostridium sticklandii (strain ATCC 12662 / DSM 519 / JCM 1433 / NCIB 10654)	0 pfams
+517	204773	Bacteria	Herminiimonas arsenicoxydans	0 pfams
+630	362242	Bacteria	Mycobacterium ulcerans (strain Agy99)	0 pfams
+403	290339	Bacteria	Enterobacter sakazakii (strain ATCC BAA-894)	0 pfams
+328	386415	Bacteria	Clostridium novyi (strain NT)	0 pfams
+406	665029	Bacteria	Erwinia amylovora (strain CFBP1430)	0 pfams
+1126	9606	Eukaryota	Homo sapiens	0 pfams
+1104	5207	Eukaryota	Cryptococcus neoformans	0 pfams
+460	393011	Bacteria	Francisella tularensis subsp. holarctica (strain OSU18)	0 pfams
+560	297246	Bacteria	Legionella pneumophila (strain Paris)	0 pfams
+155	592021	Bacteria	Bacillus anthracis (strain A0248)	0 pfams
+171	592022	Bacteria	Bacillus megaterium (strain DSM 319)	0 pfams
+559	297245	Bacteria	Legionella pneumophila (strain Lens)	0 pfams
+199	216816	Bacteria	Bifidobacterium longum	0 pfams
+945	322159	Bacteria	Streptococcus thermophilus (strain ATCC BAA-491 / LMD-9)	0 pfams
+340	1717	Bacteria	Corynebacterium diphtheriae	0 pfams
+652	457570	Bacteria	Natranaerobius thermophilus (strain ATCC BAA-1301 / DSM 18059 / JW/NM-WN-LF)	0 pfams
+870	343509	Bacteria	Sodalis glossinidius (strain morsitans)	0 pfams
+456	402612	Bacteria	Flavobacterium psychrophilum (strain JIP02/86 / ATCC 49511)	0 pfams
+662	387092	Bacteria	Nitratiruptor sp. (strain SB155-2)	0 pfams
+374	177437	Bacteria	Desulfobacterium autotrophicum (strain ATCC 43914 / DSM 3382 / HRM2)	0 pfams
+987	289376	Bacteria	Thermodesulfovibrio yellowstonii (strain ATCC 51303 / DSM 11347 / YP87)	0 pfams
+462	401614	Bacteria	Francisella tularensis subsp. novicida (strain U112)	0 pfams
+1196	6334	Eukaryota	Trichinella spiralis	0 pfams
+1094	6239	Eukaryota	Caenorhabditis elegans	0 pfams
+725	167555	Bacteria	Prochlorococcus marinus (strain NATL1A)	0 pfams
+555	1360	Bacteria	Lactococcus lactis subsp. lactis	0 pfams
+850	225849	Bacteria	Shewanella piezotolerans (strain WP3 / JCM 13877)	0 pfams
+1054	393305	Bacteria	Yersinia enterocolitica serotype O:8 / biotype 1B (strain 8081)	0 pfams
+457	484022	Bacteria	Francisella philomiragia subsp. philomiragia (strain ATCC 25017)	0 pfams
+614	1765	Bacteria	Mycobacterium bovis	0 pfams
+830	439843	Bacteria	Salmonella schwarzengrund (strain CVM19633)	0 pfams
+996	390874	Bacteria	Thermotoga petrophila (strain RKU-1 / ATCC BAA-488 / DSM 13995)	0 pfams

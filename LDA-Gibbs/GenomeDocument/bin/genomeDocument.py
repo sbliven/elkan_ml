@@ -17,6 +17,7 @@ import os
 import optparse
 import gzip
 import xml.dom.minidom
+import xml.dom.pulldom
 import re
 from itertools import islice
 
@@ -35,9 +36,51 @@ class Genome:
         self.proteins[accession] = count + 1
 
     def __str__(self):
-        return "%d\t%s %s:%s (%d proteins)" %( self.n, self.taxID,
-                self.species, self.domain,
-                len(self.proteins) )
+        return "%d\t%s\t%s\t%s\t%d pfams" %( self.n, self.taxID, self.domain,
+                self.species, len(self.proteins) )
+
+class UniProtSAX (xml.sax.handler.ContentHandler):
+    def __init__(self, genomes=None):
+        self.proteins = {}
+        self._locator = None
+
+        if genomes is None:
+            self.genomes = {}
+            self.createGenomes = True
+        else:
+            self.genomes = genomes
+            self.createGenomes = False
+
+    def setDocumentLocator(self,locator):
+        self._locator = locator
+
+    def startDocument():
+        """Receive notification of the beginning of a document.
+
+        The SAX parser will invoke this method only once, before any other methods in this interface or in DTDHandler (except for setDocumentLocator()).
+        """
+        pass
+
+    def endDocument():
+        """Receive notification of the end of a document.
+
+        The SAX parser will invoke this method only once, and it will be the last method invoked during the parse. The parser shall not invoke this method until it has either abandoned parsing (because of an unrecoverable error) or reached the end of input.
+        """
+        pass
+
+    def startElement(self, name, attrs):
+        """ Signals the start of an element in non-namespace mode.
+
+        The name parameter contains the raw XML 1.0 name of the element type as a string and the attrs parameter holds an object of the Attributes interface (see The Attributes Interface) containing the attributes of the element. The object passed as attrs may be re-used by the parser; holding on to a reference to it is not a reliable way to keep a copy of the attributes. To keep a copy of the attributes, use the copy() method of the attrs object.
+        """
+        pass
+
+    def endElement(name):
+        """Signals the end of an element in non-namespace mode.
+
+        The name parameter contains the name of the element type, just as with the startElement() event.
+        """
+        pass
 
 class UniProt:
     def __init__(self, genomes=None):
@@ -51,18 +94,21 @@ class UniProt:
 
 
     def parse(self, file):
-        print("Starting Parse...")
-        doc = xml.dom.minidom.parse(file)
-        print("Done")
+        doc = xml.dom.pulldom.parse(file)
         self.handleUniprot(doc)
 
     def handleUniprot(self,doc):
         entryNum = 0
-        for entry in doc.getElementsByTagName("entry"):
-            self.handleEntry(entry)
-            entryNum += 1
-            if entryNum % 1 == 0:
-                print("Parsed %d uniprot entries."%entryNum)
+        for event, node in doc:
+            if event == 'START_ELEMENT' and node.nodeName == "entry":
+                doc.expandNode(node)
+                self.handleEntry(node)
+                entryNum += 1
+                if entryNum % 100 == 0:
+                    print("Parsed %d uniprot entries. %d saved."%(entryNum,len(self.proteins)))
+
+        #for entry in doc.getElementsByTagName("entry"):
+        #self.handleEntry(entry)
 
 
     def handleEntry(self,entry):
@@ -264,7 +310,7 @@ def readGenomes(genomeFile,headerLines=1):
             taxID = columns[0]
             name = columns[2]
             domain = columns[8].split("; ")[0]
-            genomes[len(genomes)+1] =  Genome(len(genomes)+1, taxID, name, domain) 
+            genomes[taxID] =  Genome(len(genomes)+1, taxID, name, domain) 
 
     return genomes
 
@@ -279,11 +325,29 @@ if __name__ == "__main__":
         parser.print_usage()
         parser.exit("Error: Expected 0 argument, but found %d"%len(args) )
 
+    prefix = "uniprot"
+    genomeFilename = "%s.documents.txt"%prefix
+    valuesFilename = "%s.values.txt"%prefix
+    wordsFilename  = "%s.words.txt"%prefix
+    labelsFilename = "%s.labels.txt"%prefix
+
+    labels = {
+            "eukaryota": 1,
+            "archaea":   2,
+            "bacteria":  3,
+            }
     sys.stdout.write("Reading Genomes...")
-    genomeFile = open("eukaryota.txt","r")
+    genomeFile = open("all.txt","r")
     genomes = readGenomes(genomeFile)
     genomeFile.close()
     print("Read %d genomes." % len(genomes))
+
+    print("Writing genomes to %s and %s"%(genomeFilename,labelsFilename))
+    with open(genomeFilename,"w") as genomeFile:
+        with open(labelsFilename,"w") as labelsFile:
+            for genome in genomes.values():
+                genomeFile.write("%s\n"% str(genome))
+                labelsFile.write("%d\t%d\n"% (genome.n,labels.get(genome.domain.lower(),-1) ))
 
     sys.stdout.write("Reading Proteins...")
     uniprot = UniProt(genomes)
@@ -301,7 +365,8 @@ if __name__ == "__main__":
         for prot in proteins:
             genome = uniprot.proteins.get(prot)
             if genome is None:
-                sys.stderr.write("Warning: unknown UniProt accession: %s\n"%prot)
+                #sys.stderr.write("Warning: unknown UniProt accession: %s\n"%prot)
+                pass
             else:
                 genome.add(pfam)
         pfams[pfam] = len(pfams)+1
@@ -310,18 +375,17 @@ if __name__ == "__main__":
     print("Read %d pfams." % len(pfams))
 
     #Now output genomes
-    prefix = "uniprot"
-    with open("%s.labels.txt"%prefix,"w") as pfamFile:
+    print("Writing Pfams to %s."%wordsFilename)
+    with open(wordsFilename,"w") as pfamFile:
         for pfam,n in pfams.items():
             pfamFile.write("%d\t%s\n" % (n,pfam))
 
-    with open("%s.documents.txt"%prefix,"w") as genomeFile:
-        with open("%s.values.txt"%prefix,"w") as valuesFile:
-            for genome in uniprot.genomes.values():
-                genomeFile.write("%s\n"% str(genome))
-                for pfam,count in genome.proteins.items():
-                    #write genome, pfam, count
-                    valuesFile.write("%d\t%d\t%d\n" % (genome.n, pfams[pfam], count))
+    print("Writing pfam species to %s."%valuesFilename)
+    with open(valuesFilename,"w") as valuesFile:
+        for genome in uniprot.genomes.values():
+            for pfam,count in genome.proteins.items():
+                #write genome, pfam, count
+                valuesFile.write("%d\t%d\t%d\n" % (genome.n, pfams[pfam], count))
 
 
 
