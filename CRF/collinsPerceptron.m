@@ -11,7 +11,7 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
         %wordlengths = wordlengths of vectors
         
         
-        alpha = 0.00000000000002;
+        alpha = 0.2/T;
 
        % set up w randomly
        
@@ -35,15 +35,15 @@ function [ w, j ] = collinsPerceptron( epochs, T, numTags,numF,  features, y, wo
                
                
                %w = w - alpha * F(x,y);
-               w = w + alpha * F(features{t},y, wordlengths(t), numF);
+               w = w + alpha * F(features{t},y(t,:), wordlengths(t), numF);
                
                
                %w = w - alpha * F(x,yhat);
                w = w - alpha * F(features{t},yhat, wordlengths(t), numF);
                
               if(t==2)
-                  y(t,1:wordlengths(t))
-                  yhat
+                  %y(t,1:wordlengths(t))
+                  %yhat
               end
                
               if(y(t,1:wordlengths(t)) == yhat)

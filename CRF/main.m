@@ -29,7 +29,7 @@ for k = 1:5
     saveFile = sprintf('%s.%d.train.mat',prefix,k-1);
     save saveFile k trainF numWords numTags J maxI tags beginTag endTag wordlen y
     
-    %w = collinsPerceptron( 1, numWords, numTags, 0.1, J,  f, y, wordlen);
+    %w = collinsPerceptron( 1, numWords, numTags, J,  trainF, y, wordlen);
     
 
     
@@ -53,9 +53,11 @@ for k = 1:5
     testY = load(testlabelfile);
     testwordlen = testY(:,1);
     testY = testY(:,2:end);
+    %numTags = 2;
+    %[ wordacc , letteracc ] = testAccuracy(w, testY, testwordlen, testF, numWords, numTags)
 
     saveFile = sprintf('%s.%d.test.mat',prefix,k-1)
-    save(saveFile, 'k', 'testF', 'numWords', 'numTags', 'J', 'maxI', 'tags', 'beginTag', 'endTag', 'testwordlen', 'testY');
+    save saveFile k testF numWords numTags J maxI tags beginTag endTag testwordlen testY
 end
 
 
@@ -97,7 +99,7 @@ w0 = rand(J,1);
 checkgrad(@(w) CRFrLCL(y,wordlen,f,w,lambda,tags,beginTag,endTag),w0,1e-4)
 
 
-%% SGD figure out lambda
+%% SGD
 
 
 lambda = 1e-3;
@@ -109,30 +111,6 @@ for epoch = 1:epochs
     tic,w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);toc
     tic,lcls(epoch+1) = CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag),toc
 end
-
-
-%% SGD train
-
-%load train
-k = 4;
-
-lambda = 1e-3;
-epochs = 25;
-w = zeros(J,1);
-tic
-for epoc = 1:epochs
-    w = SGD(y,wordlen,trainF,w,lambda,tags,beginTag,endTag);
-end
-toc
-CRFrLCL(y,wordlen,trainF,w,lambda,tags,beginTag,endTag)
-
-save(sprintf('%s.%d.weightsSGD.mat',prefix,k-1),'w')
-
-
-CRFrLCL(testY,testwordlen,testF,w,0,tags,beginTag,endTag)
-tic,[ wordacc , letteracc ] = testAccuracy(w, testY, testwordlen, testF, numWords, 2),toc
-
-% load test
 
 
 

@@ -1,4 +1,4 @@
-function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag,t)
+function [ result ] = funviterbi(w, word, wordlength, numTags,beginTag, endTag)
 %U stores the values
 U = zeros(wordlength,numTags);
 %S stores the indexes for backtracking
@@ -8,6 +8,8 @@ S = zeros(wordlength,numTags);
     initial=zeros(1,numTags);
     %set initial values with size 2 x 1
     i=beginTag;
+    
+    
      for j=1:numTags
            initial(1,j) = w' * word{i,j}(:,1);
      end
